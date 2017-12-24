@@ -1,0 +1,116 @@
+<!--
+  Generated template for the TartoptionsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+<ion-navbar>
+<ion-title>
+  <ion-row style="text-align: center;">
+    <ion-col col-1>
+      <ion-buttons>
+        <button ion-button navPop icon-only>
+            <ion-icon style="color:gray" name="arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-col>
+    <ion-col col-9 style="padding: 10px 0;font-family: Bitter;color: #0497b3;">{{'Tart Options'|translate}}</ion-col>
+    <ion-col col-2 style="padding: 10px 0;color: orange">$204</ion-col>
+  </ion-row>
+</ion-title>
+</ion-navbar>
+</ion-header>
+
+
+<ion-content >
+    <ion-label>{{'What are the colors of board'|translate}}</ion-label>
+    <div class="slidediv">
+      <div class="board" style="background-color: orange"></div> 
+      <div class="board" style="background-color: black"></div> 
+      <div class="board" style="background-color: fuchsia"></div> 
+      <div class="board" style="background-color: brown"></div> 
+    </div> 
+
+    <hr>
+
+    <ion-label>{{'What size size would you like'|translate}}</ion-label>
+
+
+   <ion-list radio-group>
+  <ion-item class="myitem">
+    <ion-label> <div class="size">
+          <h5>{{'X-large'|translate}}<br><span>27</span></h5> 
+        </div> </ion-label>
+    <ion-radio checked="true" value="go"></ion-radio>
+  </ion-item>
+
+  <ion-item class="myitem">
+    <ion-label><div class="size">
+          <h5>{{'Medium'|translate}}<br><span>25</span></h5>
+
+        </div></ion-label>
+    <ion-radio value="rust"></ion-radio>
+  </ion-item>
+
+   <ion-item class="myitem">
+    <ion-label> <div class="size">
+          <h5>{{'Small'|translate}}<br><span>23</span></h5>
+        
+        </div></ion-label>
+    <ion-radio value="python"></ion-radio>
+  </ion-item>
+</ion-list>     
+ 
+ <hr>
+
+ <ion-label>{{'Extra items to add'|translate}}</ion-label>
+       
+<div class="adds">
+ 
+      <div>
+        <img src="assets/imgs/roug1.jpg" alt="">
+        <p>Happy anvisaire</p>
+        <h6>$1.50</h6>
+        <button ion-button block>{{'Add item'|translate}}</button>
+      </div>
+      <div>
+         <img src="assets/imgs/roug2.jpg" alt="">
+         <p>Rose in red</p>
+         <h6>$1.50</h6>
+         <button ion-button block>{{'Add item'|translate}}</button>
+      </div>
+      <div> 
+         <img src="assets/imgs/roug3.jpg" alt="">
+         <p>Rose in Pink</p>
+         <h6>$1.50</h6>
+         <button ion-button block>{{'Add item'|translate}}</button>
+      </div>     
+
+</div>
+
+<hr>
+
+    <p style="text-align: center;color: gray;margin: 15px;">{{'Upload your own image'|translate}}</p>
+    <div class="add"><ion-icon name="add"></ion-icon></div>
+    <!--<div class="buttons">
+      <button ion-button outline (click)="dismiss()">{{'Skip'|translate}}</button>
+      <button ion-button outline>{{'Upload'|translate}}</button>
+    </div>-->
+
+    <hr>
+
+    <ion-item class="check">
+      <ion-label>{{'Gift Wrapping'|translate}}</ion-label>
+      <ion-checkbox color="dark" ></ion-checkbox>
+   </ion-item>
+<hr>
+
+
+ <ion-label>{{'Pipe a Message on a Cake'|translate}}</ion-label>
+ <ion-item style="height: 100px">
+    <ion-input style="height: 100%;" type="text" placeholder="{{'Type something ...'|translate}}"></ion-input>
+ </ion-item>
+ <button ion-button block class="bottombtn">{{'Add Items to Cart'|translate}}</button>
+</ion-content>
+

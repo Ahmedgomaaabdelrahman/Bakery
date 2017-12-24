@@ -1,3 +1,118 @@
 page-home {
+.back-button.show-back-button{
+    display: none
+}
+.toolbar-title{
+    text-align: center;
+    font-family:Bitter;
+    font-weight: 600;
+    color: gray;
+    ion-icon{
+        color: lightgray;
+    }
+}
+.toolbar-background{
+    background: white;
+}
 
+.header::after{
+  background-image:none;
+}
+
+.filter{
+    transform:rotate(90deg); 
+}
+
+
+// .segment-button{
+//     border-bottom: none !important;
+//   }
+
+// .segment-button.segment-activated {
+//     border-bottom: 3px solid #CA7800 !important;
+//     background-color: white !important;
+// }
+ion-segment {
+    padding-top: 5px;
+    color: lightgray;
+    width: 200vw;
+    margin: 0 20px;
+  }
+
+ion-segment-button {
+    color: #62636f !important;
+    text-transform: none !important;
+    border-bottom:none !important; 
+     letter-spacing: 1px;
+    &:hover {
+      background-color: #ff9000 !important;
+      color: white !important;
+      border-radius: 30px;
+      text-transform: none !important;
+      font-weight: 600 !important;
+      letter-spacing: 1px;
+      opacity: 1 !important;
+      box-shadow: 0px 3px 37px orange;
+         
+      
+
+      }
+}
+.segment-md .segment-button.activated, .segment-md .segment-button.segment-activated{
+        border-color: #488aff !important;
+
+}
+ion-segment-button.segment-button {
+    display: inline-block!important;
+    width: auto!important;
+  }
+.product{
+    margin: 30px 20px;
+    p:first-of-type{
+       margin: 15px 0;
+       color:gray;
+       font-weight: bold;
+    }
+    .heart{
+        border: none;
+        font-size: 40px;
+        position: absolute;
+        right: 5px;
+        color: white;
+    }
+    p:last-of-type{
+       margin: 5px 0;
+       color:#f18900;
+       font-weight: bold;
+    }
+    .button{
+        background-color: #d0cfe0;
+        color: white;
+        border-radius: 30px;
+        width: 70%;
+        text-transform: none;
+        height: 30px;
+    }
+    #no{
+        display: inline-flex;
+        color: gray;
+        margin:0 5px;
+    }
+    ion-icon{
+        border: 1px solid lightgray;
+        border-radius: 50%;
+        padding:8px 11px;
+        color:lightgray;
+    }
+}
+  [col-6] 
+  { 
+   padding: 0 10px;
+    img{
+       width: 100%;
+       height: 185px;
+       border-radius: 10px;
+       box-shadow: 0px 3px 37px #868481;
+       }
+  }
 }

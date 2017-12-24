@@ -1,0 +1,58 @@
+page-tabs {
+ .tabs-md .tab-button{
+    background-size:35px ;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0px;
+    padding: 0;
+    }
+.tabs-md .tab-button[aria-selected=true]{
+    background-size:75px ;
+    }
+
+
+.tabs-md .tab-button[id=tab-t0-0]{
+    background-image: url('../assets/imgs/home.png');
+}
+.tabs-md .tab-button[aria-selected=true][id=tab-t0-0]{
+     background-image: url('../assets/imgs/homeon.png'); 
+}
+
+
+
+.tabs-md .tab-button[id=tab-t0-1]{
+    background-image: url('../assets/imgs/category.png');
+}
+.tabs-md .tab-button[aria-selected=true][id=tab-t0-1]{
+     background-image: url('../assets/imgs/categoryon.png');
+}
+
+
+
+
+.tabs-md .tab-button[id=tab-t0-2]{
+    background-image: url('../assets/imgs/fav.png');
+}
+.tabs-md .tab-button[aria-selected=true][id=tab-t0-2]{
+     background-image: url('../assets/imgs/favon.png');
+}
+
+
+
+.tabs-md .tab-button[id=tab-t0-3]{
+  background-image: url('../assets/imgs/person.png');
+   }
+.tabs-md .tab-button[aria-selected=true][id=tab-t0-3]{
+     background-image: url('../assets/imgs/personon.png');
+}
+
+
+
+.tabs-md .tab-button[id=tab-t0-4]{
+    background-image: url('../assets/imgs/settings.png');
+}
+.tabs-md .tab-button[aria-selected=true][id=tab-t0-4]{
+     background-image: url('../assets/imgs/settingson.png');
+     background-size:85px ;
+}
+}

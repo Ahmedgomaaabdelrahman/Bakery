@@ -1,0 +1,22 @@
+page-notification {
+.toolbar-background{
+    background: white;
+    
+}
+.header::after{
+  background-image:none;
+}
+.rowitem{
+    margin: 10px;
+    border-bottom: 1px solid lightgray;
+
+    img{
+        border-radius: 20px;
+    }
+}
+p{
+        color: gray;
+        margin: 0;
+        font-size: 18px;
+}
+}

@@ -1,0 +1,78 @@
+page-ordermap {
+.content{
+    background-image: url('../assets/imgs/map.jpg');
+}
+
+.imgdiv{
+    position: fixed;
+    margin: 0 40%;
+    bottom: 230px;
+    width: 75px;
+    text-align: center;
+    z-index: 1;
+        img{
+            height: 80px;
+            width: 70px;
+            border-radius: 50%;
+           
+        }
+    }
+.workerinfo{
+    background: white;
+    border-radius: 20px;
+    position: fixed;
+    bottom: 163px;
+    width: 90%;
+    margin: 0 5%;
+    height: 90px;
+    padding: 30px;
+    text-align: center;
+   
+    p{
+        margin: 0;
+        font-family: Bitter;
+        color: #32bdd6;
+    }
+    .button{
+        height: 32px;
+        border: 1px solid gray;
+        text-transform: none;
+        border-radius: 20px;
+        color: #33bdd6;
+    }
+}
+.order{
+    height: 140px;
+    background: white;
+    border-radius: 20px;
+    position: fixed;
+    width: 90%;
+    bottom: 0;
+    margin: 5%;
+
+}
+.row1{
+    padding: 10px 10px 0;
+    text-align: center;
+    font-size: 30px;
+    color: orange;
+    font-family: Bitter;
+    p{
+        margin: 0;
+        text-align: center;
+        font-size: 16px;
+        color: black;
+    }
+}
+.accept{
+    width:60%;
+    text-transform: none;
+    border-radius: 20px;
+    font-size:20px;
+    background: #32bdd6;
+    position: absolute;
+    bottom:-15px;
+    margin:0 20%;
+    height: 55px;
+}
+}

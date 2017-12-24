@@ -1,0 +1,43 @@
+page-settings {
+.back-button.show-back-button{
+    display: none
+}
+.toolbar-title{
+    text-align: center;
+    font-family:Bitter;
+    font-weight: 600;
+    color: gray;
+    ion-icon{
+        color: lightgray;
+    }
+}
+.toolbar-background{
+    background: white;
+}
+
+.header::after{
+  background-image:none;
+}
+
+.cont{
+    height: 60px;
+    border-bottom: 1px solid lightgray;
+    padding: 16px 0;
+    color: #0b0b40;
+    opacity: 0.9;
+}
+[col-2]{
+    text-align: center;
+    ion-icon{
+        color:orange;
+    }
+}
+
+
+.toggle-md.toggle-checked .toggle-icon{
+    background-color: #ecc49f;
+}
+.toggle-md.toggle-checked .toggle-inner{
+    background-color: orange;
+}
+}

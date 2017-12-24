@@ -1,0 +1,106 @@
+page-details {
+.back-button.show-back-button{
+    display: none
+}
+.toolbar-title{
+    text-align: center;
+    font-family:Bitter;
+    font-weight: 600;
+    color: gray;
+    ion-icon{
+        color: gray;
+    }
+}
+.toolbar-background{
+    background: white;
+}
+
+.header::after{
+  background-image:none;
+}
+.slides{
+    width: 100%;
+}
+// .swiper-wrapper{
+//     height: 25%;
+// }
+.swiper-slide img{
+    width: 100%;
+  
+}
+
+
+
+h2{
+    text-align: center;
+    color: #635959;
+    margin: 50px 0 20px; 
+}
+p{
+    color: gray;
+    margin: 10px 30px;
+    text-align: center;
+    overflow: auto;
+    height: 100px;
+}
+.bottomrow{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 85px;
+}
+[col-4] div{
+    background-image: url(../assets/imgs/icondetails.png);
+    background-repeat: no-repeat;
+    background-size:100% 65px;
+    height: 70px;
+    text-align: center;
+    font-size: 20px;
+    padding: 25px;
+    color: gray;
+}
+[col-8] .button{
+    height: 58px;
+    border-radius: 30px;
+    background: #32bdd6;
+    font-size: 20px;
+    margin-top: 10px;
+    text-transform: none;
+}
+.rate{
+    background-color: orange;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    position: relative;
+    left: 20px;
+    bottom: 25%;
+    z-index: 10;
+    width: 70px;
+    text-align: center;
+    font-size: 18px;
+    height: 70px;
+}
+.swiper-pagination{
+    position: fixed;
+    top: 268px;
+}
+
+ion-input{
+    width: 55px;
+    height: 45px;
+    display: inline-block
+}
+.text-input-md{
+    height: 100%;
+    margin: 0 10px;
+}
+.print{
+    text-transform: none;
+    font-size: 20px;
+    width: 100%;
+    font-family: Bitter;
+    color: #33bdd6;
+}
+}
+

@@ -1,0 +1,44 @@
+page-forgetpass {
+ .back-button.show-back-button{
+    display: none
+}
+.toolbar-title{
+    text-align: center;
+    font-family:Bitter;
+    font-weight: 600;
+    color: gray;
+    ion-icon{
+        color: lightgray;
+    }
+}
+.toolbar-background{
+    background: white;
+}
+
+.header::after{
+  background-image:none;
+}
+
+.cont{
+    margin: 70px 10%;
+}
+p{
+    text-align: center;
+    font-size: 18px;
+    color: lightgray;
+}
+.forget{
+    border-bottom:1px solid gray;
+}
+.con{
+    width: 40%;
+    text-transform: none;
+    border-radius: 25px;
+    background: transparent;
+    color: #08a1bd;
+    margin: auto;
+    border: 2px solid lightgray;
+    box-shadow: none;
+    height: 45px;
+}
+}

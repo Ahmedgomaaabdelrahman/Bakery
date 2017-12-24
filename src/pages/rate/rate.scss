@@ -1,0 +1,63 @@
+page-rate {
+.content{
+    border-radius: 30px
+}
+.row{
+    padding:10px 20px;
+}
+.colinvoice{
+    text-align: start;
+    font-family: Bitter;
+    font-size: 25px;
+    opacity: 0.7;
+    
+}
+
+.colno{
+    text-align:end;
+    color:gray;
+    font-size: 18px;
+}
+
+
+p{   
+    margin: 0px 24px 40px;
+    color: orange;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+[col-12]{
+    text-align: center;
+    ion-icon{
+          font-size: 40px;
+    }
+      
+}
+
+.item{
+    .label{
+        color: gray;
+    }
+
+}
+.input-cover{
+    position: static;
+}
+.btndiv{
+    border-top: 2px dashed gray;
+    margin: 35px 20px;
+    padding: 20px 0;
+
+    .con{
+        width: 60%;
+        margin: 10px auto;
+        background: #32bdd6;
+        text-transform: none;
+        border-radius: 30px;
+        font-size: 18px;
+        height: 50px;
+}
+}
+
+}

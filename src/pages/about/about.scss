@@ -1,0 +1,14 @@
+page-about {
+.toolbar-background{
+    background: white;
+}
+.header::after{
+  background-image:none;
+}
+p{
+    text-align: start;
+    padding: 0 20px;
+    color: gray;
+    line-height: 24px;
+}
+}

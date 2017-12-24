@@ -14,3 +14,85 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+@font-face{
+font-family: Bitter;
+src: url('../assets/fonts/Bitter/Bitter-Regular.ttf') ;
+}
+.action-sheet-wrapper{
+    width:85%;
+}
+.toolbar-ios ion-title{
+    padding: 0 10px 1px !important;
+}
+.action-sheet-md .action-sheet-button{
+    padding: 0 16px;
+    margin: 0 5%;
+    width: 90%;
+    border-bottom: 1px solid lightgray;
+    color: #01013c;
+    opacity: 0.75;
+}
+.action-sheet-md .action-sheet-button.activated{
+    background: transparent;
+    color:#08a1bd;
+}
+.tabs-md .tabbar{
+    background: white;
+}
+// page-tartoptions.ion-page.show-page{
+//     height: 53% !important;
+//     position: fixed;
+//     top: 50%;
+//     left: 15px;
+//     width: 92%;
+// }
+page-invoice.ion-page.show-page{
+    height: 65% !important;
+    position: fixed;
+    top: 20%;
+    left: 15px;
+    width: 92%;
+}
+page-rate.ion-page.show-page{
+    height: 65% !important;
+    position: fixed;
+    top: 20%;
+    left: 15px;
+    width: 92%;
+}
+.header-ios .toolbar-background-ios{
+    border:none;
+}
+
+ion-modal {
+   left: 0;
+   top: 0;
+   position: absolute;
+   display: block;
+   width: 100%;
+   height: 100%;
+   contain: strict;
+   background-color: rgba(0, 0, 0, 0.84);
+}
+.input-cover{
+    position: static;
+}
+[dir="rtl"] [col-2] ion-icon {
+    color: orange;
+    transform: rotate(180deg);
+}
+[dir="rtl"] .bar-button-md[icon-only]{
+    transform: rotate(180deg);
+}
+
+*{
+  touch-action: manipulation;
+}
+
+.overflow-scroll {
+    overflow-y: auto !important;
+}
+
+[dir="rtl"].slides{
+    direction: rtl;
+}

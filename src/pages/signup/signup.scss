@@ -1,0 +1,99 @@
+page-signup {
+.back-button.show-back-button{
+    display: none
+}
+ .toolbar-title{
+    text-align: center;
+    font-family:Bitter;
+    font-weight: 600;
+    color: gray;
+     ion-icon{
+        float: left;
+        color: gray
+    }
+}
+.toolbar-background{
+    background: white;
+}
+.header::after{
+  background-image:none;
+}
+.formaa{
+    margin:0 10%;;
+    width: 80%;
+    position: fixed;
+    top: 30%;
+    p{
+        text-align: end;
+        font-size: 16px;
+        color: #717171;
+        margin: 20px 0 50px;
+    }
+}
+.label{
+        margin: 0 !important;
+        color: #b5b5b5;
+        letter-spacing: 0px;
+        font-size: 14px;
+    }
+ .input{
+     border-bottom: 1px solid lightgray;
+     margin-bottom: 30px;
+     
+}
+  .text-input {
+    margin:10px 0 2px;
+    padding: 0;
+    font-size: x-large;
+    color: #222b3c;
+    font-weight: 500;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    width: 100%;
+
+   
+}
+[col-3] img{
+    height: 50px;
+    width: 50px;
+    border:2px solid lightgray;
+    border-radius: 50%;
+    padding: 8px;
+}
+.button{
+    width: 40%;
+    border-radius: 35px;
+    border-color: lightgray;
+    border-width: 2px;
+    text-transform: none;
+    height: 45px;
+    color: #08a1bd;
+    margin: 0 auto;
+    margin: 0 30%;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.sign{
+    text-align: center;
+    margin: 70px 0;
+    color: gray;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+#wel{
+    text-align: center;
+    color: gray;
+    font-family: Bitter;
+    font-size: 32px;
+    margin: 0;
+}
+#bak{
+    text-align: center;
+    color:darkorange;
+    font-family: Bitter;
+    font-size: 45px;
+    font-weight: 800;
+    margin: 0;
+}
+}

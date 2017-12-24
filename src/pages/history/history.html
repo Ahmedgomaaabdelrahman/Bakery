@@ -1,0 +1,57 @@
+<ion-content>
+<p style="text-align: end;margin: 17px 18px 0;">
+  <img src="assets/imgs/modify.png" height="25px" (click)="editAcc()"></p>
+<div class="profilediv">
+  <img src="assets/imgs/profile.jpg">
+  <p>Patrick Barker</p>
+  <p>DARIAN_FEEST@OTILIA.NET</p>
+</div>
+
+<div>
+    <ion-scroll scrollX="true">
+      <ion-segment>
+        <ion-segment-button>
+          {{'Recent'|translate}}
+        </ion-segment-button>
+        <ion-segment-button>
+          {{'Past'|translate}}
+        </ion-segment-button>
+      </ion-segment>
+    </ion-scroll>
+</div>
+
+<div class="itemrow">
+  <ion-row>
+    <ion-col col-5>
+      <img src="assets/imgs/roug1.jpg">
+      <div id="price">$10.65</div>
+    </ion-col>
+    <ion-col col-7>
+        <p>{{'Order'|translate}} #34568 </p>
+        <p>15 Aug 2017</p>
+        <ion-row>
+            <ion-col col-6 style="text-align: start;color:#08a1bd">{{'Cash'|translate}}</ion-col>
+            <ion-col col-6 style="text-align: end ;color:lightgray">3 {{'items'|translate}}</ion-col>
+        </ion-row>
+    </ion-col>
+  </ion-row>
+
+
+ <ion-row>
+  <ion-col col-5>
+    <img src="assets/imgs/roug1.jpg">
+    <div id="price">$10.65</div>
+  </ion-col>
+  <ion-col col-7>
+      <p>{{'Order'|translate}} #34568 </p>
+      <p>15 Aug 2017</p>
+      <ion-row>
+          <ion-col col-6 style="text-align: start;color:#08a1bd">{{'Cash'|translate}}</ion-col>
+          <ion-col col-6 style="text-align: end ;color:lightgray">3 {{'items'|translate}}</ion-col>
+      </ion-row>
+  </ion-col>
+ </ion-row>
+</div>
+
+
+</ion-content>

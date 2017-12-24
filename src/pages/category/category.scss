@@ -1,0 +1,31 @@
+page-category {
+.back-button.show-back-button{
+    display: none
+}
+.toolbar-title{
+    text-align: center;
+    font-family:Bitter;
+    font-weight: 600;
+    color: gray;
+    ion-icon{
+        color: lightgray;
+    }
+}
+.toolbar-background{
+    background: white;
+}
+
+.header::after{
+  background-image:none;
+}
+[col-6] img{
+    width: 100px;
+    height: 100px;
+}
+.imgdiv{
+    text-align: center;
+    color: #8490a5;
+    font-size: 18px;
+    font-weight: 500;
+}
+}

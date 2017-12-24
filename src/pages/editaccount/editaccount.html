@@ -1,0 +1,43 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      <ion-row style="text-align: center;">
+          <ion-col col-1> 
+            <ion-buttons>
+              <button ion-button navPop icon-only>
+                  <ion-icon style="color:gray" name="arrow-back"></ion-icon>
+              </button>
+            </ion-buttons>
+          </ion-col>
+          <ion-col col-11 style="font-family: Bitter;font-weight: 500;padding-top: 10px;">{{'Complete Profile'|translate}} </ion-col>
+      </ion-row>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+   <div class="topdiv">
+      <ion-icon style="color:gray" name="add"></ion-icon>
+      <!--<img src="assets/imgs/profile.jpg">-->
+  </div>
+  <form class="formaa"> 
+      <ion-label>{{'User name'|translate}}</ion-label>
+      <ion-input type="text" ></ion-input>
+       
+      <ion-label>{{'Phone No.'|translate}}</ion-label>
+      <ion-input type="tel" ></ion-input>
+
+      <ion-label>{{'Password'|translate}}</ion-label>
+      <ion-input type="password" ></ion-input>
+
+      <button ion-button outline >{{'Update'|translate}}</button>
+     
+      
+  </form>
+    
+</ion-content>
+

@@ -1,0 +1,43 @@
+page-invoice {
+.content{
+    border-radius: 30px
+}
+.row{
+    padding:10px 20px;
+}
+.colinvoice{
+    text-align: start;
+    font-family: Bitter;
+    font-size: 25px;
+    opacity: 0.7;
+    
+}
+
+.colno{
+    text-align:end;
+    color:gray;
+    font-size: 18px;
+}
+.colleft{
+  color: gray;
+  text-align: start;
+  font-weight: 400;
+}
+.colright{
+  color:black;
+  text-align: end;
+  font-weight: 400;
+}
+
+p{   
+    margin: 0px 24px 40px;
+    color: orange;
+    font-weight: bold;
+}
+
+.totalprice{
+    text-align: end;
+    color: #32bdd6;
+    font-weight: bold;
+}
+}

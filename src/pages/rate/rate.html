@@ -1,0 +1,36 @@
+<!--
+  Generated template for the RatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content>
+<ion-row>
+  <ion-col col-6 class="colinvoice">{{'Rate Your'|translate}}</ion-col>
+  <ion-col col-6 class="colno">#34567</ion-col>
+</ion-row>
+
+<p>{{'Order'|translate}}</p>
+
+<ion-row>
+  <ion-col col-12>
+    <ion-icon name="star" style="color: orange"></ion-icon>
+    <ion-icon name="star" style="color: orange"></ion-icon>
+    <ion-icon name="star" style="color: orange"></ion-icon>
+    <ion-icon name="star" style="color: gray"></ion-icon>
+    <ion-icon name="star" style="color: gray"></ion-icon> 
+  </ion-col>
+</ion-row>
+
+<ion-item>
+  <ion-label floating>
+   {{'Give your feedback'|translate}}
+  </ion-label>
+  <ion-textarea></ion-textarea>
+</ion-item>
+
+<div class="btndiv">
+  <button ion-button block class="con" (click)="goHome()">{{'Confirm'|translate}}</button>
+</div>
+</ion-content>
