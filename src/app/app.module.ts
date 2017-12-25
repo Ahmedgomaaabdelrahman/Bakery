@@ -33,12 +33,9 @@ import { CartPage } from "../pages/cart/cart";
 import { AddlocationPage } from "../pages/addlocation/addlocation";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-<<<<<<< HEAD
 import { CustomerProvider } from '../providers/customer';
 import { MainProvider } from '../providers/main';
-=======
 import * as firebase from 'firebase';
->>>>>>> b421f864b53e5b1574bffca810a5a5cbe915c007
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
