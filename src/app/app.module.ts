@@ -33,6 +33,8 @@ import { CartPage } from "../pages/cart/cart";
 import { AddlocationPage } from "../pages/addlocation/addlocation";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { CustomerProvider } from '../providers/customer';
+import { MainProvider } from '../providers/main';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -128,7 +130,9 @@ const fireAuth = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CommonServiceProvider
+    CommonServiceProvider,
+    CustomerProvider,
+    MainProvider
   ]
 })
 export class AppModule {}
