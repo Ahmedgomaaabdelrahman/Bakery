@@ -33,19 +33,21 @@ import { CartPage } from "../pages/cart/cart";
 import { AddlocationPage } from "../pages/addlocation/addlocation";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import * as firebase from 'firebase';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-const fireAuth = {
-  apiKey: "AIzaSyAaG7DRQarTtf8UI8q1-SMHUcE4OATVfBY",
-  authDomain: "bakery-e0160.firebaseapp.com",
-  databaseURL: "https://bakery-e0160.firebaseio.com",
-  projectId: "bakery-e0160",
-  storageBucket: "",
-  messagingSenderId: "439651232463"
+var config = {
+    apiKey: "AIzaSyAaG7DRQarTtf8UI8q1-SMHUcE4OATVfBY",
+    authDomain: "bakery-e0160.firebaseapp.com",
+    databaseURL: "https://bakery-e0160.firebaseio.com",
+    projectId: "bakery-e0160",
+    storageBucket: "bakery-e0160.appspot.com",
+    messagingSenderId: "439651232463"
 };
+firebase.initializeApp(config);
 
 @NgModule({
   declarations: [
@@ -76,7 +78,7 @@ const fireAuth = {
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(fireAuth),
+    // AngularFireModule.initializeApp(fireAuth),
     IonicPageModule.forChild(AboutPage),
     AngularFireAuthModule,
     HttpModule,
