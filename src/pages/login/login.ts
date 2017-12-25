@@ -19,21 +19,22 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-//  send(){
-//    (<any>window).FirebasePlugin.verifyPhoneNumber("+201221924616",60, (credential)=>{
-//      alert("SMS Sent Successfuly");
-//      console.log(credential);
-//      this.verificationId = credential.verificationId;
-//    },(error) =>{
-//      console.log(error);
-//    });
-//  }
+ send(){
+   (<any>window).FirebasePlugin.verifyPhoneNumber("+201008848576",60, (credential)=>{
+     alert("SMS Sent Successfuly");
+     console.log(credential);
+     this.verificationId = credential.verificationId;
+   },(error) =>{
+     console.log(error);
+   });
+ }
 
  signUp(){
    this.navCtrl.push(SignupPage);
  }
  gomain(){
-   this.navCtrl.setRoot(TabsPage);
+      this.send();
+   // this.navCtrl.setRoot(TabsPage);
  }
  goForget(){
    this.navCtrl.push(ForgetpassPage);
