@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {ActionSheetController,ModalController} from "ionic-angular";
 import {TranslateService} from "@ngx-translate/core";
 import {Observable, Subscriber} from "rxjs";
+import { ToastController } from 'ionic-angular';
 /*
   Generated class for the CommonServiceProvider provider.
 
@@ -13,10 +14,16 @@ import {Observable, Subscriber} from "rxjs";
 @Injectable()
 export class CommonServiceProvider {
 
-  constructor(public translateservice:TranslateService,public modalCtrl :ModalController,public actionSheetCtrl: ActionSheetController,public http: Http) {
+  constructor(public toastCtrl: ToastController,public translateservice:TranslateService,public modalCtrl :ModalController,public actionSheetCtrl: ActionSheetController,public http: Http) {
     console.log('Hello CommonServiceProvider Provider');
   }
-
+  presentToast(msg : string) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
+  }
 
   presentSheet(translatedArray : string[]) {
    let actionSheet = this.actionSheetCtrl.create({
@@ -98,4 +105,6 @@ export class CommonServiceProvider {
       observer.complete();
     });
   }
+
+
 }

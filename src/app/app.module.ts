@@ -35,21 +35,21 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { CustomerProvider } from '../providers/customer';
 import { MainProvider } from '../providers/main';
-import * as firebase from 'firebase';
-
+import { HttpClient } from '@angular/common/http';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-var config = {
-    apiKey: "AIzaSyAaG7DRQarTtf8UI8q1-SMHUcE4OATVfBY",
-    authDomain: "bakery-e0160.firebaseapp.com",
-    databaseURL: "https://bakery-e0160.firebaseio.com",
-    projectId: "bakery-e0160",
-    storageBucket: "bakery-e0160.appspot.com",
-    messagingSenderId: "439651232463"
-};
-firebase.initializeApp(config);
+// var config = {
+//     apiKey: "AIzaSyAaG7DRQarTtf8UI8q1-SMHUcE4OATVfBY",
+//     authDomain: "bakery-e0160.firebaseapp.com",
+//     databaseURL: "https://bakery-e0160.firebaseio.com",
+//     projectId: "bakery-e0160",
+//     storageBucket: "bakery-e0160.appspot.com",
+//     messagingSenderId: "439651232463"
+// };
+// firebase.initializeApp(config);
 
 @NgModule({
   declarations: [
@@ -80,9 +80,7 @@ firebase.initializeApp(config);
   ],
   imports: [
     BrowserModule,
-    // AngularFireModule.initializeApp(fireAuth),
     IonicPageModule.forChild(AboutPage),
-    AngularFireAuthModule,
     HttpModule,
     TranslateModule.forChild(),
     TranslateModule.forRoot({
@@ -134,6 +132,7 @@ firebase.initializeApp(config);
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommonServiceProvider,
     CustomerProvider,
+    Facebook,
     MainProvider
   ]
 })

@@ -1,43 +1,58 @@
+import { CommonServiceProvider } from './../../providers/common-service';
 import { ForgetpassPage } from './../forgetpass/forgetpass';
 import { TabsPage } from './../tabs/tabs';
 import { HomePage } from './../home/home';
 import { SignupPage } from './../signup/signup';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {TranslateService} from "@ngx-translate/core";
+import { CustomerProvider } from '../../providers/customer';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  verificationId : any;
-  code : string ="";
-  constructor(public translate:TranslateService,public navCtrl: NavController, public navParams: NavParams) {
+
+
+  @ViewChild('password') password;
+  @ViewChild('phoneNo') phone;
+  
+  constructor(public fb : Facebook,public comm:CommonServiceProvider,public customer : CustomerProvider,public translate:TranslateService,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
- send(){
-   (<any>window).FirebasePlugin.verifyPhoneNumber("+201008848576",60, (credential)=>{
-     alert("SMS Sent Successfuly");
-     console.log(credential);
-     this.verificationId = credential.verificationId;
-   },(error) =>{
-     console.log(error);
-   });
- }
+
 
  signUp(){
    this.navCtrl.push(SignupPage);
  }
  gomain(){
-      this.send();
-   // this.navCtrl.setRoot(TabsPage);
+    this.customer.loginUser(this.phone.value,this.password.value).subscribe((res)=>{
+      console.log(res);
+      if(res.error){
+        this.comm.presentToast(res.error);
+      }
+      else{
+        this.navCtrl.setRoot(TabsPage); 
+      }
+      
+  });
+
  }
  goForget(){
    this.navCtrl.push(ForgetpassPage);
  }
+  
+ logFace(){
+    this.fb.login(['public_profile', 'user_friends', 'email'])
+    .then((res: FacebookLoginResponse) => {console.log('Logged into Facebook!', res);
+      this.navCtrl.setRoot(TabsPage)})
+    .catch(e => console.log('Error logging into Facebook', e));
 
+    // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
+}
 }

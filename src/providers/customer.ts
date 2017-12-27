@@ -8,30 +8,30 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CustomerProvider {
   public registerUrl : string = MainProvider.baseUrl+"/signup/";
-  public loginUrl : string = MainProvider.baseUrl+"/login";
+  public loginUrl : string = MainProvider.baseUrl+"/login/";
   public deviceToken : string ='';
 
   constructor(public http: Http) {
     console.log('Hello CustomerProvider Provider');
   }
 
-  registerUesr(Email:any,Name:string,PhoneNo:any,user_id : any,image ?:any){
+  registerUesr(Email:any,Name:string,PhoneNo:any,Password:any){
      let user = {
       email:Email,
       name:Name,
       phone:PhoneNo,
-      image:image,
-      user_id:user_id,
-      token:this.deviceToken,
-      device_type:1
+      password:Password,
+      type:1
     };
+    console.log(this.registerUrl+MainProvider.lang + user.email +" "+user.name+" "+user.phone+" "+user.password);
     return this.http.post(this.registerUrl+MainProvider.lang,user).map((res) => res.json());
    }
 
 
-   loginUser(user_id : string){
+   loginUser(phone : any , password : any){
     let user = {
-      user_id : user_id
+      phone : phone,
+      password : password
     };
     return this.http.post(this.loginUrl+MainProvider.lang,user).map((res) => res.json());
   }
