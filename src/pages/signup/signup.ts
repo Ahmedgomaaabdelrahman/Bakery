@@ -32,6 +32,7 @@ export class SignupPage {
           }
           else{
             this.navCtrl.setRoot(TabsPage);  
+            this.customer.currentuser = res;
           }
        
   });

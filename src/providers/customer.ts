@@ -9,8 +9,10 @@ import 'rxjs/add/operator/map';
 export class CustomerProvider {
   public registerUrl : string = MainProvider.baseUrl+"/signup/";
   public loginUrl : string = MainProvider.baseUrl+"/login/";
+  public updateUrl : string = MainProvider.baseUrl+"/editaccount/";
+  public facebookUrl : string = MainProvider.baseUrl+"/facebookAuth";
   public deviceToken : string ='';
-
+  public currentuser : any;
   constructor(public http: Http) {
     console.log('Hello CustomerProvider Provider');
   }
@@ -23,7 +25,6 @@ export class CustomerProvider {
       password:Password,
       type:1
     };
-    console.log(this.registerUrl+MainProvider.lang + user.email +" "+user.name+" "+user.phone+" "+user.password);
     return this.http.post(this.registerUrl+MainProvider.lang,user).map((res) => res.json());
    }
 
@@ -34,5 +35,28 @@ export class CustomerProvider {
       password : password
     };
     return this.http.post(this.loginUrl+MainProvider.lang,user).map((res) => res.json());
+  }
+  updateUser(Email:any,Name:string,PhoneNo:any,Password:any,img :any){
+    let user = {
+     user_id:this.currentuser.user_id, 
+     email:Email,
+     name:Name,
+     phone:PhoneNo,
+     password:Password,
+     image:img
+   };
+   return this.http.post(this.updateUrl+MainProvider.lang,user).map((res) =>{
+    console.log(res); 
+    res.json()});
+  }
+
+  facebooklogin(Name:string,Faceid:any,Email?:any){
+    let user = {
+      name:Name,
+      email:Email,
+      facebookId:Faceid,
+      type:1
+   };
+   return this.http.post(this.facebookUrl,user).map((res) => res.json());
   }
 }

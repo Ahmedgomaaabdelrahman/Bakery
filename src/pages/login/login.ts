@@ -37,7 +37,8 @@ export class LoginPage {
         this.comm.presentToast(res.error);
       }
       else{
-        this.navCtrl.setRoot(TabsPage); 
+        this.navCtrl.setRoot(TabsPage);
+      this.customer.currentuser = res;
       }
       
   });
@@ -48,11 +49,21 @@ export class LoginPage {
  }
   
  logFace(){
-    this.fb.login(['public_profile', 'user_friends', 'email'])
-    .then((res: FacebookLoginResponse) => {console.log('Logged into Facebook!', res);
-      this.navCtrl.setRoot(TabsPage)})
+    this.fb.login(['public_profile', 'user_friends', 'email','pages_messaging_phone_number'])
+    .then((res: FacebookLoginResponse) => {
+      console.log('Logged into Facebook!', res);
+      
+      this.fb.api("/"+res.authResponse.userID+"/?fields=id,email,name,picture,gender",["public_profile"]).then((r)=>{
+        console.log(r);
+        console.log(r.name);
+        this.customer.facebooklogin(r.name,r.id).subscribe((res)=>{
+          console.log(res);
+          this.navCtrl.setRoot(TabsPage);
+        });
+      })
+     })
     .catch(e => console.log('Error logging into Facebook', e));
-
+  
     // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
 }
 }

@@ -20,21 +20,26 @@
 
 
 <ion-content>
-   <div class="topdiv">
-      <ion-icon style="color:gray" name="add"></ion-icon>
-      <!--<img src="assets/imgs/profile.jpg">-->
+   <div class="topdiv" (click)="addimage()">
+      <ion-icon *ngIf="customer.currentuser.image == null && img == null" style="color:gray" name="add"></ion-icon>
+      <img *ngIf="img != null" [src]='"data:image/png;base64,"+img'>
+      <img *ngIf="customer.currentuser.image != null && img == null" [src]="MainProvider.baseImg+customer.currentuser.image">
   </div>
-  <form class="formaa"> 
+  <form class="formaa" #f="ngForm" (ngSubmit)="updateUser(f.value)"> 
+
       <ion-label>{{'User name'|translate}}</ion-label>
-      <ion-input type="text" ></ion-input>
+      <ion-input type="text" [ngModel]="customer.currentuser.name" name="name"></ion-input>
        
+      <ion-label>{{'Email'|translate}}</ion-label>
+      <ion-input type="email" [ngModel]="customer.currentuser.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" ></ion-input>
+
       <ion-label>{{'Phone No.'|translate}}</ion-label>
-      <ion-input type="tel" ></ion-input>
+      <ion-input type="tel" [ngModel]="customer.currentuser.phone" name="phone" ></ion-input>
 
       <ion-label>{{'Password'|translate}}</ion-label>
-      <ion-input type="password" ></ion-input>
+      <ion-input type="password" ngModel name="password" maxlength="6" required ></ion-input>
 
-      <button ion-button outline >{{'Update'|translate}}</button>
+      <button ion-button outline  [disabled]="!f.valid">{{'Update'|translate}}</button>
      
       
   </form>
