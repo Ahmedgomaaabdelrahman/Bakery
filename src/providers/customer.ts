@@ -11,6 +11,7 @@ export class CustomerProvider {
   public loginUrl : string = MainProvider.baseUrl+"/login/";
   public updateUrl : string = MainProvider.baseUrl+"/editaccount/";
   public facebookUrl : string = MainProvider.baseUrl+"/facebookAuth";
+  public tiwtterUrl : string = MainProvider.baseUrl+"/tweeterAuth";
   public deviceToken : string ='';
   public currentuser : any;
   constructor(public http: Http) {
@@ -58,5 +59,15 @@ export class CustomerProvider {
       type:1
    };
    return this.http.post(this.facebookUrl,user).map((res) => res.json());
+  }
+  twitterLogin(Name:string,tweeterId:any,Email?:any){
+    let user = {
+      name:Name,
+      email:Email,
+      tweeterId:tweeterId,
+      type:1 
+      
+    };
+    return this.http.post(this.tiwtterUrl,user).map((res) => res.json());
   }
 }

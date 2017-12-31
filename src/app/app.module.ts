@@ -38,6 +38,8 @@ import { MainProvider } from '../providers/main';
 import { HttpClient } from '@angular/common/http';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { Camera } from '@ionic-native/camera';
+import { TwitterConnect } from '@ionic-native/twitter-connect';
+import { ProductProvider } from '../providers/product';
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -135,7 +137,9 @@ export function createTranslateLoader(http: Http) {
     CustomerProvider,
     Facebook,
     Camera,
-    MainProvider
+    TwitterConnect,
+    MainProvider,
+    ProductProvider
   ]
 })
 export class AppModule {}

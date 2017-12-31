@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 import { IonicPage,ActionSheetController, NavController, NavParams,Platform } from 'ionic-angular';
 import { CommonServiceProvider } from './../../providers/common-service';
 import {TranslateService} from "@ngx-translate/core";
+import { MainProvider } from '../../providers/main';
 
 
 
@@ -43,12 +44,14 @@ export class SettingsPage {
    if(this.flag == false){
       this.platform.setDir('rtl',true);
       this.translate.setDefaultLang('ar');
+      MainProvider.lang = 'ar';
       this.flag = true;
      
    }
   else if(this.flag == true){
       this.platform.setDir('ltr',true);
       this.translate.setDefaultLang('en');
+      MainProvider.lang = 'en',
       this.flag = false;
        
   }

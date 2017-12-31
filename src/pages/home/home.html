@@ -17,10 +17,11 @@
   <div>
     <ion-scroll scrollX="true" style="width:100vw;height:51px" >
       <ion-segment>
-        <ion-segment-button>
-          Chocolate
+        <ion-segment-button *ngFor="let categorey of allcats; let i = index" >
+          <span *ngIf="MainProvider.lang =='ar'">{{categorey.categoryname_ar}}</span> 
+          <span *ngIf="MainProvider.lang =='en'">{{categorey.categoryname_en}}</span>
         </ion-segment-button>
-        <ion-segment-button>
+        <!-- <ion-segment-button>
           Pastry
         </ion-segment-button>
         <ion-segment-button>
@@ -37,7 +38,7 @@
         </ion-segment-button>
         <ion-segment-button>
           Cake
-        </ion-segment-button>
+        </ion-segment-button> -->
       </ion-segment>
     </ion-scroll>
   </div>

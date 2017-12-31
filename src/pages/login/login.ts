@@ -8,6 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {TranslateService} from "@ngx-translate/core";
 import { CustomerProvider } from '../../providers/customer';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { TwitterConnect } from '@ionic-native/twitter-connect';
 
 @Component({
   selector: 'page-login',
@@ -19,7 +20,7 @@ export class LoginPage {
   @ViewChild('password') password;
   @ViewChild('phoneNo') phone;
   
-  constructor(public fb : Facebook,public comm:CommonServiceProvider,public customer : CustomerProvider,public translate:TranslateService,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private twitter:TwitterConnect,public fb : Facebook,public comm:CommonServiceProvider,public customer : CustomerProvider,public translate:TranslateService,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -65,5 +66,32 @@ export class LoginPage {
     .catch(e => console.log('Error logging into Facebook', e));
   
     // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
+}
+onSuccess(response) {
+  console.log(response);
+
+  // Will console log something like:
+  // {
+  //   userName: 'myuser',
+  //   userId: '12358102',
+  //   secret: 'tokenSecret'
+  //   token: 'accessTokenHere'
+  // }
+}
+
+
+twitterlog(){
+  this.twitter.login()
+  .then((res)=>{
+    console.log(res);
+    this.customer.twitterLogin(res.userName,res.userId).subscribe((apires)=>{
+      console.log(apires);
+      this.customer.currentuser = apires;
+      this.navCtrl.setRoot(TabsPage);
+    });
+     
+
+  })
+  .catch((err)=>{console.log(err)});
 }
 }
