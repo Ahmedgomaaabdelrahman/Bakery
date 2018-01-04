@@ -25,6 +25,8 @@ export class HomePage {
   }
   ionViewWillEnter() {
     console.log('ionViewDidLoad HomePAge');
+    this.allItems = [];
+    this.icons = [];
     this.product.getAllProducts().subscribe((res)=>{
       console.log(res);
       this.allcats = res;
@@ -36,9 +38,9 @@ export class HomePage {
       console.log(this.allItems);
       for(let i=0;i<this.allItems.length;i++)
       {
-        if(this.allItems[i].favorites.length > 0)
+        if(this.allItems[i].favorites[0]!=null)
         { this.icons.push('heart')}
-        else
+        else  if(this.allItems[i].favorites[0]==null)
         { this.icons.push('heart-outline')}
       }
     });

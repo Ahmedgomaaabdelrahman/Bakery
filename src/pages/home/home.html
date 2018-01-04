@@ -29,7 +29,7 @@
 
   <ion-row class="product" *ngIf="!flag">
     <ion-col col-6 *ngFor="let item of allItems; let i = index">
-      <ion-icon class="heart" name="heart-outline" (click)="addToFav(item.item_id)"></ion-icon>
+      <ion-icon #icon [name]="icons[i]" class="heart" (click)="addToFav(item.item_id,i)"></ion-icon>
       <!--<ion-icon class="heart" name="heart"></ion-icon>-->
       <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails()">
       <p>{{item.item_name}}</p>
