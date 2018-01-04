@@ -7,11 +7,13 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CustomerProvider {
-  public registerUrl : string = MainProvider.baseUrl+"/signup/";
-  public loginUrl : string = MainProvider.baseUrl+"/login/";
-  public updateUrl : string = MainProvider.baseUrl+"/editaccount/";
-  public facebookUrl : string = MainProvider.baseUrl+"/facebookAuth";
-  public tiwtterUrl : string = MainProvider.baseUrl+"/tweeterAuth";
+  public registerUrl : string = MainProvider.baseUrl+"signup/";
+  public loginUrl : string = MainProvider.baseUrl+"login/";
+  public updateUrl : string = MainProvider.baseUrl+"editaccount/";
+  public facebookUrl : string = MainProvider.baseUrl+"facebookAuth";
+  public tiwtterUrl : string = MainProvider.baseUrl+"tweeterAuth";
+  public getproductUrl : string = MainProvider.baseUrl+"getAllCategories";
+  public getAllitemsUrl : string = MainProvider.baseUrl+"getItems/"
   public deviceToken : string ='';
   public currentuser : any;
   constructor(public http: Http) {
@@ -24,7 +26,8 @@ export class CustomerProvider {
       name:Name,
       phone:PhoneNo,
       password:Password,
-      type:1
+      type:1,
+      token:this.deviceToken
     };
     return this.http.post(this.registerUrl+MainProvider.lang,user).map((res) => res.json());
    }
@@ -33,7 +36,8 @@ export class CustomerProvider {
    loginUser(phone : any , password : any){
     let user = {
       phone : phone,
-      password : password
+      password : password,
+      token:this.deviceToken
     };
     return this.http.post(this.loginUrl+MainProvider.lang,user).map((res) => res.json());
   }
@@ -70,4 +74,11 @@ export class CustomerProvider {
     };
     return this.http.post(this.tiwtterUrl,user).map((res) => res.json());
   }
+  getAllProducts(){
+    return this.http.get(this.getproductUrl).map((res) => res.json());
+  } 
+ 
+  getAllItems(){
+   return this.http.get(this.getAllitemsUrl+MainProvider.lang+this.currentuser.user_id).map((res) => res.json());
+ } 
 }

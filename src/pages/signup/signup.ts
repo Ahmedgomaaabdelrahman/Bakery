@@ -5,6 +5,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CustomerProvider } from '../../providers/customer';
 import { CommonServiceProvider } from './../../providers/common-service';
+import { NativeStorage } from '@ionic-native/native-storage';
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
@@ -15,7 +16,7 @@ export class SignupPage {
       @ViewChild('password') password ;
       @ViewChild('phone') phone ;
      
-  constructor(public comm:CommonServiceProvider,public customer : CustomerProvider,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public nativeStorage:NativeStorage,public comm:CommonServiceProvider,public customer : CustomerProvider,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -33,8 +34,20 @@ export class SignupPage {
           else{
             this.navCtrl.setRoot(TabsPage);  
             this.customer.currentuser = res;
+            this.saveItem(res);
           }
        
   });
   }
+
+
+  saveItem(user : any){
+    this.nativeStorage.setItem('user',user).then((res)=>{
+      console.log("Item Stored !!");
+    }).catch((error)=>{
+      console.log("Error In Saving Item");
+    });
+  }
+ 
+
 }

@@ -1,7 +1,7 @@
 import { TranslateModule, TranslateLoader ,TranslatePipe} from '@ngx-translate/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule, Nav } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
@@ -40,6 +40,8 @@ import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { Camera } from '@ionic-native/camera';
 import { TwitterConnect } from '@ionic-native/twitter-connect';
 import { ProductProvider } from '../providers/product';
+import { NativeStorage } from '@ionic-native/native-storage';
+
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -139,7 +141,9 @@ export function createTranslateLoader(http: Http) {
     Camera,
     TwitterConnect,
     MainProvider,
-    ProductProvider
+    ProductProvider,
+    NativeStorage,
+    Nav
   ]
 })
 export class AppModule {}

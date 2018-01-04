@@ -1,11 +1,15 @@
+
+import { HomePage } from './../pages/home/home';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ActionSheetController,ModalController,AlertController} from "ionic-angular";
 import {TranslateService} from "@ngx-translate/core";
 import {Observable, Subscriber} from "rxjs";
-import { ToastController } from 'ionic-angular';
+import { ToastController, Nav } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+
+import { NativeStorage } from '@ionic-native/native-storage';
 /*
   Generated class for the CommonServiceProvider provider.
 
@@ -15,7 +19,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 @Injectable()
 export class CommonServiceProvider {
 
-  constructor(public camera :Camera,public alertCtrl :AlertController,public toastCtrl: ToastController,public translateservice:TranslateService,public modalCtrl :ModalController,public actionSheetCtrl: ActionSheetController,public http: Http) {
+  constructor(public nativeStorage:NativeStorage,public camera :Camera,public alertCtrl :AlertController,public toastCtrl: ToastController,public translateservice:TranslateService,public modalCtrl :ModalController,public actionSheetCtrl: ActionSheetController,public http: Http) {
     console.log('Hello CommonServiceProvider Provider');
   }
   presentToast(msg : string) {
@@ -74,6 +78,9 @@ export class CommonServiceProvider {
       modal.present();
 
  }  
+
+ 
+
 
  presentActionSheet(){
       this.translateArray(

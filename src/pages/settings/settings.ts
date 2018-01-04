@@ -1,3 +1,4 @@
+import { HomePage } from './../home/home';
 import { PaymentPage } from './../payment/payment';
 import { NotificationPage } from './../notification/notification';
 import { AboutPage } from './../about/about';
@@ -7,6 +8,8 @@ import { IonicPage,ActionSheetController, NavController, NavParams,Platform } fr
 import { CommonServiceProvider } from './../../providers/common-service';
 import {TranslateService} from "@ngx-translate/core";
 import { MainProvider } from '../../providers/main';
+import { CustomerProvider } from '../../providers/customer';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 
 
@@ -18,7 +21,7 @@ export class SettingsPage {
    
    public flag : boolean = false;
 
-  constructor(public translate:TranslateService,public platform:Platform,public common:CommonServiceProvider,public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public nativeStorage:NativeStorage,public translate:TranslateService,public customer:CustomerProvider,public platform:Platform,public common:CommonServiceProvider,public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -40,11 +43,19 @@ export class SettingsPage {
  payMethod(){
    this.common.createModel(PaymentPage);
  }
+
+ logOut(){
+   this.customer.currentuser = null;
+   this.navCtrl.setRoot(HomePage);
+   this.nativeStorage.clear();
+   console.log(this.customer.currentuser);
+ }
  changeLang(){
    if(this.flag == false){
       this.platform.setDir('rtl',true);
       this.translate.setDefaultLang('ar');
       MainProvider.lang = 'ar';
+      console.log(MainProvider.lang)
       this.flag = true;
      
    }
@@ -52,8 +63,9 @@ export class SettingsPage {
       this.platform.setDir('ltr',true);
       this.translate.setDefaultLang('en');
       MainProvider.lang = 'en',
+      console.log(MainProvider.lang)
       this.flag = false;
-       
+      
   }
  }
 }

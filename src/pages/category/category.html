@@ -22,40 +22,12 @@
 
 <ion-content>
   <ion-row style="margin:30px 20px;">
-    <ion-col col-6>
+    <ion-col col-6 *ngFor="let cat of categories" (click)="getCatItems(cat.categories_id)">
       <div class="imgdiv">
-      <img src="assets/imgs/breadon.png"><br>
-        {{'Breads'|translate}}
-      </div>
-      
-    </ion-col>
- <ion-col col-6>
-       <div class="imgdiv">
-      <img src="assets/imgs/dounutoff.png"><br>
-         {{'Doughnuts'|translate}}
-      </div>
-      
-    </ion-col>
-  </ion-row>
- <ion-row style="margin:30px 20px;">
-    <ion-col col-6>  
-       <div class="imgdiv">
-      <img src="assets/imgs/bagelsoff.png"><br>
-         {{'Bagels'|translate}}
-      </div>
-    </ion-col>
-  <ion-col col-6>   <div class="imgdiv">
-      <img src="assets/imgs/piesoff.png"><br>
-         {{'Pies'|translate}}
+      <img [src]="MainProvider.catImgs+cat.category_image"><br>
+       {{cat.categoryname_ar}}
       </div>
     </ion-col>
   </ion-row>
-  <ion-row style="margin:30px 20px;">
-    <ion-col col-6>   <div class="imgdiv">
-      <img src="assets/imgs/pastoff.png"><br>
-         {{'Pastries'|translate}}
-      </div>
-    </ion-col>
-  
-  </ion-row>
+ 
 </ion-content>

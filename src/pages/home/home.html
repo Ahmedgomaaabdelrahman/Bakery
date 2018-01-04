@@ -16,40 +16,24 @@
 <ion-content>
   <div>
     <ion-scroll scrollX="true" style="width:100vw;height:51px" >
-      <ion-segment>
-        <ion-segment-button *ngFor="let categorey of allcats; let i = index" >
+      <ion-segment [(ngModel)]="Categories">
+        <ion-segment-button *ngFor="let categorey of allcats; let i = index" value="categorey.categories_id" (click)="getItemsCat(categorey.categories_id)">
           <span *ngIf="MainProvider.lang =='ar'">{{categorey.categoryname_ar}}</span> 
           <span *ngIf="MainProvider.lang =='en'">{{categorey.categoryname_en}}</span>
         </ion-segment-button>
-        <!-- <ion-segment-button>
-          Pastry
-        </ion-segment-button>
-        <ion-segment-button>
-          Bagels
-        </ion-segment-button>
-        <ion-segment-button>
-          Cake
-        </ion-segment-button>
-        <ion-segment-button>
-          Cake
-        </ion-segment-button>
-        <ion-segment-button>
-          Cake
-        </ion-segment-button>
-        <ion-segment-button>
-          Cake
-        </ion-segment-button> -->
+        
       </ion-segment>
     </ion-scroll>
   </div>
 
-  <ion-row class="product">
-    <ion-col col-6>
-      <ion-icon class="heart" name="heart-outline"></ion-icon>
+
+  <ion-row class="product" *ngIf="!flag">
+    <ion-col col-6 *ngFor="let item of allItems; let i = index">
+      <ion-icon class="heart" name="heart-outline" (click)="addToFav(item.item_id)"></ion-icon>
       <!--<ion-icon class="heart" name="heart"></ion-icon>-->
-      <img src="assets/imgs/roug1.jpg" (click)="showDetails()">
-      <p >Cheese Rugelach</p>
-      <p>$10.95</p>
+      <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails()">
+      <p>{{item.item_name}}</p>
+      <p>${{item.price}}</p>
       <button ion-button block>{{'Add to Cart'|translate}}</button>
       <!--<div>
         <ion-icon name="add"></ion-icon>
@@ -57,46 +41,25 @@
         <ion-icon name="remove"></ion-icon>
       </div>-->
     </ion-col>
-    <ion-col col-6>
-      <!--<ion-icon class="heart" name="heart-outline"></ion-icon>-->
-      <ion-icon  class="heart" name="heart"></ion-icon>
-      <img src="assets/imgs/roug2.jpg">
-      <p >Cheese Rugelach</p>
-      <p>$10.95</p>
-      <div>
-        <ion-icon name="add"></ion-icon>
-        <p id="no">2</p>
-        <ion-icon name="remove"></ion-icon>
-      </div>
-    </ion-col>
+   
   </ion-row>
-   <ion-row class="product">
-     <ion-col col-6>
-       <!--<ion-icon class="heart" name="heart-outline"></ion-icon>-->
-       <ion-icon  class="heart" name="heart"></ion-icon>
-       <img src="assets/imgs/roug3.jpg">
-       <p >Cheese Rugelach</p>
-       <p>$10.95</p>
-       <button ion-button block>{{'Add to Cart'|translate}}</button>
-      <!--<div>
-        <ion-icon name="add"></ion-icon>
-        <p id="no">2</p>
-        <ion-icon name="remove"></ion-icon>
-      </div>-->
-     </ion-col>
-     <ion-col col-6>
-    
-        <ion-icon class="heart" name="heart-outline"></ion-icon>
+
+
+  <ion-row class="product">
+      <ion-col col-6 *ngFor="let item of specItems,let i=index">
+        <ion-icon #icon [name]="icons[i]" class="heart" (click)="addToFav(item.item_id,i)"></ion-icon>
         <!--<ion-icon class="heart" name="heart"></ion-icon>-->
-        <img src="assets/imgs/roug4.jpg">
-        <p >Cheese Rugelach</p>
-        <p>$10.95</p>
-        <!--<button ion-button block>Add to Cart</button>-->
-        <div>
+        <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails()">
+        <p >{{item.item_name}}</p>
+        <p>${{item.price}}</p>
+        <button ion-button block (click)="addToCart()">{{'Add to Cart'|translate}}</button>
+        <!-- <div *ngIf="quan">
           <ion-icon name="add"></ion-icon>
-          <p id="no">2</p>
+          <p id="no">{{item.quantity}}</p>
           <ion-icon name="remove"></ion-icon>
-        </div>
+        </div> -->
       </ion-col>
-   </ion-row>
+    </ion-row>
+
+   
 </ion-content>

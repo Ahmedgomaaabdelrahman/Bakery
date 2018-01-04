@@ -9,6 +9,7 @@ import {TranslateService} from "@ngx-translate/core";
 import { CustomerProvider } from '../../providers/customer';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { TwitterConnect } from '@ionic-native/twitter-connect';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 @Component({
   selector: 'page-login',
@@ -20,7 +21,7 @@ export class LoginPage {
   @ViewChild('password') password;
   @ViewChild('phoneNo') phone;
   
-  constructor(private twitter:TwitterConnect,public fb : Facebook,public comm:CommonServiceProvider,public customer : CustomerProvider,public translate:TranslateService,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public nativeStorage:NativeStorage,private twitter:TwitterConnect,public fb : Facebook,public comm:CommonServiceProvider,public customer : CustomerProvider,public translate:TranslateService,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -39,7 +40,8 @@ export class LoginPage {
       }
       else{
         this.navCtrl.setRoot(TabsPage);
-      this.customer.currentuser = res;
+        this.customer.currentuser = res;
+        this.saveItem(res);
       }
       
   });
@@ -48,7 +50,13 @@ export class LoginPage {
  goForget(){
    this.navCtrl.push(ForgetpassPage);
  }
-  
+ saveItem(user : any){
+  this.nativeStorage.setItem('user',user).then((res)=>{
+    console.log("Item Stored !!");
+  }).catch((error)=>{
+    console.log("Error In Saving Item");
+  });
+}
  logFace(){
     this.fb.login(['public_profile', 'user_friends', 'email','pages_messaging_phone_number'])
     .then((res: FacebookLoginResponse) => {
