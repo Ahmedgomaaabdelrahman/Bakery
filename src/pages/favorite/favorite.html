@@ -20,12 +20,12 @@
       <img [src]="MainProvider.itemsImg+item.itemimages.image_path" (click)="showDetails()">
       <p >{{item.items.item_name}}</p>
       <p>${{item.items.price}}</p>
-      <button ion-button block (click)="addToCart()">{{'Add to Cart'|translate}}</button>
-      <!-- <div *ngIf="quan">
-        <ion-icon name="add"></ion-icon>
-        <p id="no">{{item.quantity}}</p>
-        <ion-icon name="remove"></ion-icon>
-      </div> -->
+      <button ion-button block #quan [class]="btnsdiv[i]" (click)="addToCart(i,item.item_id,item.items.quantity,category_id)">{{'Add to Cart'|translate}}</button>
+      <div #quan [class]="quandiv[i]">
+        <ion-icon name="add" (click)="increaseQuan(quanno,item.item_id,category_id)"></ion-icon>
+        <input id="no" #quanno value="{{item.items.quantity}}" readonly>
+        <ion-icon name="remove" (click)="decreaseQuan(quanno,item.item_id,category_id)"></ion-icon>
+      </div>
     </ion-col>
   </ion-row>
 </ion-content>

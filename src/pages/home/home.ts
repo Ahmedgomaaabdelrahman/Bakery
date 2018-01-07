@@ -20,19 +20,27 @@ export class HomePage {
   public catid : any;
   public MainProvider = MainProvider;
   icons : any[] = [];
-  constructor(public navParams: NavParams,public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider, private menuCtrl:MenuController,public navCtrl: NavController) {
+  quandiv : any [] = [];
+  btnsdiv : any [] = [];
+  constructor(public modalCtrl :ModalController,public navParams: NavParams,public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider, private menuCtrl:MenuController,public navCtrl: NavController) {
 
   }
   ionViewWillEnter() {
     console.log('ionViewDidLoad HomePAge');
     this.allItems = [];
     this.icons = [];
+    this.quandiv = [];
+    this.btnsdiv = [];
+    this.allcats = [] ;
+    this.allItems = [];
+    this.specItems = [];
     this.product.getAllProducts().subscribe((res)=>{
       console.log(res);
       this.allcats = res;
     });
 
     this.product.getAllItems(this.customer.currentuser.user_id).subscribe((res)=>{
+     
       console.log("All Items"+res);
       this.allItems = res;
       console.log(this.allItems);
@@ -43,26 +51,77 @@ export class HomePage {
         else  if(this.allItems[i].favorites[0]==null)
         { this.icons.push('heart-outline')}
       }
+      for(let i=0;i<this.allItems.length;i++){
+        if(this.allItems[i].cart[0]!=null)
+        { 
+          this.quandiv.push('quandiv'); 
+          this.btnsdiv.push('disbtn')
+        }
+        else  if(this.allItems[i].cart[0]==null)
+        { 
+          this.quandiv.push('quandivdis'); 
+          this.btnsdiv.push('nondisbtn')
+        }
+      }
     });
-
+    
   this.catid = this.navParams.get('catid');
   if(this.catid){
    this.flag = true;
    this.product.getChosItem(this.customer.currentuser.user_id,this.catid).subscribe((res)=>{
      console.log(res);
       this.specItems = res;
-      
    });
+
   }
   }
 presentActionSheet(){
   this.common.presentActionSheet();
 }
-showDetails(){
-  this.common.createModel(DetailsPage);
+showDetails(images,name,details,quantity){
+ let detpage = this.modalCtrl.create(DetailsPage,{
+    images : images , 
+    name : name , 
+    details : details , 
+    quantity : quantity
+  });
+    console.log({images,name,details,quantity});
+  detpage.present();
+
 }
 goCart(){
-  this.common.createModel(CartPage);
+  this.navCtrl.push(CartPage);
+  this.flag = false;
+//   let cartpage =  this.modalCtrl.create(CartPage);
+  
+//   cartpage.onDidDismiss(data => {
+//     this.product.getAllItems(this.customer.currentuser.user_id).subscribe((res)=>{
+      
+//        console.log("All Items"+res);
+//        this.allItems = res;
+//        console.log(this.allItems);
+//        for(let i=0;i<this.allItems.length;i++)
+//        {
+//          if(this.allItems[i].favorites[0]!=null)
+//          { this.icons.push('heart')}
+//          else  if(this.allItems[i].favorites[0]==null)
+//          { this.icons.push('heart-outline')}
+//        }
+//        for(let i=0;i<this.allItems.length;i++){
+//          if(this.allItems[i].cart[0]!=null)
+//          { 
+//            this.quandiv.push('quandiv'); 
+//            this.btnsdiv.push('disbtn')
+//          }
+//          else  if(this.allItems[i].cart[0]==null)
+//          { 
+//            this.quandiv.push('quandivdis'); 
+//            this.btnsdiv.push('nondisbtn')
+//          }
+//        }
+//      });
+//   });
+//   cartpage.present();
 }
 
 getItemsCat(catid){
@@ -73,10 +132,19 @@ getItemsCat(catid){
   })
 }
 
-addToCart(i){
+addToCart(i,itemid,quanid,catid){
   console.log(i);
-  // document.getElementById("i").getElementsByTagName("button").item(0).style.display = "none";
-  // document.getElementById("i").getElementsByTagName("div").item(0).style.display = "block";
+  this.product.addToCart(this.customer.currentuser.user_id,itemid,quanid,catid).subscribe((res)=>{
+    console.log(res);
+    if(res == 1){
+      this.common.presentToast("this item already added");
+    }
+    else{
+      this.common.presentToast("Added Successfully");
+      this.quandiv[i]='quandiv';
+      this.btnsdiv[i]='disbtn';
+    }
+  })
 }
 
 addToFav(itemid,icon){
@@ -92,5 +160,17 @@ addToFav(itemid,icon){
   })
 }
 
-
+increaseQuan(quanno,itemid,catid){
+  quanno.value++;
+  this.product.addToCart(this.customer.currentuser.user_id,itemid,quanno.value,catid).subscribe((res)=>{
+    console.log(res);
+  });
+}
+decreaseQuan(quanno,i){
+  if(quanno.value > 0){
+    quanno.value--;
+    
+  }
+ 
+}
 }

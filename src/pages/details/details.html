@@ -17,7 +17,7 @@
     </ion-col>
     <ion-col col-10 style="padding: 10px 0">{{'Details'|translate}}</ion-col>
     <ion-col col-1 style="padding: 10px 0">
-      <ion-icon class="heart" name="heart-outline"></ion-icon>
+      <!-- <ion-icon class="heart" name="heart-outline"></ion-icon> -->
     </ion-col>
   </ion-row>
 </ion-title>
@@ -31,17 +31,10 @@
     margin: 30px auto;
     height: 176px;">
 <ion-slides autoplay="2000" dir="rtl" loop="true" pager >
-    <ion-slide>
-      <img src="assets/imgs/roug1.jpg">
+    <ion-slide *ngFor="let img of images">
+      <img [src]="MainProvider.itemsImg+img.image_path">
     </ion-slide>
 
-    <ion-slide >
-      <img src="assets/imgs/roug2.jpg">
-    </ion-slide>
-
-    <ion-slide >
-        <img src="assets/imgs/roug3.jpg">
-    </ion-slide>
 </ion-slides>
 <div class="rate">
   <ion-icon name="star"></ion-icon><br>
@@ -49,23 +42,18 @@
 </div>
 </div>
 
-<h2>Chocolate Cheese Rugelach</h2>
+<h2>{{name}}</h2>
 <!--<div style="text-align: center;">
   <ion-input  type="color"></ion-input>
   <ion-input  type="color"></ion-input>
   <ion-input  type="color"></ion-input>
 </div>-->
 <button ion-button clear class="print" (click)="tartOptions()">{{'Add more Options'|translate}}</button>
-<p>My deep love for Carlo's Bakery ruglach
-   began after my dad My deep love for Carlo's
-   Bakery ruglach began after my dad
-   My deep love for Carlo's Bakery ruglach began after my dad</p>
+<p>{{details}}</p>
 
  <ion-row class="bottomrow">
    <ion-col col-4 style="padding:10px;">
-     <div>
-       <!--<img src="assets/imgs/icondetails.png">-->
-       3</div>
+     <div>{{quantiy}}</div>
    </ion-col>
    <ion-col col-8>
      <button ion-button block>{{'Add to Cart'|translate}}</button>

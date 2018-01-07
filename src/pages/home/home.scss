@@ -95,9 +95,11 @@ ion-segment-button.segment-button {
         
     }
     #no{
-        display: inline-flex;
+        display: inline;
         color: gray;
-        margin:0 5px;
+        margin: 0 5px;
+        width: 10px;
+        border: none;
     }
     ion-icon{
         border: 1px solid lightgray;
@@ -118,6 +120,21 @@ ion-segment-button.segment-button {
   }
 
   .quandiv{
+    display: block;
+  }
+  .quandivdis{
+      display: none;
+  }
+  .disbtn{
     display: none;
+  }
+  .nondisbtn{
+    display: block;
+    background-color: #d0cfe0;
+    color: white;
+    border-radius: 30px;
+    width: 70%;
+    text-transform: none;
+    height: 30px;
   }
 }

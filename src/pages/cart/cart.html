@@ -44,44 +44,28 @@
 
 
 <div class="itemrow">
-  <ion-row>
-    <ion-col col-5>
-      <img src="assets/imgs/wedtart.jpg">
+  <ion-row *ngFor="let item of cartItems">
+    <ion-col col-4>
+      <img [src]="MainProvider.itemsImg+item.itemimages.image_path">
       <!--<div class="tcolor"></div>-->
     </ion-col>
-    <ion-col col-7>
-        <p>Wedding Tart </p>
-        <p>$10.65</p>
+    <ion-col col-8>
+      <ion-row>
+        <ion-col col-10> <p class="p1">{{item.items.item_name}} </p></ion-col>
+        <ion-col col-2><ion-icon class="closeicon" name="close" (click)="deleteItem(item.items.item_id)"></ion-icon></ion-col>
+      </ion-row>
+       
+        <p class="p2" >{{item.items.price}}</p>
         <div>
           <ion-icon name="add"></ion-icon>
-          <p class="no">2</p>
+          <p class="no">{{item.items.quantity}}</p>
           <ion-icon name="remove"></ion-icon>
 
-          <p class="print" >{{'Printed'|translate}}</p>
-         <img src="assets/imgs/printer.png"> 
+          <!-- <p class="print" >{{'Printed'|translate}}</p> -->
+         <!-- <img src="assets/imgs/printer.png">  -->
       </div>
     </ion-col>
   </ion-row>
-
-  <ion-row>
-    <ion-col col-5>
-      <img src="assets/imgs/roug1.jpg">
-      <!--<div class="tcolor"></div>-->
-    </ion-col>
-    <ion-col col-7>
-        <p>Rouglach </p>
-        <p>$10.65</p>
-        <div>
-          <ion-icon name="add"></ion-icon>
-          <p class="no">2</p>
-          <ion-icon name="remove"></ion-icon>
-
-          <!--<p class="print" >Printed</p>
-         <img src="assets/imgs/printer.png"> -->
-      </div>
-    </ion-col>
-  </ion-row>
-
 </div>
 
 

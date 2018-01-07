@@ -73,8 +73,8 @@ export class CommonServiceProvider {
   actionSheet.present();
  }
 
- createModel(pagename){
-   let modal = this.modalCtrl.create(pagename);
+ createModel(pagename,parameters?){
+   let modal = this.modalCtrl.create(pagename,parameters);
       modal.present();
 
  }  

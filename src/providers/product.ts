@@ -14,8 +14,10 @@ export class ProductProvider {
   public getAllFavsUrl : string = MainProvider.baseUrl+"getUserfavourite/";
   public addFavUrl : string = MainProvider.baseUrl+"addTofavourite";
   public deleteFavUrl : string = MainProvider.baseUrl+"deleteItemFromFavourites";
-
-
+  
+  public addCartUrl : string = MainProvider.baseUrl+"addToCart/";
+  public getCartUrl : string = MainProvider.baseUrl+"getMyCart/";
+  public deleteCartUrl : string = MainProvider.baseUrl+"deleteItemFromCart";
 
   constructor(public http: Http) {
     console.log('Hello ProductProvider Provider');
@@ -54,4 +56,28 @@ export class ProductProvider {
   };
   return this.http.post(this.deleteFavUrl,user).map((res) => res.json());
  }
+
+ addToCart(userid,itemid,quanid,catid){
+   let body = {
+    user_id:userid,
+    item_id:itemid,
+    Quantity:quanid,
+    category_id:catid
+   };
+   return this.http.post(this.addCartUrl,body).map((res) => res.json());
+ }
+
+ getCart(userid){
+  let body = {
+   user_id:userid
+  };
+  return this.http.post(this.getCartUrl+MainProvider.lang,body).map((res) => res.json());
+}
+delCartItem(userid,itemid){
+  let user = {
+    user_id :  userid,
+    item_id : itemid
+  };
+  return this.http.post(this.deleteCartUrl,user).map((res) => res.json());
+}
 }
