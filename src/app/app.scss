@@ -24,6 +24,18 @@ src: url('../assets/fonts/Bitter/Bitter-Regular.ttf') ;
 .toolbar-ios ion-title{
     padding: 0 10px 1px !important;
 }
+[dir="rtl"] .back-button-icon{
+    transform: rotate(180deg)
+}
+.cartno{
+    margin: 0;
+    position: absolute;
+    right: 19px;
+    left: 50%;
+    font-size: 15px;
+    top: 15px;
+    display: none;
+  }
 .action-sheet-md .action-sheet-button{
     padding: 0 16px;
     margin: 0 5%;

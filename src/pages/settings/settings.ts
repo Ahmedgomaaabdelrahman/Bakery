@@ -10,6 +10,7 @@ import {TranslateService} from "@ngx-translate/core";
 import { MainProvider } from '../../providers/main';
 import { CustomerProvider } from '../../providers/customer';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { CartPage } from '../cart/cart';
 
 
 
@@ -20,7 +21,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 export class SettingsPage {
    
    public flag : boolean = false;
-
+   public MainProvider = MainProvider;
   constructor(public nativeStorage:NativeStorage,public translate:TranslateService,public customer:CustomerProvider,public platform:Platform,public common:CommonServiceProvider,public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -68,4 +69,8 @@ export class SettingsPage {
       
   }
  }
+
+ goCart(){
+  this.navCtrl.push(CartPage);
+}
 }

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProductProvider } from '../../providers/product';
 import { MainProvider } from './../../providers/main';
+import { CartPage } from '../cart/cart';
 
 
 @Component({
@@ -26,5 +27,8 @@ export class CategoryPage {
   
   getCatItems(catid){
     this.navCtrl.push(HomePage,{catid : catid})
+  }
+  goCart(){
+    this.navCtrl.push(CartPage);
   }
 }

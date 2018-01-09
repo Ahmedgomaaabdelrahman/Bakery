@@ -11,6 +11,7 @@ export class MainProvider {
   public static catImgs : string = "http://104.131.41.125/categoriesImages/";
 
   public static  lang : string = 'en';
+  public static cartNo : number = 0;
   constructor(public http: Http) {
     console.log('Hello MainProvider Provider');
   }

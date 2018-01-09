@@ -22,6 +22,8 @@ export class HomePage {
   icons : any[] = [];
   quandiv : any [] = [];
   btnsdiv : any [] = [];
+  defaultno:any = 1;
+  public count2 = [];
   constructor(public modalCtrl :ModalController,public navParams: NavParams,public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider, private menuCtrl:MenuController,public navCtrl: NavController) {
 
   }
@@ -34,6 +36,7 @@ export class HomePage {
     this.allcats = [] ;
     this.allItems = [];
     this.specItems = [];
+
     this.product.getAllProducts().subscribe((res)=>{
       console.log(res);
       this.allcats = res;
@@ -63,6 +66,18 @@ export class HomePage {
           this.btnsdiv.push('nondisbtn')
         }
       }
+      this.count2=[];
+      for(let i=0;i<this.allItems.length;i++){
+        if(this.allItems[i].cart.length > 0)
+        {
+        this.count2.push(this.allItems[i].cart[0].quantity);
+        console.log(this.allItems[i].cart[0].quantity);
+        console.log(this.count2);
+        }
+        else
+        {
+        this.count2.push(1);
+    }}
     });
     
   this.catid = this.navParams.get('catid');
@@ -78,15 +93,22 @@ export class HomePage {
 presentActionSheet(){
   this.common.presentActionSheet();
 }
-showDetails(images,name,details,quantity){
+showDetails(images,name,details,quantity,itemid,catid){
  let detpage = this.modalCtrl.create(DetailsPage,{
     images : images , 
     name : name , 
     details : details , 
-    quantity : quantity
+    quantity : quantity,
+    itemid : itemid,
+    catid : catid
   });
     console.log({images,name,details,quantity});
-  detpage.present();
+    detpage.present();
+    detpage.onDidDismiss(data=>{
+      this.flag = false;
+    this.ionViewWillEnter();
+    })
+   
 
 }
 goCart(){
@@ -136,8 +158,10 @@ addToCart(i,itemid,quanid,catid){
   console.log(i);
   this.product.addToCart(this.customer.currentuser.user_id,itemid,quanid,catid).subscribe((res)=>{
     console.log(res);
+    // document.getElementById('no').textContent="1";
     if(res == 1){
       this.common.presentToast("this item already added");
+      
     }
     else{
       this.common.presentToast("Added Successfully");
@@ -160,9 +184,10 @@ addToFav(itemid,icon){
   })
 }
 
-increaseQuan(quanno,itemid,catid){
-  quanno.value++;
-  this.product.addToCart(this.customer.currentuser.user_id,itemid,quanno.value,catid).subscribe((res)=>{
+increaseQuan(i,quanno1:any,itemid,catid){
+  this.count2[i]++;
+  
+  this.product.addToCart(this.customer.currentuser.user_id,itemid,quanno1.value,catid).subscribe((res)=>{
     console.log(res);
   });
 }

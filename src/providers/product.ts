@@ -61,7 +61,7 @@ export class ProductProvider {
    let body = {
     user_id:userid,
     item_id:itemid,
-    Quantity:quanid,
+    quantity:quanid,
     category_id:catid
    };
    return this.http.post(this.addCartUrl,body).map((res) => res.json());

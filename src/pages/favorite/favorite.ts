@@ -1,24 +1,28 @@
 import { DetailsPage } from './../details/details';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { CommonServiceProvider } from './../../providers/common-service';
 import { ProductProvider } from '../../providers/product';
 import { CustomerProvider } from './../../providers/customer';
 import { MainProvider } from './../../providers/main';
+import { CartPage } from '../cart/cart';
 
 @Component({
   selector: 'page-favorite',
   templateUrl: 'favorite.html',
 })
 export class FavoritePage {
-  public favItems : any;
+  public favItems : any [] = [];
 
   quandiv : any [] = [];
   btnsdiv : any [] = [];
   public allItems : any [];
   public MainProvider = MainProvider;
-  constructor(public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
-    
+  constructor(public modalCtrl :ModalController,public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
+    this.product.getAllFavs(this.customer.currentuser.user_id).subscribe((res)=>{
+      this.favItems = res; 
+      console.log(this.favItems);
+     });
   }
 
   ionViewWillEnter() {
@@ -54,9 +58,24 @@ export class FavoritePage {
 presentActionSheet(){
    this.common.presentActionSheet();
 }
-showDetails(){
-   this.common.createModel(DetailsPage);
-}
+
+
+showDetails(images,name,details,quantity,itemid,catid){
+  let detpage = this.modalCtrl.create(DetailsPage,{
+     images : images , 
+     name : name , 
+     details : details , 
+     quantity : quantity,
+     itemid : itemid,
+     catid : catid
+   });
+     console.log({images,name,details,quantity});
+     detpage.present();
+ }
+//  showDetails1(){
+//    this.navCtrl.push(DetailsPage);
+//  }
+
 deleteItem(itemid){
   this.product.deleteFavs(this.customer.currentuser.user_id,itemid).subscribe((res)=>{
     console.log(res);
@@ -90,5 +109,9 @@ if(quanno.value > 0){
 }
 
   
+}
+
+goCart(){
+  this.navCtrl.push(CartPage);
 }
 }

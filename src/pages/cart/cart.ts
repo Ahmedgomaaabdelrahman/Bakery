@@ -33,4 +33,18 @@ deleteItem(itemid){
     this.ionViewWillEnter();
   })
 }
+
+increaseQuan(quanno,itemid,catid){
+  quanno.value++;
+  console.log(quanno.value)
+  this.product.addToCart(this.customer.currentuser.user_id,itemid,quanno.value,catid).subscribe((res)=>{
+    console.log(res);
+  });
+}
+decreaseQuan(quanno,i){
+  if(quanno.value > 0){
+    quanno.value--;
+    
+  }
+}
 }

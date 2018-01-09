@@ -10,7 +10,7 @@
       <ion-row style="text-align: center;">
         <ion-col col-1><img src="assets/imgs/search.png"></ion-col>
         <ion-col col-8 style="font-family: Bitter;font-weight: 500;">{{'Categories'|translate}}</ion-col>
-        <ion-col col-2> <img height="35px" src="assets/imgs/cart.png"></ion-col>
+        <ion-col col-2 (click)="goCart()"> <p class="cartno">{{MainProvider.cartNo}}</p> <img height="35px" src="assets/imgs/cart.png"></ion-col>
         <ion-col col-1  (click)="presentActionSheet()">
           <img height="28px" src="assets/imgs/filter.png">
         </ion-col>

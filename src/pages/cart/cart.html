@@ -57,9 +57,9 @@
        
         <p class="p2" >{{item.items.price}}</p>
         <div>
-          <ion-icon name="add"></ion-icon>
-          <p class="no">{{item.items.quantity}}</p>
-          <ion-icon name="remove"></ion-icon>
+          <ion-icon name="add"  (click)="increaseQuan(quanno,item.items.item_id,item.items.category_id)"></ion-icon>
+          <input id="no" #quanno value="{{item.quantity}}" readonly>
+          <ion-icon name="remove" (click)="decreaseQuan(quanno,item.items.item_id,item.items.category_id)"></ion-icon>
 
           <!-- <p class="print" >{{'Printed'|translate}}</p> -->
          <!-- <img src="assets/imgs/printer.png">  -->
