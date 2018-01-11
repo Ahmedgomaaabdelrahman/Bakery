@@ -44,26 +44,29 @@
 
 
 <ion-list no-lines radio-group>
- <div class="contdiv">
-    <img src="assets/imgs/mapmarker.png" height="20px">
-    <ion-item class="myitem">  
+ <div class="contdiv" *ngFor="let location of locations">
+   <ion-row>
+     <ion-col col-1>
+        <ion-icon class="deleteicon" name="close" (click)="deleteLocation(location.location_id)"></ion-icon>
+     </ion-col>
+     <ion-col col-1>
+        <img style="margin-top:10px" src="assets/imgs/mapmarker.png" height="20px">
+     </ion-col>
+     <ion-col col-10> 
+       <ion-item class="myitem">  
         <ion-label>
-          Home <p>604 Simios Int 34</p>
+          {{location.location_label}} 
         </ion-label>
-        <p>604 Simios Int 34</p>
-        <ion-radio checked="true" value="go"></ion-radio>
-    </ion-item> 
+        <!-- <p>604 Simios Int 34</p> -->
+        <ion-radio  [value]="location.location_id"></ion-radio>
+       </ion-item> 
+     </ion-col>
+   </ion-row>
+   
+   
+   
   </div>
-  <div class="contdiv">
-     <img src="assets/imgs/mapmarker.png" height="20px">
-    <ion-item class="myitem">
-      <ion-label>
-        Work <p>604 Simios Int 34</p>
-      </ion-label>
-      <p>604 Simios Int 34</p>
-    <ion-radio value="rust"></ion-radio>
-  </ion-item>
-  </div>
+ 
 </ion-list>  
 
 <ion-row (click)="addLocation()" style="    margin: 0px 5px;

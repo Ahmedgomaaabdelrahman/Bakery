@@ -41,6 +41,7 @@ import { Camera } from '@ionic-native/camera';
 import { TwitterConnect } from '@ionic-native/twitter-connect';
 import { ProductProvider } from '../providers/product';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { Geolocation } from '@ionic-native/geolocation';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -143,7 +144,8 @@ export function createTranslateLoader(http: Http) {
     MainProvider,
     ProductProvider,
     NativeStorage,
-    Nav
+    Nav,
+    Geolocation
   ]
 })
 export class AppModule {}

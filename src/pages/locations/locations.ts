@@ -2,6 +2,8 @@ import { AddlocationPage } from './../addlocation/addlocation';
 import { PaymentPage } from './../payment/payment';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProductProvider } from '../../providers/product';
+import { CustomerProvider } from '../../providers/customer';
 
 
 @Component({
@@ -9,10 +11,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'locations.html',
 })
 export class LocationsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public locations : any [] ;
+  constructor(public product:ProductProvider,public customer:CustomerProvider,public navCtrl: NavController, public navParams: NavParams) {
+  
   }
-
+  ionViewWillEnter()
+  {  
+    this.product.getLocations(this.customer.currentuser.user_id).subscribe((res)=>{
+      this.locations = res;
+      console.log(this.locations);
+    })
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocationsPage');
   }
@@ -21,5 +30,11 @@ goPayment(){
 }
 addLocation(){
   this.navCtrl.push(AddlocationPage);
+}
+deleteLocation(locid){
+  this.product.deleteLocations(locid).subscribe((res)=>{
+    console.log(res);
+    this.ionViewWillEnter();
+  });
 }
 }

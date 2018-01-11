@@ -16,11 +16,11 @@
 </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="map">
   <div #map id="map" ></div>
   <form class="forma">
-    <ion-input name="placelabel" class="placename" type="text"></ion-input>
-    <button ion-button block class="tobalagh" >{{'Save Address'|translate}}</button>
+    <ion-input name="placelabel" [(ngModel)]="placelabel" class="placename" type="text"></ion-input>
+    <button ion-button block class="tobalagh" (click)="saveLocation()">{{'Save Address'|translate}}</button>
   </form>
   
 </ion-content>

@@ -18,6 +18,9 @@ export class ProductProvider {
   public addCartUrl : string = MainProvider.baseUrl+"addToCart/";
   public getCartUrl : string = MainProvider.baseUrl+"getMyCart/";
   public deleteCartUrl : string = MainProvider.baseUrl+"deleteItemFromCart";
+  public getMyLocationsUrl : string = MainProvider.baseUrl+"getMyLocations";
+  public addLocationUrl : string = MainProvider.baseUrl+"addOrderLocation";
+  public deleteLocationUrl : string = MainProvider.baseUrl+"deleteLocation";
 
   constructor(public http: Http) {
     console.log('Hello ProductProvider Provider');
@@ -79,5 +82,27 @@ delCartItem(userid,itemid){
     item_id : itemid
   };
   return this.http.post(this.deleteCartUrl,user).map((res) => res.json());
+}
+
+addLocation(label,uid,lat,lng){
+  let body={
+    location_label:label,
+    user_id:uid,
+    lat:lat,
+    lng:lng
+  }
+  return this.http.put(this.addLocationUrl,body).map((res) => res.json());
+}
+getLocations(uid){
+  let body={
+    user_id:uid 
+  }
+  return this.http.post(this.getMyLocationsUrl,body).map((res)=> res.json());
+}
+deleteLocations(locationid){
+  let body={
+    location_id:locationid 
+  }
+  return this.http.post(this.deleteLocationUrl,body).map((res)=> res.json());
 }
 }
