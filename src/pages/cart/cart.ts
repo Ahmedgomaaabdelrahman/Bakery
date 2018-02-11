@@ -12,39 +12,67 @@ import { CommonServiceProvider } from '../../providers/common-service';
 })
 export class CartPage {
   public MainProvider = MainProvider;
-  public cartItems : any [];
-
+  public cartItems = [];
+  totalprice : number = 0;
+  price : number = 0;
+  quantity:number = 0;
   constructor(public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewWillEnter() {
-    this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{
+    //  this.ionViewWillEnter();
+   }
+   ionViewDidLoad(){
+     this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{
       this.cartItems = res;
       console.log(this.cartItems);
+      for (let i=0 ; i<this.cartItems.length;i++){
+        this.price = parseInt(this.cartItems[i].items.price);
+        this.quantity = parseInt(this.cartItems[i].quantity);
+        this.totalprice  = this.totalprice + (this.price*this.quantity);
+       
+      }
+      console.log(this.totalprice);
     });
-  }
+    }
+
 golocation(){
-   this.navCtrl.push(LocationsPage);
+   this.navCtrl.push(LocationsPage , { amount : this.totalprice});
 }
 
-deleteItem(itemid){
+deleteItem(i,itemid){
   this.product.delCartItem(this.customer.currentuser.user_id,itemid).subscribe((res)=>{
     console.log(res);
-    this.ionViewWillEnter();
+    if (res == true){
+      this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{
+        this.cartItems = res;
+        console.log(this.cartItems);
+      });
+    }
+    this.totalprice  = this.totalprice - (this.cartItems[i].items.price*this.cartItems[i].quantity);
   })
 }
 
 increaseQuan(quanno,itemid,catid){
   quanno.value++;
-  console.log(quanno.value)
+  console.log(quanno.value);
   this.product.addToCart(this.customer.currentuser.user_id,itemid,quanno.value,catid).subscribe((res)=>{
     console.log(res);
   });
 }
-decreaseQuan(quanno,i){
-  if(quanno.value > 0){
-    quanno.value--;
-    
+decreaseQuan(i,quanno,itemid,catid){
+
+  if(quanno.value == 1 || quanno.value == 0){
+    document.getElementById('remove').style.pointerEvents = 'none';
+    this.deleteItem(i,itemid);
   }
+  else{
+    quanno.value--;
+    console.log(quanno.value);
+    this.product.addToCart(this.customer.currentuser.user_id,itemid,quanno.value,catid).subscribe((res)=>{
+      console.log(res);
+    });
+  }
+ 
+  
 }
+
+
 }

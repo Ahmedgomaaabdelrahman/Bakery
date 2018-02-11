@@ -9,18 +9,18 @@
     <ion-title>
       <ion-row style="text-align: center;">
         <ion-col col-1><img src="assets/imgs/search.png"></ion-col>
-        <ion-col col-8 style="font-family: Bitter;font-weight: 500;"> {{'Settings'|translate}}</ion-col>
+        <ion-col col-9 style="font-family: Bitter;font-weight: 500;"> {{'Settings'|translate}}</ion-col>
        <ion-col col-2 (click)="goCart()"> <p class="cartno">{{MainProvider.cartNo}}</p>  <img height="35px" src="assets/imgs/cart.png"></ion-col>
-        <ion-col col-1  (click)="presentActionSheet()">
+        <!-- <ion-col col-1  (click)="presentActionSheet()">
           <img height="28px" src="assets/imgs/filter.png">
-        </ion-col>
+        </ion-col> -->
       </ion-row>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
- <ion-row class="cont" (click)="payMethod()">
+ <!-- <ion-row class="cont" (click)="payMethod()">
    <ion-col col-10>{{'Payment methods'|translate}}</ion-col>
    <ion-col col-2> <ion-icon name="arrow-forward"></ion-icon></ion-col>
  </ion-row>
@@ -28,7 +28,7 @@
   <ion-row class="cont" (click)="goNotify()">
    <ion-col col-10>{{'Notifications'|translate}}</ion-col>
    <ion-col col-2> <ion-icon name="arrow-forward"></ion-icon></ion-col>
- </ion-row>
+ </ion-row> -->
   
    <ion-row class="cont">
    <ion-col col-10>{{'Recommend to friend'|translate}}</ion-col>

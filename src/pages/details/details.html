@@ -48,7 +48,7 @@
   <ion-input  type="color"></ion-input>
   <ion-input  type="color"></ion-input>
 </div>-->
-<button ion-button clear class="print" (click)="tartOptions()">{{'Add more Options'|translate}}</button>
+<button *ngIf="catid == 1" ion-button clear class="print" (click)="tartOptions()">{{'Add more Options'|translate}}</button>
 <p>{{details}}</p>
 
  <ion-row class="bottomrow">

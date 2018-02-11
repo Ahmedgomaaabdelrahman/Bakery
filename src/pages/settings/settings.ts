@@ -27,10 +27,10 @@ export class SettingsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
-  }
- presentActionSheet() {
-   this.common.presentActionSheet();
- }
+  } 
+//  presentActionSheet() {
+//    this.common.presentActionSheet();
+//  }
 
  goTerms(){
    this.common.createModel(TermsPage);

@@ -21,11 +21,71 @@ export class ProductProvider {
   public getMyLocationsUrl : string = MainProvider.baseUrl+"getMyLocations";
   public addLocationUrl : string = MainProvider.baseUrl+"addOrderLocation";
   public deleteLocationUrl : string = MainProvider.baseUrl+"deleteLocation";
+  public makeOrderUrl : string = MainProvider.baseUrl+"makeOrder";
+  public HistoryUrl : string = MainProvider.baseUrl+"getCustomerHistory/";
+  public cancelOrderUrl : string = MainProvider.baseUrl+"cancelOrder";
+  public getItemFromCartUrl : string = MainProvider.baseUrl+"getItemFromCart";
+  public addItemRateUrl : string = MainProvider.baseUrl+"addItemRate";
+  public totpopularUrl : string = MainProvider.baseUrl+"popularetiFilter/";
+  public catpopularUrl : string = MainProvider.baseUrl+"popularetiFilter/";
+  public priceCatUrl : string = MainProvider.baseUrl+"priceFilterCategory/";
+  public priceUrl : string = MainProvider.baseUrl+"priceFilter/";
+  public newArrivalUrl : string = MainProvider.baseUrl+"newArravalFilter/";
+  public newArrivalCatUrl : string = MainProvider.baseUrl+"newArravalFilterCategory/";
+  public TopRatedUrl : string = MainProvider.baseUrl+"topRated/";
+  public TartColorUrl : string = MainProvider.baseUrl+"getTartColor";
+  public TartSizeUrl : string = MainProvider.baseUrl+"getTartSize";
+  public TartAddsUrl : string = MainProvider.baseUrl+"getTartAdds/";
 
   constructor(public http: Http) {
     console.log('Hello ProductProvider Provider');
   }
+  
+  getTartColor(){
+    return this.http.get(this.TartColorUrl).map((res) => res.json()); 
+  }
+  getTartSize(){
+    return this.http.get(this.TartSizeUrl).map((res) => res.json()); 
+  }
+  getTartAdds(){
+    return this.http.get(this.TartAddsUrl+MainProvider.lang).map((res) => res.json()); 
+  }
 
+  filterPopular(userid){
+    return this.http.get(this.totpopularUrl+MainProvider.lang+"/"+userid).map((res) => res.json()); 
+  }
+
+  filterTopRated(userid){
+    return this.http.get(this.TopRatedUrl+MainProvider.lang+"/"+userid).map((res) => res.json()); 
+  }
+
+  filterCatPopular(catid){
+    return this.http.get(this.catpopularUrl+MainProvider.lang+"/"+catid).map((res) => res.json()); 
+  }
+
+  filterPrice(userid){
+    return this.http.get(this.priceUrl+MainProvider.lang+"/"+userid).map((res) => res.json()); 
+  }
+
+  filterCatPrice(catid){
+    return this.http.get(this.priceCatUrl+MainProvider.lang+"/"+catid).map((res) => res.json()); 
+  }
+
+  filternewArrival(userid){
+    return this.http.get(this.newArrivalUrl+MainProvider.lang+"/"+userid).map((res) => res.json()); 
+  }
+
+  filternewArrivalCat(catid){
+    return this.http.get(this.newArrivalCatUrl+MainProvider.lang+"/"+catid).map((res) => res.json()); 
+  }
+
+  addRateItem(itemid , itemrate){
+    let user = {
+      item_id : itemid ,
+      item_rate_no: itemrate
+    };
+    return this.http.post(this.addItemRateUrl,user).map((res) => res.json());
+  }
 
  getAllProducts(){
    return this.http.get(this.getproductUrl+MainProvider.lang).map((res) => res.json());
@@ -45,6 +105,42 @@ export class ProductProvider {
   };
   return this.http.put(this.addFavUrl,user).map((res) => res.json());
  }
+ 
+ makeOrder(userid , total , address , payment){
+  let user = {
+    user_id : userid ,
+    total_price : total ,
+    address : address,
+    payment_method : payment
+  };
+  return this.http.post(this.makeOrderUrl,user).map((res) => res.json());
+ }
+ 
+ getHistory(userid){
+  let user = {
+    user_id : userid 
+  };
+  return this.http.post(this.HistoryUrl+MainProvider.lang,user).map((res) => res.json());
+ }
+
+
+ cancelOrder(userid , order_id){
+  let user = {
+    user_id : userid ,
+    order_id : order_id 
+  };
+  return this.http.post(this.cancelOrderUrl,user).map((res) => res.json());
+ }
+
+
+ getItemFromCart(user_id , item_id){
+  let user = {
+    user_id : user_id,
+    item_id : item_id
+  };
+  return this.http.post(this.getItemFromCartUrl,user).map((res) => res.json());
+ }
+
 
  getAllFavs(userid){
   let user = {
@@ -52,6 +148,8 @@ export class ProductProvider {
   };
   return this.http.post(this.getAllFavsUrl+MainProvider.lang,user).map((res) => res.json());
  }
+
+ 
  deleteFavs(userid,itemid){
   let user = {
     user_id :  userid,
@@ -60,12 +158,18 @@ export class ProductProvider {
   return this.http.post(this.deleteFavUrl,user).map((res) => res.json());
  }
 
- addToCart(userid,itemid,quanid,catid){
+ addToCart(userid,itemid,quanid,catid,tartsize?,tartcolor?,tarttext?,tartimage?,tartadds?){
    let body = {
     user_id:userid,
     item_id:itemid,
     quantity:quanid,
-    category_id:catid
+    category_id:catid,
+    Tart_size_id:tartsize,
+    tart_color_id:tartcolor,
+    tart_text:tarttext,
+    tart_image:tartimage,
+    tart_additonals:tartadds
+
    };
    return this.http.post(this.addCartUrl,body).map((res) => res.json());
  }

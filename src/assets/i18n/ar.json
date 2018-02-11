@@ -50,6 +50,7 @@
     "Accept":"قبول",
     "Cash on delivery":"الدفع عند الاستلام",
     "Master Card":"الدفع بالماستر",
+    "PayPal":"الدفع بالباى بال",
     "Add new Payment Method":"اضف طريقه دفع جديده",
     "Give your feedback":"كتابه انطباعك عنا",
     "Settings":"الضبط",
@@ -85,5 +86,13 @@
     "Pipe a Message on a Cake":"اضف رساله على التورته",
     "Add Items to Cart":"اضافه الى السله",
     "Type something ...":"اكتب شيئا",
-    "Gift Wrapping":"تغليف الهدايا" 
+    "Gift Wrapping":"تغليف الهدايا" ,
+    "Total Price":"السعر الكلى",
+    "Order Date":"تاريخ الطلب",
+    "Payment Method":"طريقه الدفع",
+    "Order No":"رقم الطلب",
+    "Number" : "رقم",
+    "Name : ":"الاسم : ",
+    "Order Details":"تفاصيل الطلب",
+    "Go Home Page":"الذهاب الى الرئيسيه"
 }

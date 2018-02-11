@@ -12,8 +12,11 @@ import { CustomerProvider } from '../../providers/customer';
 })
 export class LocationsPage {
   public locations : any [] ;
+  public amount : any;
+  public loactionid : any;
+
   constructor(public product:ProductProvider,public customer:CustomerProvider,public navCtrl: NavController, public navParams: NavParams) {
-  
+     this.amount = this.navParams.get('amount');
   }
   ionViewWillEnter()
   {  
@@ -26,7 +29,7 @@ export class LocationsPage {
     console.log('ionViewDidLoad LocationsPage');
   }
 goPayment(){
-  this.navCtrl.push(PaymentPage);
+  this.navCtrl.push(PaymentPage , {amount : this.amount , locid : this.loactionid});
 }
 addLocation(){
   this.navCtrl.push(AddlocationPage);
@@ -36,5 +39,10 @@ deleteLocation(locid){
     console.log(res);
     this.ionViewWillEnter();
   });
+}
+
+setlocation(location : any){
+      console.log(location);
+      this.loactionid = location.location_id;
 }
 }

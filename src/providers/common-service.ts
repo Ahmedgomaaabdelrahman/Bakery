@@ -36,33 +36,26 @@ export class CommonServiceProvider {
      buttons: [
        {
          text:translatedArray[0],
-         role: 'destructive',
-         handler: () => {
-           console.log('Destructive clicked');
-         }
-       },
-       {
-         text:translatedArray[1],
          handler: () => {
            console.log('Archive clicked');
          }
        },
        {
-         text:translatedArray[2],
+         text:translatedArray[1],
          role: 'Popularity',
          handler: () => {
            console.log('Cancel clicked');
          }
        },
        {
-         text:translatedArray[3],
+         text:translatedArray[2],
          role: 'Top',
          handler: () => {
            console.log('Cancel clicked');
          }
        },
        {
-         text:translatedArray[4],
+         text:translatedArray[3],
          role: 'Price',
          handler: () => {
            console.log('Cancel clicked');
@@ -82,37 +75,7 @@ export class CommonServiceProvider {
  
 
 
- presentActionSheet(){
-      this.translateArray(
-      ['Best Match',
-      'New Arrivals',
-      'Popularity',
-      'Top rated',
-      'Price']).subscribe((translatedArray)=>{
-        this.presentSheet(translatedArray);
-      });
-  }
 
-      
- 
-
-
-  public translateArray(words : string[])
-  {
-    let values = [];
-    for (let i = 0; i < words.length; i++) {
-      this.translateservice.get(words[i]).subscribe(
-        value => {
-          // value is our translated string
-          values.push(value);
-        }
-      );
-    }
-    return Observable.create((observer: Subscriber <any>) => {
-      observer.next(values);
-      observer.complete();
-    });
-  }
 
 
   galleryOrCamera() : Promise<any> {

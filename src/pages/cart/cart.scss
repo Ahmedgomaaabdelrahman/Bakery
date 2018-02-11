@@ -52,7 +52,6 @@ page-cart {
         margin: 0 0 15px;
     }
     position: relative;
-    top: 12%;
     width: 95%;
     height: 145px;
     margin: 30px auto 0px;
@@ -145,12 +144,20 @@ page-cart {
     padding: 5px 7px;
     border-radius: 50%
 }
-
+.total{
+    width: 100%;
+    border: navajowhite;
+    font-size: 40px;
+    margin: 10px 0;
+    text-align: center;
+    color: orange;
+}
 #no{
     display: inline;
     color: gray;
     margin: 0 5px;
-    width: 10px;
+    width: 20px;
+    text-align: center;
     border: none;
 }
 }

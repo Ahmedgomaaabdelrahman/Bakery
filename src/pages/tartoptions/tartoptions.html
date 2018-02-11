@@ -25,27 +25,54 @@
 
 <ion-content >
     <ion-label>{{'What are the colors of board'|translate}}</ion-label>
-    <div class="slidediv">
-      <div class="board" style="background-color: orange"></div> 
-      <div class="board" style="background-color: black"></div> 
-      <div class="board" style="background-color: fuchsia"></div> 
-      <div class="board" style="background-color: brown"></div> 
-    </div> 
-
+    <!-- <div class="slidediv">
+        <ion-checkbox color="dark">
+          <div class="board" *ngFor="let color of colors">
+            <img [src]="MainProvider.TartColorsImgs+color.tart_colorImage">
+          </div> 
+        </ion-checkbox>
+      
+    </div>  -->
+    <ion-scroll scrollX="true" style="width:100vw;height:120px" >
+    <ion-item class="coloritem" *ngFor="let color of colors">
+        <ion-label>
+          <div class="colordiv"> 
+            <h5> <img [src]="MainProvider.TartColorsImgs+color.tart_colorImage"></h5> 
+          </div>
+        </ion-label>
+        <ion-checkbox color="dark" ></ion-checkbox>
+      </ion-item>
+      <ion-item class="coloritem" *ngFor="let color of colors">
+          <ion-label>
+            <div class="colordiv"> 
+              <h5> <img [src]="MainProvider.TartColorsImgs+color.tart_colorImage"></h5> 
+            </div>
+          </ion-label>
+          <ion-checkbox color="dark" ></ion-checkbox>
+        </ion-item>
+        <ion-item class="coloritem" *ngFor="let color of colors">
+            <ion-label>
+              <div class="colordiv"> 
+                <h5> <img [src]="MainProvider.TartColorsImgs+color.tart_colorImage"></h5> 
+              </div>
+            </ion-label>
+            <ion-checkbox color="dark" ></ion-checkbox>
+          </ion-item>
+      </ion-scroll>
     <hr>
 
     <ion-label>{{'What size size would you like'|translate}}</ion-label>
 
 
    <ion-list radio-group>
-  <ion-item class="myitem">
+  <ion-item class="myitem" *ngFor="let size of sizes">
     <ion-label> <div class="size">
-          <h5>{{'X-large'|translate}}<br><span>27</span></h5> 
+          <h5>{{size.size_name}}<br><span>{{size.size_no}}</span></h5> 
         </div> </ion-label>
-    <ion-radio checked="true" value="go"></ion-radio>
+    <ion-radio  [value]="size.size_id"></ion-radio>
   </ion-item>
 
-  <ion-item class="myitem">
+  <!-- <ion-item class="myitem">
     <ion-label><div class="size">
           <h5>{{'Medium'|translate}}<br><span>25</span></h5>
 
@@ -59,7 +86,7 @@
         
         </div></ion-label>
     <ion-radio value="python"></ion-radio>
-  </ion-item>
+  </ion-item> -->
 </ion-list>     
  
  <hr>
@@ -68,13 +95,13 @@
        
 <div class="adds">
  
-      <div>
-        <img src="assets/imgs/roug1.jpg" alt="">
-        <p>Happy anvisaire</p>
-        <h6>$1.50</h6>
+      <div *ngFor="let add of adds">
+        <img [src]="MainProvider.TartImgs+add.add_image">
+        <p>{{add.add_namear}}</p>
+        <h6>${{add.add_price}}</h6>
         <button ion-button block>{{'Add item'|translate}}</button>
       </div>
-      <div>
+      <!-- <div>
          <img src="assets/imgs/roug2.jpg" alt="">
          <p>Rose in red</p>
          <h6>$1.50</h6>
@@ -85,7 +112,7 @@
          <p>Rose in Pink</p>
          <h6>$1.50</h6>
          <button ion-button block>{{'Add item'|translate}}</button>
-      </div>     
+      </div>      -->
 
 </div>
 

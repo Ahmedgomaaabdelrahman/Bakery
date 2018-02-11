@@ -1,0 +1,78 @@
+page-hisdetails {
+    .ptop{
+        color: orange;
+        font-size: 20px;
+        margin:5px 0 0 !important;
+    }
+    .black{
+        color: black;
+       
+    } 
+    hr {
+        background-color: #7a7a7a !important;
+        margin: 15px 10px 0;
+    }
+    .itemrow{
+    
+        position: relative;
+        width: 90%;
+        height: 145px;
+        margin: 15px auto 0px;
+        .p1{
+            margin: 0px 5px;
+            font-size: 20px;
+            opacity: 0.7;
+    
+        }
+        .p2{
+            margin: 5px 10px;
+            font-size: 17px;
+            color: orange;
+        }
+        [col-5] img{
+            border-radius: 6px;
+            box-shadow: 3px 3px 36px #bbbaba;
+            min-height: 140px;
+            height: 140px;
+            max-height: 140px;
+        }
+        [col-7] .payrow{
+            font-size: 18px;
+            border-bottom:1px solid lightgray;
+            margin: 8px;
+            padding-bottom: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    
+        .closeicon{
+            border: 1px solid gray;
+            padding: 5px 7px;
+            border-radius: 50%
+        }
+    }
+    #price{
+       background: #45c8e0;
+        height: 40px;
+        width: 95px;
+        padding: 5px 10px;
+        border-radius: 7px;
+        position: absolute;
+        bottom: 15px;
+        text-align: center;
+        right: -5px;
+        font-size: 23px;
+        color: white;
+        font-weight: 700;
+    }
+    .rowstar{
+    margin: 0px 10px 10px;
+    font-size: 20px;
+    ion-icon{
+        margin: 0 2px;
+        color:orange;
+    }
+
+}
+}

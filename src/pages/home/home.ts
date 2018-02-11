@@ -4,9 +4,10 @@ import { CartPage } from './../cart/cart';
 import { CommonServiceProvider } from './../../providers/common-service';
 import { DetailsPage } from './../details/details';
 import { Component } from '@angular/core';
-import { NavController, MenuController, ModalController, NavParams } from 'ionic-angular';
+import { NavController, MenuController, ModalController, NavParams, ActionSheetController } from 'ionic-angular';
 import { ProductProvider } from '../../providers/product';
-
+import 'rxjs/add/operator/map';
+import {Observable, Subscriber} from "rxjs";
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -16,18 +17,24 @@ export class HomePage {
   public allItems : any [];
   public specItems : any [];
   public flag : boolean ;
+  public allflag : boolean ;
+  public filter : boolean ;
   public quan : boolean;
   public catid : any;
+  public filterItems:any[] = [];
   public MainProvider = MainProvider;
   icons : any[] = [];
   quandiv : any [] = [];
   btnsdiv : any [] = [];
   defaultno:any = 1;
-  public count2 = [];
-  constructor(public modalCtrl :ModalController,public navParams: NavParams,public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider, private menuCtrl:MenuController,public navCtrl: NavController) {
+  public count2 : number [] = [];
+  constructor(public actionSheetCtrl: ActionSheetController,public modalCtrl :ModalController,public navParams: NavParams,public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider, private menuCtrl:MenuController,public navCtrl: NavController) {
 
   }
   ionViewWillEnter() {
+    this.flag = false;
+    this.filter = false;
+    this.allflag = true;
     console.log('ionViewDidLoad HomePAge');
     this.allItems = [];
     this.icons = [];
@@ -76,13 +83,14 @@ export class HomePage {
         }
         else
         {
-        this.count2.push(1);
     }}
     });
     
   this.catid = this.navParams.get('catid');
   if(this.catid){
    this.flag = true;
+   this.allflag = false;
+   this.filter = false;
    this.product.getChosItem(this.customer.currentuser.user_id,this.catid).subscribe((res)=>{
      console.log(res);
       this.specItems = res;
@@ -90,9 +98,7 @@ export class HomePage {
 
   }
   }
-presentActionSheet(){
-  this.common.presentActionSheet();
-}
+
 showDetails(images,name,details,quantity,itemid,catid){
  let detpage = this.modalCtrl.create(DetailsPage,{
     images : images , 
@@ -113,7 +119,8 @@ showDetails(images,name,details,quantity,itemid,catid){
 }
 goCart(){
   this.navCtrl.push(CartPage);
-  this.flag = false;
+  this.allflag = true;
+  this.filter = false;
 //   let cartpage =  this.modalCtrl.create(CartPage);
   
 //   cartpage.onDidDismiss(data => {
@@ -148,6 +155,8 @@ goCart(){
 
 getItemsCat(catid){
   this.flag = true;
+  this.allflag = false;
+  this.filter = false;
   this.product.getChosItem(this.customer.currentuser.user_id,catid).subscribe((res)=>{
     console.log(res);
      this.specItems = res;
@@ -161,12 +170,12 @@ addToCart(i,itemid,quanid,catid){
     // document.getElementById('no').textContent="1";
     if(res == 1){
       this.common.presentToast("this item already added");
-      
     }
     else{
       this.common.presentToast("Added Successfully");
       this.quandiv[i]='quandiv';
       this.btnsdiv[i]='disbtn';
+      this.count2[i] = 1;
     }
   })
 }
@@ -184,18 +193,128 @@ addToFav(itemid,icon){
   })
 }
 
-increaseQuan(i,quanno1:any,itemid,catid){
-  this.count2[i]++;
-  
-  this.product.addToCart(this.customer.currentuser.user_id,itemid,quanno1.value,catid).subscribe((res)=>{
-    console.log(res);
+increaseQuan(i,itemid,catid){
+  this.count2[i] = this.count2[i]  + 1;
+  this.product.addToCart(this.customer.currentuser.user_id,itemid,this.count2[i],catid).subscribe((res)=>{
+        if(res == 1){
+          console.log("Quan increased to "+ this.count2[i]);
+        }
   });
 }
-decreaseQuan(quanno,i){
-  if(quanno.value > 0){
-    quanno.value--;
-    
+decreaseQuan(i,itemid,catid){
+  if(this.count2[i] == 1){
+    this.quandiv[i]='quandivdis';
+    this.btnsdiv[i]='nondisbtn';
+    this.product.delCartItem(this.customer.currentuser.user_id,itemid).subscribe((res)=>{
+        console.log(res);
+    });
   }
+  else {
+    this.count2[i] = this.count2[i]  - 1;
+    this.product.addToCart(this.customer.currentuser.user_id,itemid,this.count2[i],catid).subscribe((res)=>{
+          if(res == 1){
+            console.log("Quan decreased to "+ this.count2[i]);
+          }
+    });
+  }
+
  
+}
+
+
+presentSheet(translatedArray : string[]) {
+  let actionSheet = this.actionSheetCtrl.create({
+   
+    buttons: [
+      {
+        text:translatedArray[0],
+        handler: () => {
+          this.filter = true;
+          this.flag = false;
+          this.allflag=false;
+          console.log('Archive clicked');
+          this.product.filternewArrival(this.customer.currentuser.user_id).subscribe((res)=>{
+              this.filterItems = res;
+              console.log(this.filterItems);
+          });
+        }
+      },
+      {
+        text:translatedArray[1],
+        role: 'Popularity',
+        handler: () => {
+          this.filter = true;
+          this.flag = false;
+          this.allflag=false;
+          console.log('Cancel clicked');
+          this.product.filterPopular(this.customer.currentuser.user_id).subscribe((res)=>{
+            this.filterItems = res;
+            console.log(this.filterItems);
+        });
+        }
+      },
+      {
+        text:translatedArray[2],
+        role: 'Top',
+        handler: () => {
+          this.filter = true;
+          this.flag = false;
+          this.allflag=false;
+          console.log('Cancel clicked');
+          this.product.filterTopRated(this.customer.currentuser.user_id).subscribe((res)=>{
+            this.filterItems = res;
+            console.log(this.filterItems);
+        });
+        }
+      },
+      {
+        text:translatedArray[3],
+        role: 'Price',
+        handler: () => {
+          this.filter = true;
+          this.flag = false;
+          this.allflag=false;
+          console.log('Cancel clicked');
+          this.product.filterPrice(this.customer.currentuser.user_id).subscribe((res)=>{
+            this.filterItems = res;
+            console.log(this.filterItems);
+        });
+        }
+      }
+    ]
+  });
+ actionSheet.present();
+}
+
+
+presentActionSheet(){
+  this.translateArray(
+  ['New Arrivals',
+  'Popularity',
+  'Top rated',
+  'Price']).subscribe((translatedArray)=>{
+    this.presentSheet(translatedArray);
+  });
+}
+
+  
+
+
+
+public translateArray(words : string[])
+{
+let values = [];
+for (let i = 0; i < words.length; i++) {
+  this.common.translateservice.get(words[i]).subscribe(
+    value => {
+      // value is our translated string
+      values.push(value);
+    }
+  );
+}
+return Observable.create((observer: Subscriber <any>) => {
+  observer.next(values);
+  observer.complete();
+});
 }
 }

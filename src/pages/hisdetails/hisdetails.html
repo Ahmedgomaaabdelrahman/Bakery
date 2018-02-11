@@ -1,0 +1,69 @@
+<!--
+  Generated template for the HisdetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'Order Details'|translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-row style="text-align:center">
+        <ion-col col-6> <p class="ptop black">{{'Order No'|translate}}</p></ion-col>
+        <ion-col col-6> <p class="ptop">{{order.historyinfo_id}}</p></ion-col>
+    </ion-row>
+    <ion-row style="text-align:center">
+        <ion-col col-6> <p class="ptop black">{{'Total Price'|translate}}</p></ion-col>
+        <ion-col col-6> <p class="ptop">${{order.total_price}}</p></ion-col>
+    </ion-row>
+    <ion-row style="text-align:center">
+        <ion-col col-6> <p class="ptop black">{{'Order Date'|translate}}</p></ion-col>
+        <ion-col col-6> <p class="ptop">{{order.created_at|date}}</p></ion-col>
+    </ion-row>
+    <ion-row style="text-align:center">
+        <ion-col col-6> <p class="ptop black">{{'Payment Method'|translate}}</p></ion-col>
+        <ion-col col-6> <p class="ptop">{{order.payment_method}}</p></ion-col>
+    </ion-row>
+    <hr>
+  <div class="itemrow">
+    <ion-row *ngFor = "let item of order.cart" >
+      
+      <ion-col col-5>
+        <img [src]="MainProvider.itemsImg+item.items.itemimages[0].image_path">
+        <!-- <div id="price"></div> -->
+      </ion-col>
+      <ion-col col-7>
+          <ion-row class="rowstar">
+              <ion-icon *ngFor="let icon of icons(item.items.rate); let i = index;" style="color:orange" [name]="icon"
+               (click)="rateItem(item.item_id , i+1)"></ion-icon>
+              <!-- <ion-icon *ngIf="item.items.rate>=2" name="star" (click)="rateItem(item.item_id , 2)"></ion-icon>
+              <ion-icon *ngIf="item.items.rate>=3" name="star" (click)="rateItem(item.item_id , 3)"> </ion-icon>
+              <ion-icon *ngIf="item.items.rate>=4" name="star" (click)="rateItem(item.item_id , 4)"></ion-icon>
+              <ion-icon *ngIf="item.items.rate>=5" name="star" (click)="rateItem(item.item_id , 5)"></ion-icon>
+              <ion-icon *ngIf="item.items.rate%1!=0" name="star-half" ></ion-icon>
+              <ion-icon *ngIf="item.items.rate==0" name="star-outline"(click)="rateItem(item.item_id , 1)"></ion-icon>
+              <ion-icon *ngIf="item.items.rate<=1" name="star-outline"(click)="rateItem(item.item_id , 2)"></ion-icon>
+              <ion-icon *ngIf="item.items.rate<=2" name="star-outline"(click)="rateItem(item.item_id , 3)"></ion-icon>
+              <ion-icon *ngIf="item.items.rate<=3" name="star-outline"(click)="rateItem(item.item_id , 4)"></ion-icon>
+              <ion-icon *ngIf="item.items.rate<=4" name="star-outline"(click)="rateItem(item.item_id , 5)"></ion-icon>
+              <ion-icon *ngIf="item.items.rate<=5" name="star-outline"(click)="rateItem(item.item_id , 5)"></ion-icon> -->
+            </ion-row>
+        <ion-row>
+          <ion-col col-10><p class="p1">{{'Name : '|translate}}  {{item.items.item_name}}</p></ion-col>
+        </ion-row>
+          
+          <p class="p2"> # {{item.items.item_id}}</p>
+          <ion-row class="payrow">
+            <ion-col col-6 style="text-align: start;color:#08a1bd">${{item.items.price}}</ion-col>
+            <ion-col col-6 style="text-align: end ;color:lightgray">{{item.quantity}}  {{item.items.messure_unit_ar}}</ion-col>
+          </ion-row>
+      </ion-col>
+    </ion-row> 
+  </div>
+</ion-content>

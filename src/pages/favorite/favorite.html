@@ -5,9 +5,9 @@
         <ion-col col-1><img src="assets/imgs/search.png"></ion-col>
         <ion-col col-8 style="font-family: Bitter;font-weight: 500;">{{'Favorites'|translate}}</ion-col>
         <ion-col col-2 (click)="goCart()"> <p class="cartno">{{MainProvider.cartNo}}</p> <img height="35px" src="assets/imgs/cart.png"></ion-col>
-        <ion-col col-1  (click)="presentActionSheet()">
+        <!-- <ion-col col-1  (click)="presentActionSheet()">
           <img height="28px" src="assets/imgs/filter.png">
-        </ion-col>
+        </ion-col> -->
       </ion-row>
     </ion-title>
   </ion-navbar>
@@ -20,13 +20,16 @@
       <ion-icon class="heart" name="close" (click)="deleteItem(item.item_id)"></ion-icon>
       <img (click)="showDetails(item.items.itemimages,item.items.item_name,item.items.itemdetails_ar,item.items.quantity,item.items.item_id,item.items.category_id)" [src]="MainProvider.itemsImg+item.items.itemimages[0].image_path">
       <p >{{item.items.item_name}}</p>
-      <p>${{item.items.price}}</p>
+      <p>${{item.items.price}}</p>    
       <button ion-button block #quan [class]="btnsdiv[i]" (click)="addToCart(i,item.item_id,item.items.quantity,category_id)">{{'Add to Cart'|translate}}</button>
       <div #quan [class]="quandiv[i]">
-        <ion-icon name="add" (click)="increaseQuan(quanno,item.item_id,category_id)"></ion-icon>
-        <input id="no" #quanno value="{{item.items.quantity}}" readonly>
-        <ion-icon name="remove" (click)="decreaseQuan(quanno,item.item_id,category_id)"></ion-icon>
+      <ion-icon name="add" (click)="increaseQuan(i,item.item_id,item.items.category_id)"></ion-icon>
+        <input id="no" *ngIf="item.items.cart.length != 0 " [(ngModel)]="item.items.cart[0].quantity" #quanno readonly>
+        <input id="no" *ngIf="item.items.cart.length == 0 " [value]="count2[i]" #quanno readonly>
+      <ion-icon name="remove" (click)="decreaseQuan(i,item.item_id,item.items.category_id)"></ion-icon>
       </div>
     </ion-col>
   </ion-row>
+
+
 </ion-content>

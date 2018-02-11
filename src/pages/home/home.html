@@ -30,7 +30,7 @@
   </div>
 
 
-  <ion-row class="product" *ngIf="!flag">
+  <ion-row class="product" *ngIf="allflag">
     <ion-col col-6 *ngFor="let item of allItems; let i = index">
       <ion-icon #icon [name]="icons[i]" class="heart" (click)="addToFav(item.item_id,i)"></ion-icon>
       <!--<ion-icon class="heart" name="heart"></ion-icon>-->
@@ -39,32 +39,46 @@
       <p>${{item.price}}</p>
       <button ion-button block #quan [class]="btnsdiv[i]" (click)="addToCart(i,item.item_id,item.quantity,category_id)">{{'Add to Cart'|translate}}</button>
       <div #quan [class]="quandiv[i]">
-        <ion-icon name="add" (click)="increaseQuan(i,quanno1,item.item_id,category_id)"></ion-icon>
-        <!-- <input id="no" #quanno value="{{item.items.quantity}}" readonly> -->
-        <input id="no" #quanno1 [value]="count2[i]" readonly>
-      
-        <ion-icon name="remove" (click)="decreaseQuan(quanno,item.item_id,category_id)"></ion-icon>
+        <ion-icon name="add" (click)="increaseQuan(i,item.item_id,category_id)"></ion-icon>
+        <input id="no" *ngIf="item.cart[0]!=null" [(ngModel)]="item.cart[0].quantity" #quanno readonly>
+        <input id="no" *ngIf="item.cart[0]==null" [value]="count2[i]" #quanno  readonly>
+        <ion-icon name="remove" (click)="decreaseQuan(i,item.item_id,category_id)"></ion-icon>
       </div>
     </ion-col>
-   
   </ion-row>
 
+   
+  <ion-row class="product" *ngIf="flag">
+    <ion-col col-6 *ngFor="let item of specItems,let i=index">
+      <ion-icon #icon [name]="icons[i]" class="heart" (click)="addToFav(item.item_id,i)"></ion-icon>
+      <!--<ion-icon class="heart" name="heart"></ion-icon>-->
+      <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails(item.itemimages,item.item_name,item.itemdetails_ar,item.quantity,item.item_id,item.category_id)">
+      <p>{{item.item_name}}</p>
+      <p>${{item.price}}</p>
+      <button ion-button block #quan [class]="btnsdiv[i]" (click)="addToCart(i,item.item_id,item.quantity,category_id)">{{'Add to Cart'|translate}}</button>
+      <div #quan [class]="quandiv[i]">
+        <ion-icon name="add" (click)="increaseQuan(i,item.item_id,category_id)"></ion-icon>
+        <input id="no" *ngIf="item.cart[0]!=null" [(ngModel)]="item.cart[0].quantity" #quanno readonly>
+        <input id="no" *ngIf="item.cart[0]==null" [value]="count2[i]" #quanno  readonly>
+        <ion-icon name="remove" (click)="decreaseQuan(i,item.item_id,category_id)"></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
 
-  <ion-row class="product">
-      <ion-col col-6 *ngFor="let item of specItems,let i=index">
+  <ion-row class="product" *ngIf="filter">
+      <ion-col col-6 *ngFor="let item of filterItems,let i=index">
         <ion-icon #icon [name]="icons[i]" class="heart" (click)="addToFav(item.item_id,i)"></ion-icon>
         <!--<ion-icon class="heart" name="heart"></ion-icon>-->
         <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails(item.itemimages,item.item_name,item.itemdetails_ar,item.quantity,item.item_id,item.category_id)">
-        <p >{{item.item_name}}</p>
+        <p>{{item.item_name}}</p>
         <p>${{item.price}}</p>
         <button ion-button block #quan [class]="btnsdiv[i]" (click)="addToCart(i,item.item_id,item.quantity,category_id)">{{'Add to Cart'|translate}}</button>
         <div #quan [class]="quandiv[i]">
-            <ion-icon name="add" (click)="increaseQuan(quanno,item.item_id,category_id)"></ion-icon>
-            <input id="no" #quanno value="{{item.cart[0].quantity}}" readonly>
-            <ion-icon name="remove" (click)="decreaseQuan(quanno,item.item_id,category_id)"></ion-icon>
-          </div>
+          <ion-icon name="add" (click)="increaseQuan(i,item.item_id,category_id)"></ion-icon>
+          <input id="no" *ngIf="item.cart[0]!=null" [(ngModel)]="item.cart[0].quantity" #quanno readonly>
+          <input id="no" *ngIf="item.cart[0]==null" [value]="count2[i]" #quanno  readonly>
+          <ion-icon name="remove" (click)="decreaseQuan(i,item.item_id,category_id)"></ion-icon>
+        </div>
       </ion-col>
     </ion-row>
-
-   
 </ion-content>

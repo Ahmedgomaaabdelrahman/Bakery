@@ -58,7 +58,7 @@
           {{location.location_label}} 
         </ion-label>
         <!-- <p>604 Simios Int 34</p> -->
-        <ion-radio  [value]="location.location_id"></ion-radio>
+        <ion-radio  [value]="location.location_id" (ionSelect)="setlocation(location)"></ion-radio>
        </ion-item> 
      </ion-col>
    </ion-row>

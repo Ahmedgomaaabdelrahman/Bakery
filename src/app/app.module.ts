@@ -1,3 +1,5 @@
+import { HisdetailsPage } from './../pages/hisdetails/hisdetails';
+import { PaypalinfoPage } from './../pages/paypalinfo/paypalinfo';
 import { TranslateModule, TranslateLoader ,TranslatePipe} from '@ngx-translate/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -42,6 +44,7 @@ import { TwitterConnect } from '@ionic-native/twitter-connect';
 import { ProductProvider } from '../providers/product';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Geolocation } from '@ionic-native/geolocation';
+import { PayPal } from '@ionic-native/paypal';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -82,7 +85,9 @@ export function createTranslateLoader(http: Http) {
     SignupPage,
     TabsPage,
     TartoptionsPage,
-    TermsPage
+    TermsPage,
+    PaypalinfoPage,
+    HisdetailsPage
   ],
   imports: [
     BrowserModule,
@@ -129,7 +134,9 @@ export function createTranslateLoader(http: Http) {
     SignupPage,
     TabsPage,
     TartoptionsPage,
-    TermsPage
+    TermsPage,
+    PaypalinfoPage,
+    HisdetailsPage
     
   ],
   providers: [
@@ -145,7 +152,8 @@ export function createTranslateLoader(http: Http) {
     ProductProvider,
     NativeStorage,
     Nav,
-    Geolocation
+    Geolocation,
+    PayPal
   ]
 })
 export class AppModule {}

@@ -19,6 +19,7 @@ export class DetailsPage {
   public catid:any;
   public itemid:any;
   public MainProvider = MainProvider;
+ 
 
   constructor(public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
      this.images = this.navParams.get('images');

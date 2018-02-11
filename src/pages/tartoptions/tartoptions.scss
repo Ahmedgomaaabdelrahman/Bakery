@@ -46,6 +46,11 @@ page-tartoptions {
     margin: 10px 5px;
     border: 1px solid lightgray;
     display: inline-flex;
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
     
 }
 .slidediv{
@@ -64,6 +69,11 @@ page-tartoptions {
     border-radius: 50%;
     border:1px solid lightgray;
     height: 65px;
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
     
     h5{
         margin: auto;
@@ -78,10 +88,14 @@ page-tartoptions {
     }
    
 }
-.myitem{
+.myitem , .coloritem{
        width: 115px;
        text-align: center;
        display: inline-block;
+}
+.coloritem{
+    width: 80px;
+    
 }
 .list-md .item-block .item-inner{
     border-bottom:none;
@@ -98,11 +112,23 @@ page-tartoptions {
     width: 65px;
 
 }
-
+.colordiv{
+    border-radius: 50%;
+    h5{
+        text-align: center;
+        border-radius: 50%;
+        img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+    }
+  }
 .item-radio-checked.item-md ion-label{
     .size{
         box-shadow: 3px 4px 37px lightgray;
     }
+    
 }
 .radio-md .radio-icon{
     display:none !important;
@@ -125,7 +151,9 @@ page-tartoptions {
     border:1px solid lightgray;
 }
 
-
+.list{
+    text-align: center;
+}
 .adds{
     overflow-x: auto;
     /* overflow-y: auto; */
@@ -137,6 +165,12 @@ page-tartoptions {
         display: inline-block;
         img{
             border-radius: 20px;
+            min-width: 100px;
+            width: 100px;
+            max-width: 100px;
+            height: 90px;
+            min-height: 90px;
+            max-height: 90px;
         }
         p{
             margin: 0;
