@@ -25,11 +25,11 @@ export class DetailsPage {
      this.images = this.navParams.get('images');
      this.name = this.navParams.get('name');
      this.details = this.navParams.get('details');
-     this.quantiy = this.navParams.get('quantity');
+     this.quantiy = this.navParams.get('quantiy');
+     this.rate = this.navParams.get('rate');
      this.itemid = this.navParams.get('itemid');
      this.catid = this.navParams.get('catid');
-     console.log(this.images,this.name,this.details,this.quantiy,this.itemid,this.catid)
-     
+    console.log("From Details",this.navParams.get('name'),this.navParams.get('details'),this.navParams.get('quantiy') , this.navParams.get('rate'))
   }
 
   ionViewDidLoad() {

@@ -30,7 +30,7 @@
     box-shadow: 3px 3px 37px grey;
     margin: 30px auto;
     height: 176px;">
-<ion-slides autoplay="2000" dir="rtl" loop="true" pager >
+<ion-slides dir="rtl" loop="true" pager >
     <ion-slide *ngFor="let img of images">
       <img [src]="MainProvider.itemsImg+img.image_path">
     </ion-slide>
@@ -38,7 +38,7 @@
 </ion-slides>
 <div class="rate">
   <ion-icon name="star"></ion-icon><br>
-  4.2
+{{rate| number:'1.1-1'}}
 </div>
 </div>
 
@@ -52,10 +52,10 @@
 <p>{{details}}</p>
 
  <ion-row class="bottomrow">
-   <ion-col col-4 style="padding:10px;">
+   <!-- <ion-col col-4 style="padding:10px;">
      <div>{{quantiy}}</div>
-   </ion-col>
-   <ion-col col-8>
+   </ion-col> -->
+   <ion-col col-12>
      <button ion-button block (click)="addTocart()">{{'Add to Cart'|translate}}</button>
    </ion-col>
 </ion-row>  

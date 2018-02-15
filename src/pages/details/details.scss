@@ -59,12 +59,13 @@ p{
     padding: 25px;
     color: gray;
 }
-[col-8] .button{
+[col-12] .button{
     height: 58px;
     border-radius: 30px;
     background: #32bdd6;
     font-size: 20px;
-    margin-top: 10px;
+    width: 80%;
+    margin: 10px auto 0;
     text-transform: none;
 }
 .rate{

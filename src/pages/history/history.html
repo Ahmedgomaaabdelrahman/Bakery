@@ -2,9 +2,11 @@
 <p style="text-align: end;margin: 17px 18px 0;">
   <img src="assets/imgs/modify.png" height="25px" (click)="editAcc()"></p>
 <div class="profilediv">
-  <img src="assets/imgs/profile.jpg">
-  <p>Patrick Barker</p>
-  <p>DARIAN_FEEST@OTILIA.NET</p>
+  <img *ngIf="img != null" [src]='"data:image/png;base64,"+img'>
+  <img *ngIf="customer.currentuser.image != null && img == null" [src]="MainProvider.baseImg+image">
+
+  <p>{{name}}</p>
+  <p>{{email}}</p>
 </div>
 
 <div>

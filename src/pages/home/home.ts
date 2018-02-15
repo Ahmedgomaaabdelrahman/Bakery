@@ -99,16 +99,17 @@ export class HomePage {
   }
   }
 
-showDetails(images,name,details,quantity,itemid,catid){
+showDetails(images,name,details,quantity,itemid,catid,rate){
  let detpage = this.modalCtrl.create(DetailsPage,{
     images : images , 
     name : name , 
     details : details , 
     quantity : quantity,
     itemid : itemid,
-    catid : catid
+    catid : catid,
+    rate : rate
   });
-    console.log({images,name,details,quantity});
+    console.log("From Home",{images,name,details,quantity});
     detpage.present();
     detpage.onDidDismiss(data=>{
       this.flag = false;

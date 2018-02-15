@@ -17,8 +17,8 @@
 </ion-header>
 
 <ion-content>
-  <div>
-    <ion-scroll scrollX="true" style="width:100vw;height:51px" >
+  <div style="overflow:scroll">
+    <ion-scroll scrollX="true" style="width:100vw;height:51px">
       <ion-segment [(ngModel)]="Categories">
         <ion-segment-button *ngFor="let categorey of allcats; let i = index" value="categorey.categories_id" (click)="getItemsCat(categorey.categories_id)">
           <span *ngIf="MainProvider.lang =='ar'">{{categorey.categoryname_ar}}</span> 
@@ -34,7 +34,7 @@
     <ion-col col-6 *ngFor="let item of allItems; let i = index">
       <ion-icon #icon [name]="icons[i]" class="heart" (click)="addToFav(item.item_id,i)"></ion-icon>
       <!--<ion-icon class="heart" name="heart"></ion-icon>-->
-      <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails(item.itemimages,item.item_name,item.itemdetails_ar,item.quantity,item.item_id,item.category_id)">
+      <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path"  (click)="showDetails(item.itemimages,item.item_name,item.itemdetails_ar,item.quantity,item.item_id,item.category_id,item.rate)">
       <p>{{item.item_name}}</p>
       <p>${{item.price}}</p>
       <button ion-button block #quan [class]="btnsdiv[i]" (click)="addToCart(i,item.item_id,item.quantity,category_id)">{{'Add to Cart'|translate}}</button>
@@ -52,7 +52,7 @@
     <ion-col col-6 *ngFor="let item of specItems,let i=index">
       <ion-icon #icon [name]="icons[i]" class="heart" (click)="addToFav(item.item_id,i)"></ion-icon>
       <!--<ion-icon class="heart" name="heart"></ion-icon>-->
-      <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails(item.itemimages,item.item_name,item.itemdetails_ar,item.quantity,item.item_id,item.category_id)">
+      <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails(item.itemimages,item.item_name,item.itemdetails_ar,item.quantity,item.item_id,item.category_id,item.rate)">
       <p>{{item.item_name}}</p>
       <p>${{item.price}}</p>
       <button ion-button block #quan [class]="btnsdiv[i]" (click)="addToCart(i,item.item_id,item.quantity,category_id)">{{'Add to Cart'|translate}}</button>
@@ -69,7 +69,7 @@
       <ion-col col-6 *ngFor="let item of filterItems,let i=index">
         <ion-icon #icon [name]="icons[i]" class="heart" (click)="addToFav(item.item_id,i)"></ion-icon>
         <!--<ion-icon class="heart" name="heart"></ion-icon>-->
-        <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails(item.itemimages,item.item_name,item.itemdetails_ar,item.quantity,item.item_id,item.category_id)">
+        <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails(item.itemimages,item.item_name,item.itemdetails_ar,item.quantity,item.item_id,item.category_id,item.rate)">
         <p>{{item.item_name}}</p>
         <p>${{item.price}}</p>
         <button ion-button block #quan [class]="btnsdiv[i]" (click)="addToCart(i,item.item_id,item.quantity,category_id)">{{'Add to Cart'|translate}}</button>

@@ -58,7 +58,7 @@
        
         <p class="p2" >{{item.items.price}}</p>
         <div>
-          <ion-icon name="add"  (click)="increaseQuan(quanno,item.item_id,item.items.category_id)"></ion-icon>
+          <ion-icon name="add"  (click)="increaseQuan(i,quanno,item.item_id,item.items.category_id)"></ion-icon>
           <input id="no" [ngModel]="item.quantity"  #quanno value="{{item.quantity}}" readonly>
           
           <ion-icon name="remove" id="remove" (click)="decreaseQuan(i,quanno,item.item_id,item.items.category_id)"></ion-icon>

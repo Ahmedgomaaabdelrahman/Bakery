@@ -41,8 +41,9 @@ export class FavoritePage {
         this.quandiv.push('quandiv'); 
         this.btnsdiv.push('disbtn')
       }
-      else  if(this.favItems[i].items.cart.length == 0)
-      {  this.count2[i] = 1;
+      else  if(this.favItems[i].items.cart[0]== null)
+      { 
+        // this.count2[i] = 1;
         this.quandiv.push('quandivdis'); 
         this.btnsdiv.push('nondisbtn');
       }

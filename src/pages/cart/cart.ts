@@ -22,7 +22,8 @@ export class CartPage {
    ionViewDidLoad(){
      this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{
       this.cartItems = res;
-      console.log(this.cartItems);
+      console.log(this.customer.currentuser.user_id);
+      console.log(res);
       for (let i=0 ; i<this.cartItems.length;i++){
         this.price = parseInt(this.cartItems[i].items.price);
         this.quantity = parseInt(this.cartItems[i].quantity);
@@ -50,12 +51,14 @@ deleteItem(i,itemid){
   })
 }
 
-increaseQuan(quanno,itemid,catid){
+increaseQuan(i,quanno,itemid,catid){
   quanno.value++;
   console.log(quanno.value);
   this.product.addToCart(this.customer.currentuser.user_id,itemid,quanno.value,catid).subscribe((res)=>{
     console.log(res);
   });
+  let itemprice = parseInt(this.cartItems[i].items.price)
+  this.totalprice  = this.totalprice + itemprice;
 }
 decreaseQuan(i,quanno,itemid,catid){
 
@@ -69,6 +72,7 @@ decreaseQuan(i,quanno,itemid,catid){
     this.product.addToCart(this.customer.currentuser.user_id,itemid,quanno.value,catid).subscribe((res)=>{
       console.log(res);
     });
+    this.totalprice  = this.totalprice - this.cartItems[i].items.price;
   }
  
   

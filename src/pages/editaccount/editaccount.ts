@@ -31,6 +31,6 @@ export class EditaccountPage {
  addimage(){
    this.comm.galleryOrCamera().then((base64)=>{
       this.img = base64;
-   }).catch((err)=>console.log(err));
+   });
  }
 } 

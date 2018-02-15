@@ -13,12 +13,18 @@ import { HisdetailsPage } from '../hisdetails/hisdetails';
 })
 export class HistoryPage {
   public hisarr:any [] = [];
+  public name;
+  public email;
+  public image;
   public MainProvider = MainProvider;
   constructor(public product:ProductProvider,public customer:CustomerProvider,public common:CommonServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
 
   }
   
   ionViewWillEnter(){
+    this.name=this.customer.currentuser.name;
+    this.email=this.customer.currentuser.email;
+    this.image = this.customer.currentuser.image;
     this.product.getHistory(this.customer.currentuser.user_id).subscribe((res)=>{
        console.log(res);
        this.hisarr = res;

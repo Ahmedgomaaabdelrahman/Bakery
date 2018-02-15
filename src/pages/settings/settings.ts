@@ -1,3 +1,4 @@
+import { LoginPage } from './../login/login';
 import { HomePage } from './../home/home';
 import { PaymentPage } from './../payment/payment';
 import { NotificationPage } from './../notification/notification';
@@ -47,7 +48,7 @@ export class SettingsPage {
 
  logOut(){
    this.customer.currentuser = null;
-   this.navCtrl.setRoot(HomePage);
+   this.navCtrl.setRoot(LoginPage);
    this.nativeStorage.clear();
    console.log(this.customer.currentuser);
  }
