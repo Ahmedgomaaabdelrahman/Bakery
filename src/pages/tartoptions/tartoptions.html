@@ -16,7 +16,7 @@
       </ion-buttons>
     </ion-col>
     <ion-col col-9 style="padding: 10px 0;font-family: Bitter;color: #0497b3;">{{'Tart Options'|translate}}</ion-col>
-    <ion-col col-2 style="padding: 10px 0;color: orange">$204</ion-col>
+    <ion-col col-2 style="padding: 10px 0;color:#0497b3 ">$204</ion-col>
   </ion-row>
 </ion-title>
 </ion-navbar>
@@ -33,22 +33,15 @@
         </ion-checkbox>
       
     </div>  -->
-    <ion-scroll scrollX="true" style="width:100vw;height:120px" >
-    <ion-item class="coloritem" *ngFor="let color of colors">
-        <ion-label>
-          <div class="colordiv"> 
-            <h5> <img [src]="MainProvider.TartColorsImgs+color.tart_colorImage"></h5> 
-          </div>
-        </ion-label>
-        <ion-checkbox color="dark" ></ion-checkbox>
-      </ion-item>
-      <ion-item class="coloritem" *ngFor="let color of colors">
+    <div style="overflow:scroll">
+      <ion-scroll scrollX="true" style="width:100vw;height:100px">
+        <ion-item class="coloritem" *ngFor="let color of colors">
           <ion-label>
             <div class="colordiv"> 
               <h5> <img [src]="MainProvider.TartColorsImgs+color.tart_colorImage"></h5> 
             </div>
           </ion-label>
-          <ion-checkbox color="dark" ></ion-checkbox>
+          <ion-checkbox color="dark" (ionChange)="getcolor(color.color_id)"></ion-checkbox>
         </ion-item>
         <ion-item class="coloritem" *ngFor="let color of colors">
             <ion-label>
@@ -56,37 +49,77 @@
                 <h5> <img [src]="MainProvider.TartColorsImgs+color.tart_colorImage"></h5> 
               </div>
             </ion-label>
-            <ion-checkbox color="dark" ></ion-checkbox>
+            <ion-checkbox color="dark" (ionChange)="getcolor(color.color_id)"></ion-checkbox>
           </ion-item>
+
+          <ion-item class="coloritem" *ngFor="let color of colors">
+              <ion-label>
+                <div class="colordiv"> 
+                  <h5> <img [src]="MainProvider.TartColorsImgs+color.tart_colorImage"></h5> 
+                </div>
+              </ion-label>
+              <ion-checkbox color="dark" (ionChange)="getcolor(color.color_id)"></ion-checkbox>
+            </ion-item>
       </ion-scroll>
+    </div>
     <hr>
 
-    <ion-label>{{'What size size would you like'|translate}}</ion-label>
+
+    <ion-list radio-group>
+      <ion-item style="background:transparent;
+      border: 1px solid gray;
+      margin: 10px;
+      width: 95%;">
+        <ion-label>{{'Tart Type'|translate}}</ion-label>
+        <ion-select [(ngModel)]="tarttype">
+          <ion-option value="size">By Size</ion-option>
+          <ion-option value="floor">By Floor</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list radio-group *ngIf="tarttype == 'floor'">
+        <ion-label>{{'What Floor would you like'|translate}}</ion-label>
+      <ion-item style="background: transparent;">
+        <ion-label>{{'Tart Floor'|translate}}</ion-label>
+        <ion-select [(ngModel)]="floor">
+          <ion-option value="1">1</ion-option>
+          <ion-option value="2">2</ion-option>
+          <ion-option value="3">3</ion-option>
+          <ion-option value="4">4</ion-option>
+          <ion-option value="5">5</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+   
 
 
-   <ion-list radio-group>
+ <ion-list radio-group *ngIf="tarttype == 'size'">
+    <ion-label>{{'What size would you like'|translate}}</ion-label>
+      <div style="overflow:scroll">
+          <ion-scroll scrollX="true" style="width:100vw;height:88px">
   <ion-item class="myitem" *ngFor="let size of sizes">
     <ion-label> <div class="size">
           <h5>{{size.size_name}}<br><span>{{size.size_no}}</span></h5> 
         </div> </ion-label>
-    <ion-radio  [value]="size.size_id"></ion-radio>
+    <ion-radio  [value]="size.size_id" (ionSelect)="getsize(size.size_id)"></ion-radio>
   </ion-item>
 
-  <!-- <ion-item class="myitem">
-    <ion-label><div class="size">
-          <h5>{{'Medium'|translate}}<br><span>25</span></h5>
-
-        </div></ion-label>
-    <ion-radio value="rust"></ion-radio>
-  </ion-item>
-
-   <ion-item class="myitem">
-    <ion-label> <div class="size">
-          <h5>{{'Small'|translate}}<br><span>23</span></h5>
-        
-        </div></ion-label>
-    <ion-radio value="python"></ion-radio>
-  </ion-item> -->
+  <ion-item class="myitem" *ngFor="let size of sizes">
+      <ion-label> <div class="size">
+            <h5>{{size.size_name}}<br><span>{{size.size_no}}</span></h5> 
+          </div> </ion-label>
+      <ion-radio  [value]="size.size_id" (ionSelect)="getsize(size.size_id)"></ion-radio>
+    </ion-item>
+    <ion-item class="myitem" *ngFor="let size of sizes">
+        <ion-label> <div class="size">
+              <h5>{{size.size_name}}<br><span>{{size.size_no}}</span></h5> 
+            </div> </ion-label>
+        <ion-radio  [value]="size.size_id" (ionSelect)="getsize(size.size_id)"></ion-radio>
+      </ion-item>
+    </ion-scroll>
+  </div>
 </ion-list>     
  
  <hr>
@@ -94,50 +127,54 @@
  <ion-label>{{'Extra items to add'|translate}}</ion-label>
        
 <div class="adds">
- 
-      <div *ngFor="let add of adds">
+  
+    <ion-scroll scrollX="true" style="width:100vw;height:180px">
+      <div *ngFor="let add of adds" >
         <img [src]="MainProvider.TartImgs+add.add_image">
         <p>{{add.add_namear}}</p>
         <h6>${{add.add_price}}</h6>
-        <button ion-button block>{{'Add item'|translate}}</button>
+        <button ion-button block (click)="putadds(add.adds_id)">{{'Add item'|translate}}</button>
       </div>
-      <!-- <div>
-         <img src="assets/imgs/roug2.jpg" alt="">
-         <p>Rose in red</p>
-         <h6>$1.50</h6>
-         <button ion-button block>{{'Add item'|translate}}</button>
-      </div>
-      <div> 
-         <img src="assets/imgs/roug3.jpg" alt="">
-         <p>Rose in Pink</p>
-         <h6>$1.50</h6>
-         <button ion-button block>{{'Add item'|translate}}</button>
-      </div>      -->
+      <div *ngFor="let add of adds" >
+          <img [src]="MainProvider.TartImgs+add.add_image">
+          <p>{{add.add_namear}}</p>
+          <h6>${{add.add_price}}</h6>
+          <button ion-button block (click)="putadds(add.adds_id)">{{'Add item'|translate}}</button>
+        </div>
+        <div *ngFor="let add of adds" >
+            <img [src]="MainProvider.TartImgs+add.add_image">
+            <p>{{add.add_namear}}</p>
+            <h6>${{add.add_price}}</h6>
+            <button ion-button block (click)="putadds(add.adds_id)">{{'Add item'|translate}}</button>
+          </div>
+    </ion-scroll>
 
 </div>
 
 <hr>
 
     <p style="text-align: center;color: gray;margin: 15px;">{{'Upload your own image'|translate}}</p>
-    <div class="add"><ion-icon name="add"></ion-icon></div>
-    <!--<div class="buttons">
-      <button ion-button outline (click)="dismiss()">{{'Skip'|translate}}</button>
-      <button ion-button outline>{{'Upload'|translate}}</button>
-    </div>-->
+    <div *ngIf="img == null" class="add" (click)="addimage()"><ion-icon name="add"></ion-icon></div>
+    <div style="text-align:center"><img *ngIf="img != null" [src]='"data:image/png;base64,"+img'></div>
 
     <hr>
 
-    <ion-item class="check">
+    <!-- <ion-item class="check">
       <ion-label>{{'Gift Wrapping'|translate}}</ion-label>
       <ion-checkbox color="dark" ></ion-checkbox>
-   </ion-item>
+   </ion-item> -->
 <hr>
 
 
  <ion-label>{{'Pipe a Message on a Cake'|translate}}</ion-label>
- <ion-item style="height: 100px">
-    <ion-input style="height: 100%;" type="text" placeholder="{{'Type something ...'|translate}}"></ion-input>
+ <ion-item style="    margin: auto;
+ height: 100px;
+ width: 90%;
+ padding: 0;    
+ border: 1px solid gray;
+ border-radius: 10px;">
+    <ion-input style="height: 100%;" type="text" #tarttext placeholder="{{'Type something ...'|translate}}"></ion-input>
  </ion-item>
- <button ion-button block class="bottombtn">{{'Add Items to Cart'|translate}}</button>
+ <button ion-button block class="bottombtn" (click)="addtoitem()">{{'Add Items to Cart'|translate}}</button>
 </ion-content>
 

@@ -1,7 +1,13 @@
+import { CustomerProvider } from './../../providers/customer';
+import { ActionSheetController } from 'ionic-angular';
+import { tartcolor } from './../../providers/tartcolor';
+import { tartadd } from './../../providers/tartadd';
 import { MainProvider } from './../../providers/main';
 import { ProductProvider } from './../../providers/product';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import { CommonServiceProvider } from '../../providers/common-service';
+
 
 
 
@@ -12,11 +18,26 @@ import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angula
 })
 export class TartoptionsPage {
   public colors : any[];
-  public sizes : any[];
-  public adds : any[];
+  public chosingcolors  = [];
+
+  public sizes : any[] ;
+  public chosingsize : any ;
+  public adds : any[] ;
+  public chosingadds = [];
+
+  public itemid:any;
+  public img:any;
   public MainProvider = MainProvider;
-  constructor(public product:ProductProvider,public viewCtrl : ViewController,public navCtrl: NavController, public navParams: NavParams) {
-  }
+  public catid : any;
+  public quantity:any;
+  public result : any;
+  @ViewChild('tarttext') tarttext ;
+
+  constructor(public comm:CommonServiceProvider,public customer:CustomerProvider,public product:ProductProvider,public viewCtrl : ViewController,public navCtrl: NavController, public navParams: NavParams) {
+     this.itemid =this.navParams.get('itemid');
+     this.catid =this.navParams.get('catid');
+     this.quantity =this.navParams.get('quantity');
+   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TartoptionsPage');
@@ -36,4 +57,48 @@ export class TartoptionsPage {
  dismiss(){
     this.viewCtrl.dismiss();
   }
+
+  addimage(){
+    this.comm.galleryOrCamera().then((base64)=>{
+       this.img = base64;
+    });
+  }
+  putadds(addid){
+    let add = new tartadd(this.itemid,this.customer.currentuser.user_id,addid);
+    this.chosingadds.push(add);
+    console.log(this.chosingadds);
+  }
+  getsize(size_id){
+     this.chosingsize = size_id;
+     
+  }
+  getcolor(colorid){
+    if(this.chosingcolors.find(x => x.color_id == colorid)){
+      console.log("I find it");
+      this.chosingcolors = this.chosingcolors.splice(colorid,1);
+      console.log(this.chosingcolors);
+    }
+    else {
+      let color = new tartcolor(this.itemid,this.customer.currentuser.user_id,colorid);
+      this.chosingcolors.push(color);
+      console.log(this.chosingcolors);
+    }
+  }
+  addtoitem(){
+    console.log(this.tarttext.value);
+    console.log(this.chosingadds);
+    console.log(this.chosingcolors);
+    console.log(this.chosingsize);
+
+    this.product.addToCart(this.customer.currentuser.user_id,
+      this.itemid,
+      1,
+      this.catid,
+      this.chosingsize,
+      this.chosingcolors,
+      this.tarttext.value,
+      this.img,
+      this.chosingadds).subscribe(res =>{this.result = res})
+  
+    }
 }

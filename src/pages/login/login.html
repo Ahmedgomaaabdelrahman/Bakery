@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header>
 
   <ion-navbar>
     <ion-title>
@@ -12,7 +12,7 @@
       {{'Login'|translate}}</ion-title>
   </ion-navbar>
 
-</ion-header>
+</ion-header> -->
 
 
 <ion-content>
@@ -20,7 +20,9 @@
      <ion-input type="text" placeholder="Enter OTP" [(ngModel)]="code"></ion-input>
      <button ion-button block (click)="verfiy()">verfiy</button> -->
 
-
+<div class="imgdiv">
+  <img src="assets/imgs/logo.png">
+</div>
 
 
   <form class="formaa"> 
@@ -32,11 +34,17 @@
 
       <p (click)="goForget()">{{'Forget My Password'|translate}}</p>
 
-      <ion-row style="text-align: center;">
-        <ion-col col-3><img src="assets/imgs/twitter.png"(click)="twitterlog()"></ion-col>
-        <ion-col col-3><img src="assets/imgs/facebook.png" (click)= "logFace()"></ion-col>
-        <ion-col col-6><button ion-button outline (click)="gomain()">{{'Sign In'|translate}}</button></ion-col>
-      </ion-row>
+
+    <ion-row>
+        <ion-col col-12><button ion-button outline (click)="gomain()">{{'Sign In'|translate}}</button></ion-col>
+    </ion-row>
+
+    <ion-row style="text-align: center;">
+     
+      <ion-col col-4><img src="assets/imgs/facebook.png" (click)= "logFace()"></ion-col>
+      <ion-col col-4><img src="assets/imgs/twitter.png"(click)="twitterlog()"></ion-col>
+      <ion-col col-4><img src="assets/imgs/google-plus.png"></ion-col>
+    </ion-row>
       <ion-row class="sign">
           <ion-col col-12>{{'DO NOT HAVE AN ACCOUNT ?'|translate}}<span (click)="signUp()" style="color:orange;padding: 10px">{{'SIGN UP'|translate}}</span>
           </ion-col>

@@ -99,4 +99,5 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
     <plugin name="com.paypal.cordova.mobilesdk" spec="^3.5.0" />
+    <plugin name="com-badrit-base64" spec="^0.2.0" />
 </widget>

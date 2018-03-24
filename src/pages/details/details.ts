@@ -25,7 +25,7 @@ export class DetailsPage {
      this.images = this.navParams.get('images');
      this.name = this.navParams.get('name');
      this.details = this.navParams.get('details');
-     this.quantiy = this.navParams.get('quantiy');
+     this.quantiy = this.navParams.get('quantity');
      this.rate = this.navParams.get('rate');
      this.itemid = this.navParams.get('itemid');
      this.catid = this.navParams.get('catid');
@@ -37,7 +37,12 @@ export class DetailsPage {
   }
    
   tartOptions(){
-    this.common.createModel(TartoptionsPage);
+    console.log(this.quantiy);
+    this.common.createModel(TartoptionsPage , {
+      itemid:this.itemid,
+      quantity:this.quantiy,
+      catid:this.catid
+    });
   }
   
   addTocart(){

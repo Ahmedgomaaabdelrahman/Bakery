@@ -1,0 +1,21 @@
+page-map {
+// .content {
+//     background-image: url('../assets/imgs/mappage.png');
+//     background-size: contain;
+// }
+yellowhead{
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.map {
+    height: 100%
+  }
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+}

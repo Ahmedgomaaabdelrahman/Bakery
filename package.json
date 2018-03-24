@@ -20,6 +20,7 @@
     "@angular/http": "5.0.3",
     "@angular/platform-browser": "5.0.3",
     "@angular/platform-browser-dynamic": "5.0.3",
+    "@ionic-native/base64": "^4.5.3",
     "@ionic-native/camera": "^4.5.2",
     "@ionic-native/core": "4.4.0",
     "@ionic-native/facebook": "^4.5.2",
@@ -36,6 +37,7 @@
     "@ngx-translate/http-loader": "^0.1.0",
     "angularfire2": "5.0.0-rc.4",
     "card.io.cordova.mobilesdk": "^2.1.0",
+    "com-badrit-base64": "^0.2.0",
     "com.paypal.cordova.mobilesdk": "^3.5.0",
     "cordova-android": "~6.3.0",
     "cordova-browser": "~5.0.3",
@@ -85,7 +87,8 @@
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
       },
-      "com.paypal.cordova.mobilesdk": {}
+      "com.paypal.cordova.mobilesdk": {},
+      "com-badrit-base64": {}
     },
     "platforms": [
       "browser",

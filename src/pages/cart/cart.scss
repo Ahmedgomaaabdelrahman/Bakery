@@ -48,24 +48,21 @@ page-cart {
 }
 
 .itemrow{
-    .row{
-        margin: 0 0 15px;
-    }
+   
     position: relative;
     width: 95%;
     height: 145px;
     margin: 30px auto 0px;
     .p1{
-         margin: 0 5px 10px;
+         margin: 0 5px;
          font-size: 20px;
          opacity: 0.7;
-
+         color:$blueColor;
     }
     .p2{
          margin:0 10px 15px;
          font-size: 17px;
          color:orange;
-         font-weight: bold;
     }
     [col-4] img{
         border-radius: 6px;
@@ -98,7 +95,7 @@ page-cart {
             border: 1px solid lightgray;
             border-radius: 50%;
             padding: 4px 7px;
-            color: lightgray;
+                color: #3b9ea6;
         }
         img{
                 margin: 0 0 -8px;
@@ -116,9 +113,9 @@ page-cart {
     text-align: center;
 }
 [col-9] .button{
-    height: 58px;
+    height: 50px;
     border-radius: 30px;
-    background: #32bdd6;
+    background: $blueColor;
     font-size: 20px;
     margin-top: 10px;
     text-transform: none;
@@ -126,9 +123,9 @@ page-cart {
     width: 57%;
 }
 [col-3] .button{
-    height: 58px;
+    height: 50px;
     border-radius: 30px;
-    background: lightgray;
+    background: $yellowColor;
     font-size: 20px;
     margin-top: 10px;
     text-transform: none;
@@ -151,10 +148,11 @@ page-cart {
     margin: 10px 0;
     text-align: center;
     color: orange;
+    background: transparent;
 }
 #no{
     display: inline;
-    color: gray;
+    color: #3b9ea6;
     margin: 0 5px;
     width: 20px;
     text-align: center;

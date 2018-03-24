@@ -4,24 +4,25 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-title>
       <ion-row style="text-align: center;">
         <ion-col col-1><img src="assets/imgs/search.png"></ion-col>
         <ion-col col-9 style="font-family: Bitter;font-weight: 500;">{{'Categories'|translate}}</ion-col>
         <ion-col col-2 (click)="goCart()"> <p class="cartno">{{MainProvider.cartNo}}</p> <img height="35px" src="assets/imgs/cart.png"></ion-col>
-        <!-- <ion-col col-1  (click)="presentActionSheet()">
+        <ion-col col-1  (click)="presentActionSheet()">
           <img height="28px" src="assets/imgs/filter.png">
-        </ion-col> -->
+        </ion-col>
       </ion-row>
     </ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 
 <ion-content>
-  <ion-row style="margin:30px 20px;">
+  <yellowhead></yellowhead>
+  <ion-row style="margin:10px 20px;">
     <ion-col col-6 *ngFor="let cat of categories" (click)="getCatItems(cat.categories_id)">
       <div class="imgdiv">
       <img [src]="MainProvider.catImgs+cat.category_image"><br>
@@ -31,3 +32,6 @@
   </ion-row>
  
 </ion-content>
+<ion-footer>
+    <yellowtabs></yellowtabs>  
+</ion-footer> 

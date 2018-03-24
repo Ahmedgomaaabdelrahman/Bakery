@@ -1,5 +1,5 @@
 
-<ion-header>
+<!-- <ion-header>
 
   <ion-navbar>
     <ion-title>
@@ -17,9 +17,10 @@
   </ion-navbar>
 
 </ion-header>
-
+ -->
 
 <ion-content>
+    <yellowhead></yellowhead>
    <div class="topdiv" (click)="addimage()">
       <ion-icon *ngIf="customer.currentuser.image == null && img == null" style="color:gray" name="add"></ion-icon>
       <img *ngIf="img != null" [src]='"data:image/png;base64,"+img'>

@@ -1,8 +1,10 @@
+import { HomePage } from './../home/home';
 import { MainProvider } from './../../providers/main';
 import { CommonServiceProvider } from './../../providers/common-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CustomerProvider } from '../../providers/customer';
+import { MainaddsPage } from '../mainadds/mainadds';
 
 @Component({
   selector: 'page-editaccount',
@@ -24,7 +26,7 @@ export class EditaccountPage {
    console.log(this.img);
     this.customer.updateUser(inputs.email,inputs.name,inputs.phone,inputs.password,this.img).subscribe((res)=>{
       console.log(res);
-      this.navCtrl.pop();
+      this.navCtrl.push(MainaddsPage);
     });
  }
 

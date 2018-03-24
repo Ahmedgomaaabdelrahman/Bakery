@@ -23,14 +23,20 @@ page-favorite {
     transform:rotate(90deg); 
 }
 
-
+.mydiv{
+    border: 1px solid gray;
+    border-radius: 10px;
+    height: 255px;
+    box-shadow: 3px 2px 20px 0px #7d7d7d;
+}
 .product{
-    margin: 30px 20px;
+
     p:first-of-type{
-        margin: 10px 0;
-        color:gray;
+        margin: 0;
+        padding:0 5px 0;
+        color: #3b9ea6;
         font-weight: bold;
-     }
+    }
     .heart{
         font-size: 20px;
         margin: 5px 10px;
@@ -41,36 +47,43 @@ page-favorite {
         color: #f39e2f;
     }
     p:last-of-type{
-       margin: 5px 0;
-       color:#f18900;
-       font-weight: bold;
+        margin: 0;
+        padding: 0px 5px 0;
+        color: #f18900;
+        font-weight: bold;
     }
     .button{
-        background-color: #d0cfe0;
+        background-color: #3b9ea6;
         color: white;
         border-radius: 30px;
-        width: 70%;
         text-transform: none;
         height: 30px;
+        font-weight: normal;
+        font-size: 12px !important;
     }
     #no{
         display: inline;
-        color: gray;
-        margin: 0 5px;
-        width: 20px;
+        color: #3b9ea6;
+        /* margin: 0 5px; */
+        width: 25px;
+        font-size: 20px;
+        background: transparent;
+        font-weight: bold;
         text-align: center;
         border: none;
     }
     ion-icon{
-        border: 1px solid lightgray;
+        border: 1px solid gray;
         border-radius: 50%;
-        padding:8px 11px;
-        color:lightgray;
+        padding: 2px 5px;
+        color: #3b9ea6;
+        font-size: 23px;
+        font-weight: bold;
     }
 }
   [col-6] 
   { 
-    padding:10px;
+  
     img{
        width: 100%;
        height: 185px;
@@ -80,10 +93,14 @@ page-favorite {
   }
 
   .quandiv{
-    display: block;
+    display: flex;
+    text-align: end;
   }
   .quandivdis{
-      display: none;
+    // display: none;
+    display: flex;
+    text-align: end;
+    margin: 0;
   }
   .disbtn{
     display: none;
@@ -97,4 +114,11 @@ page-favorite {
     text-transform: none;
     height: 30px;
   }
+
+  yellowtabs #btn1 {
+    background-image: url(../assets/imgs/favon.png);
+    margin: 0;
+    height: 45px;
+    
+}
 }

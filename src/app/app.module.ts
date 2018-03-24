@@ -45,6 +45,13 @@ import { ProductProvider } from '../providers/product';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { PayPal } from '@ionic-native/paypal';
+import { PrimtabsComponent } from '../components/primtabs/primtabs';
+import { YellowheadComponent } from '../components/yellowhead/yellowhead';
+import { MainaddsPage } from '../pages/mainadds/mainadds';
+import { MycartPage } from '../pages/mycart/mycart';
+import { MapPage } from '../pages/map/map';
+import { YellowtabsComponent } from '../components/yellowtabs/yellowtabs';
+import { ContactusPage } from '../pages/contactus/contactus';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -87,7 +94,15 @@ export function createTranslateLoader(http: Http) {
     TartoptionsPage,
     TermsPage,
     PaypalinfoPage,
-    HisdetailsPage
+    HisdetailsPage,
+    PrimtabsComponent,
+    YellowheadComponent,
+    MainaddsPage,
+    MycartPage,
+    MapPage,
+    MycartPage,
+    YellowtabsComponent,
+    ContactusPage
   ],
   imports: [
     BrowserModule,
@@ -136,8 +151,15 @@ export function createTranslateLoader(http: Http) {
     TartoptionsPage,
     TermsPage,
     PaypalinfoPage,
-    HisdetailsPage
-    
+    HisdetailsPage,
+    PrimtabsComponent,
+    YellowheadComponent,
+    MainaddsPage,
+    MycartPage,
+    MapPage,
+    MycartPage,
+    YellowtabsComponent,
+    ContactusPage
   ],
   providers: [
     StatusBar,

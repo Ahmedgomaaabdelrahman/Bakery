@@ -14,28 +14,61 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+$blueColor :  #3B9EA6 ;
+$yellowColor:  #FFDF1B;
 @font-face{
 font-family: Bitter;
 src: url('../assets/fonts/Bitter/Bitter-Regular.ttf') ;
 }
+@font-face{
+    font-family: Arfont;
+    src: url('../assets/fonts/Insan-Regular.ttf') ;
+}
+@font-face{
+    font-family: Enfont;
+    src: url('../assets/fonts/Protoculture.otf') ;
+}
 .action-sheet-wrapper{
     width:85%;
 }
-
+.pagetitle{
+    margin: 0;
+    font-size: 30px;
+    color:$blueColor;
+    text-align: center;
+}
+.content{
+    background-image: url(../assets/imgs/back.png);
+    background-size: cover;
+}
 .toolbar-ios ion-title{
     padding: 0 10px 1px !important;
 }
 [dir="rtl"] .back-button-icon {
     transform: rotate(180deg)
 }
+
+
+.toolbar-background {
+    background: $yellowColor !important;
+}
+
+.tabs-md .tabbar , .tabs-ios .tabbar {
+    background: $blueColor !important;
+}
 .cartno{
     margin: 0;
     position: absolute;
     right: 19px;
     left: 50%;
-    font-size: 15px;
-    top: 15px;
-    display: none;
+    font-size: 20px;
+    top: 10px;
+    color: white;
+    background: #f18900;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
   }
 .action-sheet-md .action-sheet-button{
     padding: 0 16px;
@@ -59,8 +92,14 @@ src: url('../assets/fonts/Bitter/Bitter-Regular.ttf') ;
 //     left: 15px;
 //     width: 92%;
 // }
-ion-icon [name] {
+ 
 
+* {
+    font-family: Enfont ; 
+}
+[dir="rtl"] * :not(ion-icon) {
+    font-family:Arfont ;
+    
 }
 page-invoice.ion-page.show-page{
     height: 65% !important;
@@ -93,13 +132,13 @@ ion-modal {
 .input-cover{
     position: static;
 }
-[dir="rtl"] [col-2] ion-icon {
+[dir="rtl"] [col-2] ion-icon , [dir="rtl"] [col-1] ion-icon {
     color: orange;
     transform: rotate(180deg);
 }
-[dir="rtl"] .bar-button-md[icon-only]{
-    transform: rotate(180deg);
-}
+// [dir="rtl"] .bar-button-md[icon-only]{
+//     transform: rotate(180deg);
+// }
 
 *{
   touch-action: manipulation;

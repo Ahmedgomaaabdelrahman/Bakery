@@ -62,7 +62,7 @@ p{
 [col-12] .button{
     height: 58px;
     border-radius: 30px;
-    background: #32bdd6;
+    background: $blueColor;
     font-size: 20px;
     width: 80%;
     margin: 10px auto 0;
@@ -81,6 +81,7 @@ p{
     text-align: center;
     font-size: 18px;
     height: 70px;
+    letter-spacing: 3px;
 }
 .swiper-pagination{
     position: fixed;
@@ -101,7 +102,7 @@ ion-input{
     font-size: 20px;
     width: 100%;
     font-family: Bitter;
-    color: #33bdd6;
+    color: $blueColor;
 }
 }
 

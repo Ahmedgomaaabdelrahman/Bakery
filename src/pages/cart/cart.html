@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-title>  
       <ion-row style="text-align: center">
@@ -19,19 +19,20 @@
      </ion-row>
   </ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 
 <ion-content>
-
+<yellowhead></yellowhead>
+<p class="pagetitle">{{'Cart'|translate}}</p>
 <ion-row>
   <ion-col col-12>
-      <img src="assets/imgs/topimg.png">
+      <img width="100%" src="assets/imgs/topimg.png">
   </ion-col>
 </ion-row>
 
 <ion-row style="color: gray;">
-  <ion-col col-4 style="text-align:start;color:orange">
+  <ion-col col-4 style="text-align:start;color:#3b9ea6">
       {{'Add items'|translate}}
   </ion-col>
    <ion-col col-4 style="text-align:center">
@@ -45,29 +46,99 @@
 <input class="total"  value="{{totalprice}}" readonly>
 
 <div class="itemrow">
-  <ion-row *ngFor="let item of cartItems,let i=index">
+  <!-- <ion-row *ngFor="let item of cartItems,let i=index"> -->
+  <ion-row>
     <ion-col col-4>
-      <img [src]="MainProvider.itemsImg+item.items.itemimages[0].image_path">
+      <img src="assets/imgs/roug2.jpg">
       <!--<div class="tcolor"></div>-->
     </ion-col>
     <ion-col col-8>
       <ion-row>
-        <ion-col col-10> <p class="p1">{{item.items.item_name}} </p></ion-col>
-        <ion-col col-2><ion-icon class="closeicon" name="close" (click)="deleteItem(i,item.item_id)"></ion-icon></ion-col>
+        <ion-col col-10> <p class="p1"> asdadasd</p></ion-col>
+        <ion-col col-2><ion-icon class="closeicon" name="close" ></ion-icon></ion-col>
       </ion-row>
        
-        <p class="p2" >{{item.items.price}}</p>
+        <p class="p2" >asdabg</p>
         <div>
-          <ion-icon name="add"  (click)="increaseQuan(i,quanno,item.item_id,item.items.category_id)"></ion-icon>
-          <input id="no" [ngModel]="item.quantity"  #quanno value="{{item.quantity}}" readonly>
+          <ion-icon name="add"  ></ion-icon>
+          <input id="no"#quanno value="10" readonly>
           
-          <ion-icon name="remove" id="remove" (click)="decreaseQuan(i,quanno,item.item_id,item.items.category_id)"></ion-icon>
+          <ion-icon name="remove" id="remove" ></ion-icon>
 
           <!-- <p class="print" >{{'Printed'|translate}}</p> -->
          <!-- <img src="assets/imgs/printer.png">  -->
       </div>
     </ion-col>
   </ion-row>
+  <ion-row>
+      <ion-col col-4>
+        <img src="assets/imgs/roug2.jpg">
+        <!--<div class="tcolor"></div>-->
+      </ion-col>
+      <ion-col col-8>
+        <ion-row>
+          <ion-col col-10> <p class="p1"> asdadasd</p></ion-col>
+          <ion-col col-2><ion-icon class="closeicon" name="close" ></ion-icon></ion-col>
+        </ion-row>
+         
+          <p class="p2" >asdabg</p>
+          <div>
+            <ion-icon name="add"  ></ion-icon>
+            <input id="no"#quanno value="10" readonly>
+            
+            <ion-icon name="remove" id="remove" ></ion-icon>
+  
+            <!-- <p class="print" >{{'Printed'|translate}}</p> -->
+           <!-- <img src="assets/imgs/printer.png">  -->
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-4>
+          <img src="assets/imgs/roug2.jpg">
+          <!--<div class="tcolor"></div>-->
+        </ion-col>
+        <ion-col col-8>
+          <ion-row>
+            <ion-col col-10> <p class="p1"> asdadasd</p></ion-col>
+            <ion-col col-2><ion-icon class="closeicon" name="close" ></ion-icon></ion-col>
+          </ion-row>
+           
+            <p class="p2" >asdabg</p>
+            <div>
+              <ion-icon name="add"  ></ion-icon>
+              <input id="no"#quanno value="10" readonly>
+              
+              <ion-icon name="remove" id="remove" ></ion-icon>
+    
+              <!-- <p class="print" >{{'Printed'|translate}}</p> -->
+             <!-- <img src="assets/imgs/printer.png">  -->
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-4>
+            <img src="assets/imgs/roug2.jpg">
+            <!--<div class="tcolor"></div>-->
+          </ion-col>
+          <ion-col col-8>
+            <ion-row>
+              <ion-col col-10> <p class="p1"> asdadasd</p></ion-col>
+              <ion-col col-2><ion-icon class="closeicon" name="close" ></ion-icon></ion-col>
+            </ion-row>
+             
+              <p class="p2" >asdabg</p>
+              <div>
+                <ion-icon name="add"  ></ion-icon>
+                <input id="no"#quanno value="10" readonly>
+                
+                <ion-icon name="remove" id="remove" ></ion-icon>
+      
+                <!-- <p class="print" >{{'Printed'|translate}}</p> -->
+               <!-- <img src="assets/imgs/printer.png">  -->
+            </div>
+          </ion-col>
+        </ion-row>
 </div>
 
 
@@ -84,4 +155,6 @@
    <ion-col col-9>
      <button ion-button block (click)="golocation()">{{'Next'|translate}}</button>
    </ion-col>
+
+   
 </ion-footer>  

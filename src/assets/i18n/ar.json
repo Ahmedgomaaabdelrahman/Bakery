@@ -3,7 +3,7 @@
     "Add to Cart":"اضف الى السله",
     "Favorites":"المفضلة",
     "About":"عن مخبز",
-    "OrderLocation":"مكان الطلب",
+    "Order Location":"مكان الطلب",
     "Save Address":"حفظ العنوان",
     "Shopping Cart":"السلة",
     "Add items":"اضافه منتجات",
@@ -94,5 +94,15 @@
     "Number" : "رقم",
     "Name : ":"الاسم : ",
     "Order Details":"تفاصيل الطلب",
-    "Go Home Page":"الذهاب الى الرئيسيه"
+    "Go Home Page":"الذهاب الى الرئيسيه",
+    "Cart":"سلة المشتريات",
+    "History":"طلباتى",
+    "Contact us":"تواصل معانا",
+    "Phone Numbers":"ارقام الجوال",
+    "Address":"العنوان",
+    "Emails":"البريد الالكترونى",
+    "Contact Managment":"الاتصال بالادارة",
+    "Write Here":"اكتب هنا",
+    "Send":"ارسال",
+    "Ar":"عربى"
 }

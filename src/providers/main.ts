@@ -5,16 +5,16 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class MainProvider {
-  public static baseUrl : string  = "http://104.131.41.125/api/";
-  public static baseImg : string  = "http://104.131.41.125/profileImages/";
-  public static itemsImg : string = "http://104.131.41.125/ItemImages/";
-  public static catImgs : string  = "http://104.131.41.125/categoriesImages/";
-  public static TartImgs : string = "http://104.131.41.125/tartImages/";
-  public static TartColorsImgs : string = "http://104.131.41.125/tartColors/"
+  public static baseUrl : string  = "http://admin.alyahyamb.com/api/";
+  public static baseImg : string  = "http://admin.alyahyamb.com/profileImages/";
+  public static itemsImg : string = "http://admin.alyahyamb.com/ItemImages/";
+  public static catImgs : string  = "http://admin.alyahyamb.com/categoriesImages/";
+  public static TartImgs : string = "http://admin.alyahyamb.com/tartImages/";
+  public static TartColorsImgs : string = "http://admin.alyahyamb.com/tartColors/"
   
 
   public static  lang : string = 'en';
-  public static cartNo : number = 0;
+  public static cartNo : number ;
   constructor(public http: Http) {
     console.log('Hello MainProvider Provider');
   }

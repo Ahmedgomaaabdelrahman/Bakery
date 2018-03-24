@@ -28,10 +28,18 @@ export class HomePage {
   btnsdiv : any [] = [];
   defaultno:any = 1;
   public count2 : number [] = [];
+  public cartitems : any [] =[];
   constructor(public actionSheetCtrl: ActionSheetController,public modalCtrl :ModalController,public navParams: NavParams,public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider, private menuCtrl:MenuController,public navCtrl: NavController) {
-
+    this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{this.cartitems = res});
+    MainProvider.cartNo = this.cartitems.length;
+  }
+  ionViewDidLoad(){
+    this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{this.cartitems = res});
+    MainProvider.cartNo = this.cartitems.length;
   }
   ionViewWillEnter() {
+    this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{this.cartitems = res});
+    MainProvider.cartNo = this.cartitems.length;
     this.flag = false;
     this.filter = false;
     this.allflag = true;
@@ -110,6 +118,7 @@ showDetails(images,name,details,quantity,itemid,catid,rate){
     rate : rate
   });
     console.log("From Home",{images,name,details,quantity});
+    console.log(quantity);
     detpage.present();
     detpage.onDidDismiss(data=>{
       this.flag = false;
@@ -177,6 +186,7 @@ addToCart(i,itemid,quanid,catid){
       this.quandiv[i]='quandiv';
       this.btnsdiv[i]='disbtn';
       this.count2[i] = 1;
+      MainProvider.cartNo++;
     }
   })
 }
