@@ -18,6 +18,7 @@ export class PaymentPage {
   public locid : any;
   public resitems = [];
   public payment : string;
+  flag;
   constructor(private customer:CustomerProvider,private product:ProductProvider,private payPal: PayPal,public common:CommonServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
    
   }
@@ -36,14 +37,16 @@ export class PaymentPage {
       console.log("Order Info", res);
       this.resitems = res ;
       console.log(this.resitems);
-        this.common.createModel(InvoicePage, {invoice : this.resitems});
+        this.navCtrl.push(InvoicePage, {invoice : this.resitems});
     });
   }
 
   changetoCash(){ 
     this.payment = 'Cash'; 
+    this.flag = true;
   }
   changepay(){ 
+    this.flag = true;
     this.payment = 'Paypal';
     this.payPal.init({
     PayPalEnvironmentProduction: 'AT4frBtKvUL6p4MSRXx-vH8io20OP3G4hdWgbU7N3mOdiBrVEQrZlBFpVsBWKn1vlJR8cwxFsDgWeDaj',

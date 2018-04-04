@@ -23,11 +23,13 @@ src: url('../assets/fonts/Bitter/Bitter-Regular.ttf') ;
 }
 @font-face{
     font-family: Arfont;
-    src: url('../assets/fonts/Insan-Regular.ttf') ;
+    src: url('../assets/fonts/JannaLT-Regular.ttf') ;
+    line-height: 15px;
 }
 @font-face{
     font-family: Enfont;
-    src: url('../assets/fonts/Protoculture.otf') ;
+    src: url('../assets/fonts/JannaLT-Regular.ttf') ;
+    line-height: 15px;
 }
 .action-sheet-wrapper{
     width:85%;
@@ -41,6 +43,11 @@ src: url('../assets/fonts/Bitter/Bitter-Regular.ttf') ;
 .content{
     background-image: url(../assets/imgs/back.png);
     background-size: cover;
+}
+
+.alert-md .alert-radio-icon {
+   left:0;
+   margin: 0 10px;
 }
 .toolbar-ios ion-title{
     padding: 0 10px 1px !important;
@@ -101,13 +108,13 @@ src: url('../assets/fonts/Bitter/Bitter-Regular.ttf') ;
     font-family:Arfont ;
     
 }
-page-invoice.ion-page.show-page{
-    height: 65% !important;
-    position: fixed;
-    top: 20%;
-    left: 15px;
-    width: 92%;
-}
+// page-invoice.ion-page.show-page{
+//     height:100% !important;
+//     position: fixed;
+//     top: 20%;
+//     left: 15px;
+//     width: 92%;
+// }
 page-rate.ion-page.show-page{
     height: 65% !important;
     position: fixed;
@@ -151,3 +158,4 @@ ion-modal {
 [dir="rtl"].slides{
     direction: rtl;
 }
+

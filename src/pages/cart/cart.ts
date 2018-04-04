@@ -20,10 +20,10 @@ export class CartPage {
     //  this.ionViewWillEnter();
    }
    ionViewDidLoad(){
-     this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{
+     this.product.getUserCart(this.customer.currentuser.user_id).subscribe((res)=>{
       this.cartItems = res;
       console.log(this.customer.currentuser.user_id);
-      console.log(res);
+      console.log(this.cartItems);
       for (let i=0 ; i<this.cartItems.length;i++){
         this.price = parseInt(this.cartItems[i].items.price);
         this.quantity = parseInt(this.cartItems[i].quantity);
@@ -38,11 +38,11 @@ golocation(){
    this.navCtrl.push(LocationsPage , { amount : this.totalprice});
 }
 
-deleteItem(i,itemid){
-  this.product.delCartItem(this.customer.currentuser.user_id,itemid).subscribe((res)=>{
+deleteItem(i,cartid){
+  this.product.delCartItem(cartid).subscribe((res)=>{
     console.log(res);
-    if (res == true){
-      this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{
+    if (res.state == true){
+      this.product.getUserCart(this.customer.currentuser.user_id).subscribe((res)=>{
         this.cartItems = res;
         console.log(this.cartItems);
       });
@@ -51,29 +51,32 @@ deleteItem(i,itemid){
   })
 }
 
-increaseQuan(i,quanno,itemid,catid){
+increaseQuan(i,catid,quanno){
   quanno.value++;
-  console.log(quanno.value);
-  this.product.addToCart(this.customer.currentuser.user_id,itemid,quanno.value,catid).subscribe((res)=>{
+  // console.log(quanno.value);
+  this.product.modifyQuan(catid,"plus").subscribe((res)=>{
     console.log(res);
   });
-  let itemprice = parseInt(this.cartItems[i].items.price)
+  let itemprice = parseInt(this.cartItems[i].items.price) 
   this.totalprice  = this.totalprice + itemprice;
 }
-decreaseQuan(i,quanno,itemid,catid){
 
-  if(quanno.value == 1 || quanno.value == 0){
-    document.getElementById('remove').style.pointerEvents = 'none';
-    this.deleteItem(i,itemid);
-  }
-  else{
+
+decreaseQuan(i,catid,quanno,itemid){ 
+
+  if(quanno.value > 1){
     quanno.value--;
     console.log(quanno.value);
-    this.product.addToCart(this.customer.currentuser.user_id,itemid,quanno.value,catid).subscribe((res)=>{
+    this.product.modifyQuan(catid,"subtract").subscribe((res)=>{
       console.log(res);
     });
-    this.totalprice  = this.totalprice - this.cartItems[i].items.price;
-  }
+    
+      this.totalprice  = this.totalprice - this.cartItems[i].items.price;
+  } 
+  // else{
+  
+    
+  // }
  
   
 }

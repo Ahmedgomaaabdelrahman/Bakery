@@ -5,7 +5,7 @@ import { NotificationPage } from './../notification/notification';
 import { AboutPage } from './../about/about';
 import { TermsPage } from './../terms/terms';
 import { Component } from '@angular/core';
-import { IonicPage,ActionSheetController, NavController, NavParams,Platform } from 'ionic-angular';
+import { IonicPage,ActionSheetController, NavController, NavParams,Platform , App } from 'ionic-angular';
 import { CommonServiceProvider } from './../../providers/common-service';
 import {TranslateService} from "@ngx-translate/core";
 import { MainProvider } from '../../providers/main';
@@ -23,7 +23,7 @@ export class SettingsPage {
    
    public flag : boolean = false;
    public MainProvider = MainProvider;
-  constructor(public nativeStorage:NativeStorage,public translate:TranslateService,public customer:CustomerProvider,public platform:Platform,public common:CommonServiceProvider,public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public _app:App,public nativeStorage:NativeStorage,public translate:TranslateService,public customer:CustomerProvider,public platform:Platform,public common:CommonServiceProvider,public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -48,8 +48,9 @@ export class SettingsPage {
 
  logOut(){
    this.customer.currentuser = null;
-   this.navCtrl.setRoot(LoginPage);
+  //  this._app.getRootNav().setRoot(LoginPage);
    this.nativeStorage.clear();
+  this.platform.exitApp();
    console.log(this.customer.currentuser);
  }
  changeLang(){

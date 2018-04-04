@@ -1,5 +1,5 @@
 page-tabs {
- .tabs-md .tab-button{
+ .tabs-md .tab-button , .tabs-ios .tab-button{
   
     background-repeat: no-repeat;
     background-position: center;
@@ -10,48 +10,64 @@ page-tabs {
 //     background-size:75px ;
 //     }
 
-.tabs-md .tab-button[id=tab-t0-0]{
+.tabs-md .tab-button[id=tab-t0-0], .tabs-ios .tab-button[id=tab-t0-0]{
     background-image: url('../assets/imgs/home.png');
 }
-.tabs-md .tab-button[aria-selected=true][id=tab-t0-0]{
+.tabs-md .tab-button[aria-selected=true][id=tab-t0-0] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-0]{
      background-image: url('../assets/imgs/homeon.png'); 
 }
-.tabs-md .tab-button[id=tab-t0-1]{
+.tabs-md .tab-button[id=tab-t0-1] , .tabs-ios .tab-button[id=tab-t0-1]{
     background-image: url('../assets/imgs/map.png');
 }
-.tabs-md .tab-button[aria-selected=true][id=tab-t0-1]{
+.tabs-md .tab-button[aria-selected=true][id=tab-t0-1] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-1]{
      background-image: url('../assets/imgs/mapon.png');
 }
 
 
-.tabs-md .tab-button[id=tab-t0-2]{
+.tabs-md .tab-button[id=tab-t0-2] , .tabs-ios .tab-button[id=tab-t0-2]{
     background-image: url('../assets/imgs/cart.png');
 }
 
-.tabs-md .tab-button[aria-selected=true][id=tab-t0-2]{
+.tabs-md .tab-button[aria-selected=true][id=tab-t0-2] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-2]{
      background-image: url('../assets/imgs/carton.png');
 }
 
 
 
-.tabs-md .tab-button[id=tab-t0-3]{
+.tabs-md .tab-button[id=tab-t0-3] , .tabs-ios .tab-button[id=tab-t0-3]{
     background-image: url('../assets/imgs/profile.png');
 }
-.tabs-md .tab-button[aria-selected=true][id=tab-t0-3]{
+.tabs-md .tab-button[aria-selected=true][id=tab-t0-3] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-3]{
      background-image: url('../assets/imgs/profon.png');
 }
 
+.tabs-md .tab-button-text  , .tabs-ios .tab-button-text{
+    color : white;
+    font-size: 20px;
+}
+.tabs-md .tab-button[aria-selected=true] .tab-button-text , .tabs-ios .tab-button[aria-selected=true] .tab-button-text{
+    color : #ffdf1b;
+    font-size: 20px;
+}
+.tab-button-text {
+    display:block;
+}
+// .tabs-md .tab-button[id=tab-t0-4]{
+//   background-image: url('../assets/imgs/more.png');
+//    }
 
-
-.tabs-md .tab-button[id=tab-t0-4]{
-  background-image: url('../assets/imgs/more.png');
-   }
-
-   .tabs-md .tab-button[aria-selected=true][id=tab-t0-4]{
-         background-image: url('../assets/imgs/moreon.png');
+//    .tabs-md .tab-button[aria-selected=true][id=tab-t0-4]{
+//          background-image: url('../assets/imgs/moreon.png');
          
-    }
+//     }
 
-
+// .tabs-md .tab-button[id=tab-t0-4]{
+//         background-image: url('../assets/imgs/moof.png');
+//          }
+      
+// .tabs-md .tab-button[aria-selected=true][id=tab-t0-4]{
+//          background-image: url('../assets/imgs/moon.png');
+               
+//    }
 
 }

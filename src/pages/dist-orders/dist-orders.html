@@ -1,0 +1,25 @@
+<ion-content>
+  <yellowhead></yellowhead>
+
+  <div>
+    <ion-row class="totrow" *ngFor="let order of myOrders">
+      <ion-col col-4>
+        <img [src]="mainProvider.itemsImg+order.order_deatails[0].items.itemimages[0].image_path">
+      </ion-col>
+      <ion-col col-8>
+          <p>{{'Order Number'|translate}} : {{order.order_id}}</p>
+          <p>{{'Items Number' |translate}} :  {{order.order_deatails_count}}</p>
+          <p>{{'Payment' |translate}}  : {{order.payment}}</p>
+          <p>{{'Total Price' |translate}} : {{order.total_price}}</p>
+          <div>
+            <button class="btn" ion-button block (click)="gotolocation(order.location)">{{'Show User Location'|translate}}</button>
+            
+            <button class="btn" ion-button block (click)="finishOrder(order.order_id)">{{'Finish Order'|translate}}</button>
+          </div>
+         
+      </ion-col>
+    
+    </ion-row>
+
+  </div>
+</ion-content>

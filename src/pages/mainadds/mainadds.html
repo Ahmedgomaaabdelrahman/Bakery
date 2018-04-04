@@ -2,66 +2,69 @@
     <yellowhead></yellowhead>
     <ion-slides dir="ltr">
       <ion-slide   *ngFor="let slider of sliderprods" >
-        <img (click)="godetails(slider.item.itemimages, slider.item.item_name , slider.item.itemdetails_ar,
-          slider.item.quantity,slider.item.rate, slider.item.item_id ,slider.item.categories_id)" [src]="mainProvider.itemsImg+slider.item.itemimages[0].image_path">
+        <img (click)="godetails(slider.item.itemimages, slider.item.sub_category_id ,slider.item.item_name , slider.item.itemdetails_ar,
+        slider.item.quantity,slider.item.rate, slider.item_id ,slider.item.categories_id)" [src]="mainProvider.itemsImg+slider.item.itemimages[0].image_path">
       </ion-slide>
     </ion-slides>
   
         
-            <ion-scroll scrollX="true" style="width:100vw;height:220px"> 
-             <div class="product">
-              <div class="contdiv" *ngFor="let offer of otherOffers">
-                <ion-icon class="hearticon" name="heart-outline"></ion-icon>
-                <img (click)="godetails(offer.item.itemimages, offer.item.item_name , offer.item.itemdetails_ar,
-                offer.item.quantity,offer.item.rate, offer.item.item_id ,offer.item.categories_id)" [src]="mainProvider.itemsImg+offer.item.itemimages[0].image_path">
-                <ion-row>
-                  <ion-col col-6>
-                    <p>{{offer.item.item_name}}</p>
-                    <p>${{offer.item.price}}</p>
-                  </ion-col>
-                  <ion-col col-6>
-                      <button ion-button block>{{'Add to Cart'|translate}}</button>
-                  </ion-col>
-                </ion-row>
-               
-             
-                <!-- <div >
-                  <ion-icon name="add"></ion-icon>
-                  <input id="no"readonly>
-                  <ion-icon name="remove"></ion-icon>
-                </div> -->
-              </div>
-              <!-- <ion-icon name="heart" class="heart"></ion-icon> -->
-              
+  <ion-scroll scrollX="true" style="width:100vw;height:220px"> 
+    <div class="product">
+    <div class="contdiv" *ngFor="let offer of otherOffers,let i = index">
 
-              <div class="contdiv">
-                  <ion-icon class="hearticon" name="heart-outline"></ion-icon>
-                  <img src="assets/imgs/roug1.jpg">
-                  <ion-row style="display:flex">
-                    <ion-col col-4>
-                      <p>sad</p>
-                      <p>$aasd</p>
-                    </ion-col>
-                    <ion-col col-8>
-                        <!-- <button ion-button block>{{'Add to Cart'|translate}}</button> -->
-                        <div style="text-align: center;">
-                          <ion-icon class="quanicon" name="add"></ion-icon>
-                          <input id="no" value = "10"readonly>
-                          <ion-icon class="quanicon" name="remove"></ion-icon>
-                        </div>
-                    </ion-col>
-                  </ion-row>
-                 
-               
-                  <!-- <div >
-                    <ion-icon name="add"></ion-icon>
-                    <input id="no"readonly>
-                    <ion-icon name="remove"></ion-icon>
-                  </div> -->
-                </div>
-             
-                  </div>
-                  </ion-scroll>  
+        <!-- <ion-icon #icon [name]="icons[i]" class="heart" (click)="addToFav(offer.item.item_id,i)"></ion-icon> -->
+
+      <!-- images,subcatid,name,details,quantity,rate,itemid,catid -->
+      <img (click)="godetails(offer.item.itemimages, offer.item.sub_category_id ,offer.item.item_name , offer.item.itemdetails_ar,
+      offer.item.quantity,offer.item.rate, offer.item_id ,offer.item.categories_id)" [src]="mainProvider.itemsImg+offer.item.itemimages[0].image_path">
+      <ion-row>
+        <ion-col col-6>
+          <p>{{offer.item.item_name}}</p>
+          <p>${{offer.item.price}}</p>
+        </ion-col>
+        <ion-col col-6>
+            <button ion-button block (click)="addToCart(i,offer.item.item_id, offer.item.sub_category_id ,offer.item.quantity,offer.item.category_id)">{{'Add to Cart'|translate}}</button>
+        </ion-col>
+      </ion-row>
+      
+    
+      <!-- <div >
+        <ion-icon name="add"></ion-icon>
+        <input id="no"readonly>
+        <ion-icon name="remove"></ion-icon>
+      </div> -->
+    </div>
+    <!-- <ion-icon name="heart" class="heart"></ion-icon> -->
+    
+
+    <!-- <div class="contdiv">
+        <ion-icon class="hearticon" name="heart-outline"></ion-icon>
+        <img src="assets/imgs/roug1.jpg">
+        <ion-row style="display:flex">
+          <ion-col col-4>
+            <p>sad</p>
+            <p>$aasd</p>
+          </ion-col>
+          <ion-col col-8>
+              <button ion-button block>{{'Add to Cart'|translate}}</button>
+              <div style="text-align: center;">
+                <ion-icon class="quanicon" name="add"></ion-icon>
+                <input id="no" value = "10"readonly>
+                <ion-icon class="quanicon" name="remove"></ion-icon>
+              </div>
+          </ion-col>
+        </ion-row>
+        
+      
+        <div >
+          <ion-icon name="add"></ion-icon>
+          <input id="no"readonly>
+          <ion-icon name="remove"></ion-icon>
+        </div>
+      </div> -->
+    
+        </div>
+  </ion-scroll>  
         
  
 </ion-content>

@@ -16,7 +16,9 @@
       </ion-buttons>
     </ion-col>
     <ion-col col-9 style="padding: 10px 0;font-family: Bitter;color: #0497b3;">{{'Tart Options'|translate}}</ion-col>
-    <ion-col col-2 style="padding: 10px 0;color:#0497b3 ">$204</ion-col>
+    <ion-col col-2 style="padding: 10px 0;color:#0497b3 ">
+      <!-- $204 -->
+    </ion-col>
   </ion-row>
 </ion-title>
 </ion-navbar>
@@ -43,23 +45,6 @@
           </ion-label>
           <ion-checkbox color="dark" (ionChange)="getcolor(color.color_id)"></ion-checkbox>
         </ion-item>
-        <ion-item class="coloritem" *ngFor="let color of colors">
-            <ion-label>
-              <div class="colordiv"> 
-                <h5> <img [src]="MainProvider.TartColorsImgs+color.tart_colorImage"></h5> 
-              </div>
-            </ion-label>
-            <ion-checkbox color="dark" (ionChange)="getcolor(color.color_id)"></ion-checkbox>
-          </ion-item>
-
-          <ion-item class="coloritem" *ngFor="let color of colors">
-              <ion-label>
-                <div class="colordiv"> 
-                  <h5> <img [src]="MainProvider.TartColorsImgs+color.tart_colorImage"></h5> 
-                </div>
-              </ion-label>
-              <ion-checkbox color="dark" (ionChange)="getcolor(color.color_id)"></ion-checkbox>
-            </ion-item>
       </ion-scroll>
     </div>
     <hr>
@@ -72,22 +57,18 @@
       width: 95%;">
         <ion-label>{{'Tart Type'|translate}}</ion-label>
         <ion-select [(ngModel)]="tarttype">
-          <ion-option value="size">By Size</ion-option>
-          <ion-option value="floor">By Floor</ion-option>
+          <ion-option value="size">{{'By Size'|translate}}</ion-option>
+          <ion-option value="floor">{{'By Floor'|translate}}</ion-option>
         </ion-select>
       </ion-item>
     </ion-list>
 
     <ion-list radio-group *ngIf="tarttype == 'floor'">
-        <ion-label>{{'What Floor would you like'|translate}}</ion-label>
+      <ion-label>{{'What Floor would you like'|translate}}</ion-label>
       <ion-item style="background: transparent;">
         <ion-label>{{'Tart Floor'|translate}}</ion-label>
         <ion-select [(ngModel)]="floor">
-          <ion-option value="1">1</ion-option>
-          <ion-option value="2">2</ion-option>
-          <ion-option value="3">3</ion-option>
-          <ion-option value="4">4</ion-option>
-          <ion-option value="5">5</ion-option>
+          <ion-option *ngFor="let floor of options" value="{{floor.tart_floor.floors_id}}">{{floor.tart_floor.floorsar}}</ion-option>
         </ion-select>
       </ion-item>
     </ion-list>
@@ -95,31 +76,20 @@
    
 
 
- <ion-list radio-group *ngIf="tarttype == 'size'">
+ <ion-list  radio-group *ngIf="tarttype == 'size'"  [(ngModel)]="tartsize" >
     <ion-label>{{'What size would you like'|translate}}</ion-label>
       <div style="overflow:scroll">
-          <ion-scroll scrollX="true" style="width:100vw;height:88px">
-  <ion-item class="myitem" *ngFor="let size of sizes">
-    <ion-label> <div class="size">
-          <h5>{{size.size_name}}<br><span>{{size.size_no}}</span></h5> 
-        </div> </ion-label>
-    <ion-radio  [value]="size.size_id" (ionSelect)="getsize(size.size_id)"></ion-radio>
-  </ion-item>
-
-  <ion-item class="myitem" *ngFor="let size of sizes">
-      <ion-label> <div class="size">
-            <h5>{{size.size_name}}<br><span>{{size.size_no}}</span></h5> 
-          </div> </ion-label>
-      <ion-radio  [value]="size.size_id" (ionSelect)="getsize(size.size_id)"></ion-radio>
-    </ion-item>
-    <ion-item class="myitem" *ngFor="let size of sizes">
-        <ion-label> <div class="size">
-              <h5>{{size.size_name}}<br><span>{{size.size_no}}</span></h5> 
-            </div> </ion-label>
-        <ion-radio  [value]="size.size_id" (ionSelect)="getsize(size.size_id)"></ion-radio>
-      </ion-item>
-    </ion-scroll>
-  </div>
+        <ion-scroll scrollX="true" style="width:100vw;height:88px">
+            <ion-item class="myitem" *ngFor="let size of options">
+              <ion-label> 
+                <div class="size">
+                  <h5>{{size.tart_size.size_name}}<br><span>{{size.tart_size.size_no}}</span></h5> 
+                </div>
+                </ion-label>
+              <ion-radio name="tartsize" (ionSelect)="getsize(size.tart_size.size_id)" value="{{size.tart_size.size_id}}"></ion-radio>
+            </ion-item>
+        </ion-scroll>
+      </div>
 </ion-list>     
  
  <hr>
@@ -135,18 +105,6 @@
         <h6>${{add.add_price}}</h6>
         <button ion-button block (click)="putadds(add.adds_id)">{{'Add item'|translate}}</button>
       </div>
-      <div *ngFor="let add of adds" >
-          <img [src]="MainProvider.TartImgs+add.add_image">
-          <p>{{add.add_namear}}</p>
-          <h6>${{add.add_price}}</h6>
-          <button ion-button block (click)="putadds(add.adds_id)">{{'Add item'|translate}}</button>
-        </div>
-        <div *ngFor="let add of adds" >
-            <img [src]="MainProvider.TartImgs+add.add_image">
-            <p>{{add.add_namear}}</p>
-            <h6>${{add.add_price}}</h6>
-            <button ion-button block (click)="putadds(add.adds_id)">{{'Add item'|translate}}</button>
-          </div>
     </ion-scroll>
 
 </div>
@@ -155,7 +113,7 @@
 
     <p style="text-align: center;color: gray;margin: 15px;">{{'Upload your own image'|translate}}</p>
     <div *ngIf="img == null" class="add" (click)="addimage()"><ion-icon name="add"></ion-icon></div>
-    <div style="text-align:center"><img *ngIf="img != null" [src]='"data:image/png;base64,"+img'></div>
+    <div class="imagedivs" style="text-align:center"><img (click)="addimage()"  *ngIf="img != null" [src]='"data:image/png;base64,"+img'></div>
 
     <hr>
 

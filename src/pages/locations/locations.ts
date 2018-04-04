@@ -14,7 +14,7 @@ export class LocationsPage {
   public locations : any [] ;
   public amount : any;
   public loactionid : any;
-
+  flag;
   constructor(public product:ProductProvider,public customer:CustomerProvider,public navCtrl: NavController, public navParams: NavParams) {
      this.amount = this.navParams.get('amount');
   }
@@ -44,5 +44,6 @@ deleteLocation(locid){
 setlocation(location : any){
       console.log(location);
       this.loactionid = location.location_id;
+      this.flag = true;
 }
 }

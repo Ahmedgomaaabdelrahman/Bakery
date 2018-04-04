@@ -1,6 +1,6 @@
 {
     "Login":"تسجيل دخول",
-    "Add to Cart":"اضف الى السله",
+    "Add to Cart":"اضف للسله",
     "Favorites":"المفضلة",
     "About":"عن مخبز",
     "Order Location":"مكان الطلب",
@@ -104,5 +104,22 @@
     "Contact Managment":"الاتصال بالادارة",
     "Write Here":"اكتب هنا",
     "Send":"ارسال",
-    "Ar":"عربى"
+    "Ar":"عربى",
+    "Order Number":"رقم الطلب",
+    "Items Number":"عدد المنتجات",
+    "Show User Location":"اظهار مكان العميل",
+    "Finish Order":"انهاء الطلب",
+    "More":"المزيد",
+    "Tart Type":"نوع التورته",
+    "What Floor would you like":"كم عدد الادوار المطلوبة؟",
+    "What size would you like":"ما المقاس المطلوب؟",
+    "Tart Floor":"ادوار التورتة",
+    "By Floor":"بالادوار",
+    "By Size":"بالمقاسات",
+    "Upload your own image":"اضف صوره للتورتة",
+    "Added Sucessfuly":"تم الاضافة",
+    "Sending Done":"تم الارسال",
+    "Already Added Before":"تم الاضافة من قبل",
+    "Login Sucessfuly":"تم الدخول بنجاح"
+ 
 }

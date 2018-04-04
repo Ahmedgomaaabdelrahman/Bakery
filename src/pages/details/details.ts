@@ -18,6 +18,7 @@ export class DetailsPage {
   public quantiy : any;
   public catid:any;
   public itemid:any;
+  public subcatid:any;
   public MainProvider = MainProvider;
  
 
@@ -29,6 +30,8 @@ export class DetailsPage {
      this.rate = this.navParams.get('rate');
      this.itemid = this.navParams.get('itemid');
      this.catid = this.navParams.get('catid');
+     this.subcatid = this.navParams.get('subcatid');
+
     console.log("From Details",this.navParams.get('name'),this.navParams.get('details'),this.navParams.get('quantiy') , this.navParams.get('rate'))
   }
 
@@ -38,21 +41,23 @@ export class DetailsPage {
    
   tartOptions(){
     console.log(this.quantiy);
-    this.common.createModel(TartoptionsPage , {
+    this.common.createModel(TartoptionsPage,{
       itemid:this.itemid,
       quantity:this.quantiy,
-      catid:this.catid
+      catid:this.catid,
+      subcatid:this.subcatid
     });
   }
   
   addTocart(){
-    this.product.addToCart(this.customer.currentuser.user_id,this.itemid,this.quantiy,this.catid).subscribe((res)=>{
+    this.product.addToCart(false,this.customer.currentuser.user_id,this.subcatid,this.itemid,1,this.catid,"",[],"","",[]).subscribe((res)=>{
       console.log(res);
-      if(res == 1){
+      if(res.state == false){
         this.common.presentToast("Already Added Before");
       }
       else {
-        this.common.presentToast("Added Successfully");
+        this.common.presentToast("Added Sucessfuly"); 
+        this.navCtrl.pop();
       }
     });
   }

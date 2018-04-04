@@ -8,7 +8,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {Observable, Subscriber} from "rxjs";
 import { ToastController, Nav } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
+TranslateService
 import { NativeStorage } from '@ionic-native/native-storage';
 /*
   Generated class for the CommonServiceProvider provider.
@@ -23,14 +23,19 @@ export class CommonServiceProvider {
     console.log('Hello CommonServiceProvider Provider');
   }
   presentToast(msg : string) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 2000
-    });
-    toast.present();
-  }
+    this.translateservice.get(msg).subscribe(
+      value => {
+          this.presentToast1(value);
 
-  presentSheet(translatedArray : string[]) {
+   });
+   
+  }
+  presentToast1(msg){ let toast = this.toastCtrl.create({
+  message: msg,
+  duration: 2000
+});
+toast.present();
+}  presentSheet(translatedArray : string[]) {
    let actionSheet = this.actionSheetCtrl.create({
     
      buttons: [

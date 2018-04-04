@@ -85,7 +85,7 @@
    </ion-col>
    <ion-col col-9>
      <!--<button ion-button block (click)="showInv()">Confirm</button>-->
-     <button ion-button block (click)="makeOrder()">{{'Confirm'|translate}}</button>
+     <button ion-button block [disabled]="!flag" (click)="makeOrder()">{{'Confirm'|translate}}</button>
    </ion-col>
 </ion-footer>  
 

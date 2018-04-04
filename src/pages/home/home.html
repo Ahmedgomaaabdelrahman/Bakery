@@ -17,12 +17,11 @@
 </ion-header>
 
 <ion-content>
-  <div style="overflow:scroll">
+  <div class="topscroll" style="overflow:scroll">
     <ion-scroll scrollX="true" style="width:100vw;height:51px">
       <ion-segment [(ngModel)]="Categories">
-        <ion-segment-button *ngFor="let categorey of allcats; let i = index" value="categorey.categories_id" (click)="getItemsCat(categorey.categories_id)">
-          <span *ngIf="MainProvider.lang =='ar'">{{categorey.categoryname_ar}}</span> 
-          <span *ngIf="MainProvider.lang =='en'">{{categorey.categoryname_en}}</span>
+        <ion-segment-button *ngFor="let categorey of allcats; let i = index" value="categorey.sub_category_id" (click)="getItemsCat(categorey.sub_category_id)">
+          <span>{{categorey.subcategroy_namear}}</span> 
         </ion-segment-button>
         
       </ion-segment>
@@ -48,13 +47,14 @@
   </ion-row> -->
 
    
-  <ion-row class="product" *ngIf="flag">
+  <ion-row class="product">
      
     <ion-col col-6 *ngFor="let item of specItems,let i=index">
         <div class="contdiv">
           <ion-icon #icon [name]="icons[i]" class="heart" (click)="addToFav(item.item_id,i)"></ion-icon>
-          <!--<ion-icon class="heart" name="heart"></ion-icon>-->
-          <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails(item.itemimages,item.item_name,item.itemdetails_ar,item.quantity,item.item_id,item.category_id,item.rate)">
+          <!-- <ion-icon class="heart" name="heart"></ion-icon> -->
+          <!-- <img src="assets/imgs/roug1.jpg"> -->
+          <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails(item.itemimages,item.item_name,item.itemdetails_ar,1,item.item_id,item.sub_category_id,item.category_id,item.rate)">
           
           <ion-row>
               <ion-col col-6>
@@ -62,12 +62,13 @@
                   <p>${{item.price}}</p>
               </ion-col>
               <ion-col col-6>
-                  <!-- <button ion-button block>{{'Add to Cart'|translate}}</button> -->
-                  <div style="text-align: center;display: flex;">
-                    <ion-icon class="quanicon" name="add"></ion-icon>
-                    <input id="no" value = "10"readonly>
-                    <ion-icon class="quanicon" name="remove"></ion-icon>
-                  </div>
+                <button ion-button block #quan (click)="addToCart(i,item.item_id,item.sub_category_id,item.quantity,category_id)">{{'Add to Cart'|translate}}</button>
+                <!-- <div #quan [class]="quandiv[i]">
+                  <ion-icon name="add" (click)="increaseQuan(i,item.item_id,category_id)"></ion-icon>
+                  <input id="no" *ngIf="item.cart[0]!=null" [(ngModel)]="item.cart[0].quantity" #quanno readonly>
+                  <input id="no" *ngIf="item.cart[0]==null" [value]="count2[i]" #quanno  readonly>
+                  <ion-icon name="remove" (click)="decreaseQuan(i,item.item_id,category_id)"></ion-icon>
+                </div> -->
               </ion-col>
             </ion-row>
 <!--           

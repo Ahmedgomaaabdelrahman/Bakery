@@ -30,7 +30,7 @@ page-login {
 .formaa{
     margin:0 10%;;
     width: 80%;
-    position: fixed;
+    position: static;
     top: 30%;
     p{
         text-align: end;
@@ -48,7 +48,7 @@ page-login {
     }
  .input{
      border-bottom: 0.5px solid lightgray;
-     margin-bottom: 30px;
+     margin-bottom: 5px;
 }
   .text-input {
     margin:10px 0 2px;
@@ -62,7 +62,7 @@ page-login {
 
    
 }
-[col-4] img{
+[col-6] img{
     height: 50px;
     width: 50px;
     border-radius: 50%;

@@ -30,15 +30,20 @@ export class HomePage {
   public count2 : number [] = [];
   public cartitems : any [] =[];
   constructor(public actionSheetCtrl: ActionSheetController,public modalCtrl :ModalController,public navParams: NavParams,public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider, private menuCtrl:MenuController,public navCtrl: NavController) {
-    this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{this.cartitems = res});
+    this.product.getUserCart(this.customer.currentuser.user_id).subscribe((res)=>{this.cartitems = res});
     MainProvider.cartNo = this.cartitems.length;
+    this.catid = this.navParams.get('catid');
+    this.product.getsubcat(this.catid).subscribe((res)=>{
+      console.log(res);
+      this.allcats = res;
+    });
   }
   ionViewDidLoad(){
-    this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{this.cartitems = res});
+    this.product.getUserCart(this.customer.currentuser.user_id).subscribe((res)=>{this.cartitems = res});
     MainProvider.cartNo = this.cartitems.length;
   }
   ionViewWillEnter() {
-    this.product.getCart(this.customer.currentuser.user_id).subscribe((res)=>{this.cartitems = res});
+    this.product.getUserCart(this.customer.currentuser.user_id).subscribe((res)=>{this.cartitems = res});
     MainProvider.cartNo = this.cartitems.length;
     this.flag = false;
     this.filter = false;
@@ -51,11 +56,12 @@ export class HomePage {
     this.allcats = [] ;
     this.allItems = [];
     this.specItems = [];
-
-    this.product.getAllProducts().subscribe((res)=>{
-      console.log(res);
-      this.allcats = res;
-    });
+  
+    // this.catid = this.navParams.get('catid');
+    // this.product.getsubcat(this.catid).subscribe((res)=>{
+    //   console.log(res);
+    //   this.allcats = res;
+    // });
 
     this.product.getAllItems(this.customer.currentuser.user_id).subscribe((res)=>{
      
@@ -93,21 +99,20 @@ export class HomePage {
         {
     }}
     });
-    
-  this.catid = this.navParams.get('catid');
-  if(this.catid){
-   this.flag = true;
-   this.allflag = false;
-   this.filter = false;
-   this.product.getChosItem(this.customer.currentuser.user_id,this.catid).subscribe((res)=>{
-     console.log(res);
-      this.specItems = res;
-   });
+  
+  // if(this.catid){
+  //  this.flag = true;
+  //  this.allflag = false;
+  //  this.filter = false;
+  //  this.product.getChosItem(this.customer.currentuser.user_id,this.catid).subscribe((res)=>{
+  //    console.log(res);
+  //     this.specItems = res;
+  //  });
 
+  // }
   }
-  }
-
-showDetails(images,name,details,quantity,itemid,catid,rate){
+  
+showDetails(images,name,details,quantity,itemid,subcatid,catid,rate){
  let detpage = this.modalCtrl.create(DetailsPage,{
     images : images , 
     name : name , 
@@ -115,6 +120,7 @@ showDetails(images,name,details,quantity,itemid,catid,rate){
     quantity : quantity,
     itemid : itemid,
     catid : catid,
+    subcatid : subcatid,
     rate : rate
   });
     console.log("From Home",{images,name,details,quantity});
@@ -122,7 +128,7 @@ showDetails(images,name,details,quantity,itemid,catid,rate){
     detpage.present();
     detpage.onDidDismiss(data=>{
       this.flag = false;
-    this.ionViewWillEnter();
+    // this.ionViewWillEnter();
     })
    
 
@@ -164,25 +170,22 @@ goCart(){
 }
 
 getItemsCat(catid){
-  this.flag = true;
-  this.allflag = false;
-  this.filter = false;
-  this.product.getChosItem(this.customer.currentuser.user_id,catid).subscribe((res)=>{
+  this.product.getsubitems(catid).subscribe((res)=>{
     console.log(res);
      this.specItems = res;
   })
 }
 
-addToCart(i,itemid,quanid,catid){
+addToCart(i,itemid,subcat,quanid,catid){
   console.log(i);
-  this.product.addToCart(this.customer.currentuser.user_id,itemid,quanid,catid).subscribe((res)=>{
+  this.product.addToCart(false,this.customer.currentuser.user_id,subcat,itemid,1,catid).subscribe((res)=>{
     console.log(res);
     // document.getElementById('no').textContent="1";
-    if(res == 1){
-      this.common.presentToast("this item already added");
+    if(res.state == false){
+      this.common.presentToast("Already Added Before");
     }
     else{
-      this.common.presentToast("Added Successfully");
+      this.common.presentToast("Added Sucessfuly");
       this.quandiv[i]='quandiv';
       this.btnsdiv[i]='disbtn';
       this.count2[i] = 1;
@@ -195,34 +198,34 @@ addToFav(itemid,icon){
   this.product.addtoFav(this.customer.currentuser.user_id,itemid).subscribe((res)=>{
     console.log(res);
     if(res == false){
-      this.common.presentToast("this item already added");
+      this.common.presentToast("Already Added Before");
     }
     else if(res == true){
-      this.common.presentToast("Added Successfully");
+      this.common.presentToast("Added Sucessfuly");
       this.icons[icon]='heart';
     }
   })
 }
 
-increaseQuan(i,itemid,catid){
+increaseQuan(i,itemid,catid,subcat){
   this.count2[i] = this.count2[i]  + 1;
-  this.product.addToCart(this.customer.currentuser.user_id,itemid,this.count2[i],catid).subscribe((res)=>{
+  this.product.addToCart(false,this.customer.currentuser.user_id,subcat,itemid,this.count2[i],catid).subscribe((res)=>{
         if(res == 1){
           console.log("Quan increased to "+ this.count2[i]);
         }
   });
 }
-decreaseQuan(i,itemid,catid){
+decreaseQuan(i,itemid,catid,subcat){
   if(this.count2[i] == 1){
     this.quandiv[i]='quandivdis';
     this.btnsdiv[i]='nondisbtn';
-    this.product.delCartItem(this.customer.currentuser.user_id,itemid).subscribe((res)=>{
-        console.log(res);
-    });
+    // this.product.delCartItem(this.customer.currentuser.user_id,itemid).subscribe((res)=>{
+    //     console.log(res);
+    // });
   }
   else {
     this.count2[i] = this.count2[i]  - 1;
-    this.product.addToCart(this.customer.currentuser.user_id,itemid,this.count2[i],catid).subscribe((res)=>{
+    this.product.addToCart(false,this.customer.currentuser.user_id,subcat,itemid,this.count2[i],catid).subscribe((res)=>{
           if(res == 1){
             console.log("Quan decreased to "+ this.count2[i]);
           }

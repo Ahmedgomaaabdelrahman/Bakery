@@ -21,21 +21,6 @@ export class MapPage {
   public branches : any [] = [];
 
   constructor(public mainprovider:MainProvider,public customer: CustomerProvider,public product: ProductProvider,private geolocation: Geolocation,public navCtrl: NavController, public navParams: NavParams) {
-    // this.product.getallBranches().subscribe((res)=>{
-    //   this.branches = res ;
-    //   console.log(this.branches);
-    // });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MapPage');
-    this.ionViewWillEnter();
-  }
-  ionViewWillEnter()
-  {  
-
-   
-    
     this.geolocation.getCurrentPosition().then((resp) => {
       // resp.coords.latitude
       // resp.coords.longitude
@@ -103,7 +88,7 @@ export class MapPage {
           position: {lat:lat, lng: lng},
           map: map,
           draggable: true,
-          icon:'../assets/imgs/home-marker.png', 
+          icon:'assets/imgs/home-marker.png', 
           animation: google.maps.Animation.BOUNCE
       });
 
@@ -125,6 +110,15 @@ export class MapPage {
        console.log('Error getting location', error);
      }); 
      
+   
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad MapPage');
+    // this.ionViewWillEnter();
+  }
+  ionViewWillEnter()
+  {  
      
   }
 }

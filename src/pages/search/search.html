@@ -1,0 +1,57 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <form id="demo-2">
+        <ion-searchbar type="search" (ionInput)="gosearch()" name="search" [(ngModel)]="search" placeholder="Search">
+        </ion-searchbar>
+      </form>
+      <ion-row class="product">
+    
+        <ion-col col-6 *ngFor="let item of resultItems,let i=index">
+            <div class="contdiv">
+              <!-- <ion-icon #icon [name]="icons[i]" class="heart" (click)="addToFav(item.item_id,i)"></ion-icon> -->
+              <!-- <ion-icon class="heart" name="heart"></ion-icon> -->
+              <!-- <img src="assets/imgs/roug1.jpg"> -->
+              <img [src]="MainProvider.itemsImg+item.itemimages[0].image_path" (click)="showDetails(item.itemimages,item.item_name,item.itemdetails_ar,1,item.item_id,item.sub_category_id,item.category_id,item.rate)">
+              
+              <ion-row>
+                  <ion-col col-6>
+                      <p>{{item.item_name}}</p>
+                      <p>${{item.price}}</p>
+                  </ion-col>
+                  <ion-col col-6>
+                    <button ion-button block #quan (click)="addToCart(i,item.item_id,item.sub_category_id,item.quantity,category_id)">{{'Add to Cart'|translate}}</button>
+                    <!-- <div #quan [class]="quandiv[i]">
+                      <ion-icon name="add" (click)="increaseQuan(i,item.item_id,category_id)"></ion-icon>
+                      <input id="no" *ngIf="item.cart[0]!=null" [(ngModel)]="item.cart[0].quantity" #quanno readonly>
+                      <input id="no" *ngIf="item.cart[0]==null" [value]="count2[i]" #quanno  readonly>
+                      <ion-icon name="remove" (click)="decreaseQuan(i,item.item_id,category_id)"></ion-icon>
+                    </div> -->
+                  </ion-col>
+                </ion-row>
+    <!--           
+              <button ion-button block #quan [class]="btnsdiv[i]" (click)="addToCart(i,item.item_id,item.quantity,category_id)">{{'Add to Cart'|translate}}</button>
+              <div #quan [class]="quandiv[i]">
+                <ion-icon name="add" (click)="increaseQuan(i,item.item_id,category_id)"></ion-icon>
+                <input id="no" *ngIf="item.cart[0]!=null" [(ngModel)]="item.cart[0].quantity" #quanno readonly>
+                <input id="no" *ngIf="item.cart[0]==null" [value]="count2[i]" #quanno  readonly>
+                <ion-icon name="remove" (click)="decreaseQuan(i,item.item_id,category_id)"></ion-icon>
+              </div> -->
+          </div>
+    
+        </ion-col>
+      </ion-row>
+  </ion-content>

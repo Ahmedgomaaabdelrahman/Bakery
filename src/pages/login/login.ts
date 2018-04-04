@@ -1,3 +1,4 @@
+import { DistOrdersPage } from './../dist-orders/dist-orders';
 import { CommonServiceProvider } from './../../providers/common-service';
 import { ForgetpassPage } from './../forgetpass/forgetpass';
 import { TabsPage } from './../tabs/tabs';
@@ -39,7 +40,13 @@ export class LoginPage {
         this.comm.presentToast(res.error);
       }
       else{
+        this.comm.presentToast("Login Sucessfuly");
+       if(res.type == 1) {
         this.navCtrl.setRoot(TabsPage);
+       }
+       else{
+        this.navCtrl.setRoot(DistOrdersPage);
+       }
         this.customer.currentuser = res;
         this.saveItem(res);
       }

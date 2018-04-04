@@ -12,6 +12,16 @@ page-tartoptions {
     color: #0698b3;
     font-size: 20px;
 }
+.imagedivs{
+    text-align: center;
+    height: 100px;
+    width: 50%;
+    margin: auto;
+    img{
+        height: 100%;
+
+    }
+}
 .add{
     height: 100px;
     width: 50%;
@@ -22,6 +32,7 @@ page-tartoptions {
     color: gray;
     border-radius: 10px;
     font-size: 45px;
+    line-height: 100%;
 }
 .buttons{
     width: 85%;
@@ -197,6 +208,8 @@ ion-scroll {
             margin: 0;
             color: gray;
             font-size: 12px;
+            max-width: 100px;
+            overflow: scroll;
         }
         h6{
             margin: 5px 0;

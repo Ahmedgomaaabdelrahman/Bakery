@@ -17,8 +17,8 @@
 <ion-content>
   <div class="cont">
     <p>{{'Email Address'|translate}}</p>
-    <ion-input type="email" class="forget"></ion-input>
+    <ion-input type="email" [(ngModel)]="email" class="forget"></ion-input>
   </div>
-   <button ion-button block class="con">{{'Confirm'|translate}}</button>
+   <button ion-button block class="con" (click)="forgetPass()">{{'Confirm'|translate}}</button>
 
 </ion-content>

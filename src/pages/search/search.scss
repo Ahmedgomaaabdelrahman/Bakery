@@ -1,0 +1,132 @@
+page-search {
+    .product{
+        margin: 10px;
+        width: 95%;
+        max-width: 95%;
+        height: 245px;
+        .col{
+           
+            padding: 0;
+        }
+        p:first-of-type{
+            margin: 0;
+            padding:0 5px 0;
+            color: #3b9ea6;
+            font-weight: bold;
+            line-height: 15px;
+            max-height: 30px;
+            overflow: scroll;
+
+        }
+        .heart{
+            border: none;
+            font-size: 40px;
+            position: absolute;
+            right: 5px;
+            color: #f18900;
+        }
+        p:last-of-type{
+            margin: 0;
+            padding: 0px 5px 0;
+            color: #f18900;
+            font-weight: bold;
+        }
+        .button{
+            background-color: #3b9ea6;
+            color: white;
+            border-radius: 30px;
+            text-transform: none;
+            height: 30px;
+            font-weight: normal;
+            font-size: 12px !important;
+            
+        }
+        #no{
+            display: inline;
+            color: #3b9ea6;
+            font-size: 20px;
+            text-align: center;
+            border: none;
+        }
+        // ion-icon{
+        //     border: 1px solid lightgray;
+        //     border-radius: 50%;
+        //     padding:8px 11px;
+        //     color:lightgray;
+        // }
+    }
+    
+      [col-6] 
+      { 
+       padding:10px;
+        img{
+           width: 100%;
+           height: 185px;
+           border-radius: 10px;
+           box-shadow: 0px 3px 37px #868481;
+           }
+      }
+    
+      .quandiv{
+        display: none;
+      }
+      .quandivdis{
+          display: none;
+      }
+      .disbtn{
+        display: none;
+      }
+      .nondisbtn{
+        display: block;
+        background-color: #d0cfe0;
+        color: white;
+        border-radius: 30px;
+        width: 70%;
+        text-transform: none;
+        height: 30px;
+      }
+      .hearticon{
+        position: absolute;
+        top: 5px;
+        font-size: 35px;
+        right: 5px;
+        color: #ffffff;
+    }
+    .quanicon{
+        border: 2px solid gray;
+        border-radius: 50%;
+        padding: 2px 5px;
+        font-size: 20px;
+        color: #3b9ea6;
+        font-weight: bold;
+        margin: 3px 0;
+    }
+    
+    .quandivdis{
+        // display: none;
+        display: flex;
+        text-align: end;
+        margin: 0;
+      }
+      .contdiv{
+        height: 250px;
+        position: relative;
+        border-radius: 10px;
+        border: 1px solid gray;
+        margin: 0 5px 15px;
+        display: inline-block;
+        box-shadow: 0px 5px 15px 0px #a0a0a0;
+        .row{
+            padding: 0 5px;
+        }
+        img {
+            border-radius: 10px;
+            max-height: 82%;
+            box-shadow: 1px 2px 10px 1px grey;
+        }
+        .imgdiv{
+            border-bottom-right-radius: 16px;
+            border-bottom-left-radius: 16px;
+            height: 170px;
+        }
+    }}

@@ -1,3 +1,4 @@
+import { MainaddsPage } from './../mainadds/mainadds';
 import { OrdermapPage } from './../ordermap/ordermap';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController} from 'ionic-angular';
@@ -26,6 +27,6 @@ export class InvoicePage {
     this.common.createModel(RatePage);
   }
   gohome(){
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push(MainaddsPage);
   }
 }

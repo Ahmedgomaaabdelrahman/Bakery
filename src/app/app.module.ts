@@ -52,6 +52,10 @@ import { MycartPage } from '../pages/mycart/mycart';
 import { MapPage } from '../pages/map/map';
 import { YellowtabsComponent } from '../components/yellowtabs/yellowtabs';
 import { ContactusPage } from '../pages/contactus/contactus';
+import { SearchPage } from '../pages/search/search';
+import { DistmapPage } from '../pages/distmap/distmap';
+import { DistOrdersPage } from '../pages/dist-orders/dist-orders';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -71,6 +75,7 @@ export function createTranslateLoader(http: Http) {
   declarations: [
     MyApp,
     HomePage,
+    SearchPage,
     AboutPage,
     AddlocationPage,
     CartPage,
@@ -102,7 +107,9 @@ export function createTranslateLoader(http: Http) {
     MapPage,
     MycartPage,
     YellowtabsComponent,
-    ContactusPage
+    ContactusPage,
+    DistOrdersPage,
+    DistmapPage
   ],
   imports: [
     BrowserModule,
@@ -128,6 +135,7 @@ export function createTranslateLoader(http: Http) {
   entryComponents: [
     MyApp,
     HomePage,
+    SearchPage,
     AboutPage,
     AddlocationPage,
     CartPage,
@@ -159,7 +167,9 @@ export function createTranslateLoader(http: Http) {
     MapPage,
     MycartPage,
     YellowtabsComponent,
-    ContactusPage
+    ContactusPage,
+    DistOrdersPage,
+    DistmapPage
   ],
   providers: [
     StatusBar,
@@ -175,7 +185,8 @@ export function createTranslateLoader(http: Http) {
     NativeStorage,
     Nav,
     Geolocation,
-    PayPal
+    PayPal,
+    LaunchNavigator
   ]
 })
 export class AppModule {}

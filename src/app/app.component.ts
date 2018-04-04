@@ -1,3 +1,5 @@
+import { DistOrdersPage } from './../pages/dist-orders/dist-orders';
+import { MainProvider } from './../providers/main';
 import { CustomerProvider } from './../providers/customer';
 import { EditaccountPage } from './../pages/editaccount/editaccount';
 import { SettingsPage } from './../pages/settings/settings';
@@ -25,19 +27,20 @@ export class MyApp {
   rootPage:any = LoginPage;
   pages : Array<{title : string , component:any}>;
 
-  constructor(public nativeStorage:NativeStorage,public comm:CommonServiceProvider,public customer:CustomerProvider,public translate:TranslateService,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(public Platform : Platform,public nativeStorage:NativeStorage,public comm:CommonServiceProvider,public customer:CustomerProvider,public translate:TranslateService,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
        this.getItem();
+       this.getLang();
       // fcm.getToken().then(token=>{
       //    this.customer.deviceToken = token;
       //    console.log("this token"+token);
       //    console.log("cutomer token"+token);
       // });
       splashScreen.hide();
-      this.translate.setDefaultLang('en');
+      
     });
     this.pages = [
       {title:'HomePage',component : TabsPage},
@@ -58,10 +61,42 @@ export class MyApp {
         console.log(data);
         if(data){
           this.customer.currentuser = data;
+          if(this.customer.currentuser.type == 1)
           this.nav.setRoot(TabsPage);
+          else 
+          this.nav.setRoot(DistOrdersPage);
         }
         else{
           this.nav.setRoot(LoginPage);
+        }
+    
+      });
+  
+  
+  }
+  getLang()
+  {
+     this.nativeStorage.getItem('lang')
+    .then(
+      (data) => {
+        console.log(data);
+        if(data){
+          if(data == 'en')
+          { MainProvider.lang = 'en';
+            this.Platform.setDir('ltr', true);
+            this.translate.setDefaultLang('en');
+            
+          }
+          else
+          { MainProvider.lang = 'ar';
+            this.Platform.setDir('rtl', true);
+            this.translate.setDefaultLang('ar');
+           
+          }
+        }
+        else{
+          this.translate.setDefaultLang('ar');
+          this.Platform.setDir('rtl', true)
         }
     
       });

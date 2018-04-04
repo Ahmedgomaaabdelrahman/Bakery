@@ -77,45 +77,46 @@ deleteItem(itemid){
     this.ionViewWillEnter();
   });
 }
-addToCart(i,itemid,quanid,catid){
+addToCart(i,itemid,subcat,quanid,catid){
   console.log(i);
-  this.product.addToCart(this.customer.currentuser.user_id,itemid,quanid,catid).subscribe((res)=>{
+  this.product.addToCart(false,this.customer.currentuser.user_id,subcat,itemid,1,catid).subscribe((res)=>{
     console.log(res);
-    if(res == 1){
-      this.common.presentToast("this item already added");
+    // document.getElementById('no').textContent="1";
+    if(res.state == false){
+      this.common.presentToast("Already Added Before");
     }
     else{
-      this.common.presentToast("Added Successfully");
+      this.common.presentToast("Added Sucessfuly");
       this.quandiv[i]='quandiv';
       this.btnsdiv[i]='disbtn';
       this.count2[i] = 1;
+      MainProvider.cartNo++;
     }
   })
 }
-
 increaseQuan(i,itemid,catid){
   this.count2[i] = this.count2[i]  + 1;
-  this.product.addToCart(this.customer.currentuser.user_id,itemid,this.count2[i],catid).subscribe((res)=>{
-        if(res == 1){
-          console.log("Quan increased to "+ this.count2[i]);
-        }
-  });
+  // this.product.addToCart(this.customer.currentuser.user_id,itemid,this.count2[i],catid).subscribe((res)=>{
+  //       if(res == 1){
+  //         console.log("Quan increased to "+ this.count2[i]);
+  //       }
+  // });
 }
 decreaseQuan(i,itemid,catid){
   if(this.count2[i] == 1){
     this.quandiv[i]='quandivdis';
     this.btnsdiv[i]='nondisbtn';
-    this.product.delCartItem(this.customer.currentuser.user_id,itemid).subscribe((res)=>{
-        console.log(res);
-    });
+    // this.product.delCartItem(this.customer.currentuser.user_id,itemid).subscribe((res)=>{
+    //     console.log(res);
+    // });
   }
   else {
     this.count2[i] = this.count2[i]  - 1;
-    this.product.addToCart(this.customer.currentuser.user_id,itemid,this.count2[i],catid).subscribe((res)=>{
-          if(res == 1){
-            console.log("Quan decreased to "+ this.count2[i]);
-          }
-    });
+    // this.product.addToCart(this.customer.currentuser.user_id,itemid,this.count2[i],catid).subscribe((res)=>{
+    //       if(res == 1){
+    //         console.log("Quan decreased to "+ this.count2[i]);
+    //       }
+    // });
   }
 
  

@@ -28,26 +28,26 @@ ion-scroll.scroll-x .scroll-content{
     margin: 20px auto;
     width: 60%;
 }
-.segment-md .segment-button{
- font-size: 16px !important;
-}
-ion-segment-button {
-    color: #62636f !important;
-    text-transform: none !important;
-    border-bottom:none !important; 
-    letter-spacing: 1px;
+// .segment-md .segment-button{
+//  font-size: 16px !important;
+// }
+// ion-segment-button {
+//     color: #62636f !important;
+//     text-transform: none !important;
+//     border-bottom:none !important; 
+//     letter-spacing: 1px;
    
-    &:hover {
-      background-color: #ff9000 !important;
-      color: white !important;
-      border-radius: 30px;
-      text-transform: none !important;
-      font-weight: 600 !important;
-      letter-spacing: 1px;
-      opacity: 1 !important;
+//     &:hover {
+//       background-color: #ff9000 !important;
+//       color: white !important;
+//       border-radius: 30px;
+//       text-transform: none !important;
+//       font-weight: 600 !important;
+//       letter-spacing: 1px;
+//       opacity: 1 !important;
        
-      }
-}
+//       }
+// }
 .itemrow{
     
     position: relative;
@@ -89,11 +89,26 @@ ion-segment-button {
         border-radius: 50%
     }
 }
+.segment-ios .segment-button , .segment-md .segment-button{
+    background: transparent;
+    color: #3b9ea6;
+    border:none;
+    font-size: 20px;
+    text-transform: none;
+}
+.segment-ios .segment-button.segment-activated , .segment-md .segment-button.segment-activated{
+    background: #ffdf1b;
+    color: #3b9ea6;
+    border: 1px solid #ffdf1b;
+    font-size: 20px;
+    border-radius: 10px;
+    
+}
 #price{
-   background: #45c8e0;
+    background: #45c8e0;
     height: 40px;
     width: 95px;
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
     border-radius: 7px;
     position: absolute;
     bottom: 15px;
@@ -102,5 +117,11 @@ ion-segment-button {
     font-size: 23px;
     color: white;
     font-weight: 700;
+    line-height: 40px;
+}
+.segment-md-secondary .segment-button.segment-activated  ,  .segment-ios-secondary .segment-button.segment-activated{
+    border-color: orange;
+    color: orange;
+    opacity: 1;
 }
 }

@@ -33,7 +33,7 @@ page-home {
 ion-segment {
     padding-top: 5px;
     color: lightgray;
-    width: 200vw;
+    // width: 200vw;
     margin: 0 20px;
   }
 
@@ -60,10 +60,23 @@ ion-segment-button {
         border-color: #488aff !important;
 
 }
-ion-segment-button.segment-button {
-    display: inline-block!important;
-    width: auto!important;
-  }
+.topscroll{
+    ion-segment-button.segment-button {
+        display: inline-block!important;
+        width: auto!important;
+        border:1px solid gray;
+        border-bottom :1px solid gray !important;
+        font-size: 15px;
+      }
+}
+.segment-ios .segment-button{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-left: 0;
+    border-left-width: 1px;
+}
   .product{
     margin: 10px;
     width: 95%;
@@ -78,6 +91,10 @@ ion-segment-button.segment-button {
         padding:0 5px 0;
         color: #3b9ea6;
         font-weight: bold;
+        line-height: 15px; 
+        max-height: 30px;
+        overflow: scroll;
+
     }
     .heart{
         border: none;
@@ -106,7 +123,6 @@ ion-segment-button.segment-button {
         display: inline;
         color: #3b9ea6;
         font-size: 20px;
-        width: 20px;
         text-align: center;
         border: none;
     }
@@ -130,7 +146,7 @@ ion-segment-button.segment-button {
   }
 
   .quandiv{
-    display: block;
+    display: none;
   }
   .quandivdis{
       display: none;
@@ -187,6 +203,9 @@ ion-segment-button.segment-button {
         border-bottom-right-radius: 16px;
         border-bottom-left-radius: 16px;
         height: 170px;
+    }
+    .row{
+        padding: 0 5px;
     }
 }
 }

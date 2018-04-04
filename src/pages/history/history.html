@@ -10,13 +10,13 @@
   <p>{{email}}</p>
 </div> -->
 
-<div>
+<div >
     <ion-scroll scrollX="true">
-      <ion-segment [(ngModel)]="history" color="secondary">
-        <ion-segment-button value="pending">
+      <ion-segment [(ngModel)]="history">
+        <ion-segment-button value="1">
           {{'Recent'|translate}}
         </ion-segment-button>
-        <ion-segment-button value="confirmed">
+        <ion-segment-button value="2">
           {{'Past'|translate}}
         </ion-segment-button>
       </ion-segment>
@@ -25,23 +25,22 @@
 
 <div class="itemrow"  [ngSwitch]="history">
  <div *ngFor="let history of hisarr">
-  <ion-row  *ngSwitchCase="history.state">
-    <ion-col col-5 (click)="goDetails(history)">
-      <img *ngIf="history.cart[0]!= null" [src]="MainProvider.itemsImg+history.cart[0].items.itemimages[0].image_path">
-      <img *ngIf="history.cart[0]== null" src="assets/imgs/roug1.jpg">
+  <ion-row  *ngSwitchCase="history.order_state">
+    <ion-col col-5>
+      <img  [src]="MainProvider.itemsImg+history.order_deatails[0].items.itemimages[0].image_path">
       <div id="price">${{history.total_price}}</div>
     </ion-col>
     <ion-col col-7>
         
       <ion-row>
-        <ion-col col-10><p class="p1">{{'Order'|translate}} #{{history.historyinfo_id}} </p></ion-col>
-        <ion-col col-2><ion-icon *ngIf="history.state == 'pending'" class="closeicon" name="close" (click)="deleteItem(i,history.historyinfo_id)"></ion-icon></ion-col>
+        <ion-col col-10><p class="p1">{{'Order'|translate}} #{{history.order_id}} </p></ion-col>
+        <ion-col col-2></ion-col>
       </ion-row>
     
         <p class="p2">{{history.created_at|date}}</p>
         <ion-row class="payrow">
-            <ion-col col-6 style="text-align: start;color:#08a1bd">{{history.payment_method}}</ion-col>
-            <ion-col col-6 style="text-align: end ;color:lightgray">{{history.cart.length}} {{'items'|translate}}</ion-col>
+            <ion-col col-6 style="text-align: start;color:#08a1bd">{{history.payment}}</ion-col>
+            <ion-col col-6 style="text-align: end ;color:lightgray">{{history.order_deatails_count}} {{'items'|translate}}</ion-col>
         </ion-row>
     </ion-col>
   </ion-row>

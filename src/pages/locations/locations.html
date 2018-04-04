@@ -88,6 +88,6 @@
      <button ion-button block navPop>{{'Back'|translate}}</button>
    </ion-col>
    <ion-col col-9>
-     <button ion-button block (click)="goPayment()">{{'Next'|translate}}</button>
+     <button ion-button block [disabled]="!flag" (click)="goPayment()">{{'Next'|translate}}</button>
    </ion-col>
 </ion-footer>  
