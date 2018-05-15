@@ -2,8 +2,10 @@ import { HistoryPage } from './../history/history';
 import { FavoritePage } from './../favorite/favorite';
 import { CartPage } from './../cart/cart';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { CommonServiceProvider } from '../../providers/common-service';
+import { CustomerProvider } from '../../providers/customer';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-mycart',
@@ -11,7 +13,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MycartPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public customer:CustomerProvider,public common:CommonServiceProvider,public _app:App,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -20,14 +22,33 @@ export class MycartPage {
  
 
   makeOrder(){
-    this.navCtrl.push(CartPage);
+    if(this.customer.currentuser){
+      this.navCtrl.push(CartPage);
+    }
+    else{
+      this.common.presentToast('you should login');
+      this._app.getRootNav().setRoot(LoginPage);
+    }
   }
 
   favorites(){
+    if(this.customer.currentuser){
     this.navCtrl.push(FavoritePage);
+  }
+  else{
+    this.common.presentToast('you should login');
+    this._app.getRootNav().setRoot(LoginPage);
+  }
   }
 
   history(){
+    if(this.customer.currentuser){
     this.navCtrl.push(HistoryPage);
   }
+
+else{
+  this.common.presentToast('you should login');
+  this._app.getRootNav().setRoot(LoginPage);
+}
+}
 }

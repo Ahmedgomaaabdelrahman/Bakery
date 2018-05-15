@@ -17,7 +17,7 @@
     </ion-col>
     <ion-col col-9 style="padding: 10px 0;font-family: Bitter;color: #0497b3;">{{'Tart Options'|translate}}</ion-col>
     <ion-col col-2 style="padding: 10px 0;color:#0497b3 ">
-      <!-- $204 -->
+      <!-- {{'SAR'|translate}} 204 -->
     </ion-col>
   </ion-row>
 </ion-title>
@@ -102,7 +102,7 @@
       <div *ngFor="let add of adds" >
         <img [src]="MainProvider.TartImgs+add.add_image">
         <p>{{add.add_namear}}</p>
-        <h6>${{add.add_price}}</h6>
+        <h6> {{add.add_price}} {{'SAR'|translate}}</h6>
         <button ion-button block (click)="putadds(add.adds_id)">{{'Add item'|translate}}</button>
       </div>
     </ion-scroll>

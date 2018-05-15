@@ -10,36 +10,36 @@ page-tabs {
 //     background-size:75px ;
 //     }
 
-.tabs-md .tab-button[id=tab-t0-0], .tabs-ios .tab-button[id=tab-t0-0]{
-    background-image: url('../assets/imgs/home.png');
-}
-.tabs-md .tab-button[aria-selected=true][id=tab-t0-0] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-0]{
-     background-image: url('../assets/imgs/homeon.png'); 
-}
-.tabs-md .tab-button[id=tab-t0-1] , .tabs-ios .tab-button[id=tab-t0-1]{
-    background-image: url('../assets/imgs/map.png');
-}
-.tabs-md .tab-button[aria-selected=true][id=tab-t0-1] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-1]{
-     background-image: url('../assets/imgs/mapon.png');
-}
+// .tabs-md .tab-button[id=tab-t0-0], .tabs-ios .tab-button[id=tab-t0-0]{
+//     background-image: url('../assets/imgs/home.png');
+// }
+// .tabs-md .tab-button[aria-selected=true][id=tab-t0-0] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-0]{
+//      background-image: url('../assets/imgs/homeon.png'); 
+// }
+// .tabs-md .tab-button[id=tab-t0-1] , .tabs-ios .tab-button[id=tab-t0-1]{
+//     background-image: url('../assets/imgs/map.png');
+// }
+// .tabs-md .tab-button[aria-selected=true][id=tab-t0-1] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-1]{
+//      background-image: url('../assets/imgs/mapon.png');
+// }
 
 
-.tabs-md .tab-button[id=tab-t0-2] , .tabs-ios .tab-button[id=tab-t0-2]{
-    background-image: url('../assets/imgs/cart.png');
-}
+// .tabs-md .tab-button[id=tab-t0-2] , .tabs-ios .tab-button[id=tab-t0-2]{
+//     background-image: url('../assets/imgs/cart.png');
+// }
 
-.tabs-md .tab-button[aria-selected=true][id=tab-t0-2] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-2]{
-     background-image: url('../assets/imgs/carton.png');
-}
+// .tabs-md .tab-button[aria-selected=true][id=tab-t0-2] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-2]{
+//      background-image: url('../assets/imgs/carton.png');
+// }
 
 
 
-.tabs-md .tab-button[id=tab-t0-3] , .tabs-ios .tab-button[id=tab-t0-3]{
-    background-image: url('../assets/imgs/profile.png');
-}
-.tabs-md .tab-button[aria-selected=true][id=tab-t0-3] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-3]{
-     background-image: url('../assets/imgs/profon.png');
-}
+// .tabs-md .tab-button[id=tab-t0-3] , .tabs-ios .tab-button[id=tab-t0-3]{
+//     background-image: url('../assets/imgs/profile.png');
+// }
+// .tabs-md .tab-button[aria-selected=true][id=tab-t0-3] , .tabs-ios .tab-button[aria-selected=true][id=tab-t0-3]{
+//      background-image: url('../assets/imgs/profon.png');
+// }
 
 .tabs-md .tab-button-text  , .tabs-ios .tab-button-text{
     color : white;
@@ -51,6 +51,14 @@ page-tabs {
 }
 .tab-button-text {
     display:block;
+}
+.tabs-md .tab-button .tab-button-icon , .tabs-ios .tab-button .tab-button-icon { 
+    color : white;
+    font-size: 35px;
+}
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon ,.tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+    color : #ffdf1b;
+    font-size: 35px;
 }
 // .tabs-md .tab-button[id=tab-t0-4]{
 //   background-image: url('../assets/imgs/more.png');

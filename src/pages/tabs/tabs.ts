@@ -1,3 +1,4 @@
+import { CustomerProvider } from './../../providers/customer';
 import { LoginPage } from './../login/login';
 import { HistoryPage } from './../history/history';
 import { FavoritePage } from './../favorite/favorite';
@@ -6,7 +7,7 @@ import { EditaccountPage } from './../editaccount/editaccount';
 import { SettingsPage } from './../settings/settings';
 import { CategoryPage } from './../category/category';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { MainaddsPage } from '../mainadds/mainadds';
 import { MapPage } from '../map/map';
@@ -24,7 +25,13 @@ export class TabsPage {
   tab4Root: any = EditaccountPage;
   tab5Root: any = SettingsPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public _app:App,public customer:CustomerProvider,public navCtrl: NavController, public navParams: NavParams) {
+    if(this.customer.currentuser){
+      this.tab4Root=EditaccountPage;
+    }
+    else{ 
+      this.tab4Root=LoginPage;
+    }
   }
 
   ionViewDidLoad() {

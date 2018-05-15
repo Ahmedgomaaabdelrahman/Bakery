@@ -1,3 +1,4 @@
+import { MainaddsPage } from './../pages/mainadds/mainadds';
 import { DistOrdersPage } from './../pages/dist-orders/dist-orders';
 import { MainProvider } from './../providers/main';
 import { CustomerProvider } from './../providers/customer';
@@ -24,16 +25,46 @@ import { NativeStorage } from '@ionic-native/native-storage';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = LoginPage;
+  rootPage:any = TabsPage;
   pages : Array<{title : string , component:any}>;
 
   constructor(public Platform : Platform,public nativeStorage:NativeStorage,public comm:CommonServiceProvider,public customer:CustomerProvider,public translate:TranslateService,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
+      this.translate.setDefaultLang('ar');
+      this.Platform.setDir('rtl', true);
+      console.log('defualt')
+      
+      this.nativeStorage.getItem('lang')
+      .then(
+        (data) => {
+          console.log(data);
+          if(data){
+            if(data == 'en')
+            { MainProvider.lang = 'en';
+              this.Platform.setDir('ltr', true);
+              this.translate.setDefaultLang('en');
+              console.log('en')
+            }
+            else if (data == 'ar')
+            { MainProvider.lang = 'ar';
+              this.Platform.setDir('rtl', true);
+              this.translate.setDefaultLang('ar');
+              console.log('ar')
+            }
+            else if(!data){
+              this.translate.setDefaultLang('ar');
+              this.Platform.setDir('rtl', true);
+              console.log('defualt')
+            }
+          }
+        
+      
+        });
+    
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
        this.getItem();
-       this.getLang();
       // fcm.getToken().then(token=>{
       //    this.customer.deviceToken = token;
       //    console.log("this token"+token);
@@ -85,19 +116,21 @@ export class MyApp {
           { MainProvider.lang = 'en';
             this.Platform.setDir('ltr', true);
             this.translate.setDefaultLang('en');
-            
+            console.log('en')
           }
-          else
+          else if (data == 'ar')
           { MainProvider.lang = 'ar';
             this.Platform.setDir('rtl', true);
             this.translate.setDefaultLang('ar');
-           
+            console.log('ar')
+          }
+          else if(!data){
+            this.translate.setDefaultLang('ar');
+            this.Platform.setDir('rtl', true);
+            console.log('defualt')
           }
         }
-        else{
-          this.translate.setDefaultLang('ar');
-          this.Platform.setDir('rtl', true)
-        }
+      
     
       });
   

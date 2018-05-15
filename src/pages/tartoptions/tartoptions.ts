@@ -1,6 +1,6 @@
 import { CartPage } from './../cart/cart';
 import { CustomerProvider } from './../../providers/customer';
-import { ActionSheetController } from 'ionic-angular';
+import { ActionSheetController, App } from 'ionic-angular';
 import { tartcolor } from './../../providers/tartcolor';
 import { tartadd } from './../../providers/tartadd';
 import { MainProvider } from './../../providers/main';
@@ -8,6 +8,7 @@ import { ProductProvider } from './../../providers/product';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
 import { CommonServiceProvider } from '../../providers/common-service';
+import { LoginPage } from '../login/login';
 
 
 @Component({
@@ -35,7 +36,7 @@ export class TartoptionsPage {
   public subcatid : any;
   @ViewChild('tarttext') tarttext ;
 
-  constructor(public comm:CommonServiceProvider,public customer:CustomerProvider,public product:ProductProvider,public viewCtrl : ViewController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public _app:App,public comm:CommonServiceProvider,public customer:CustomerProvider,public product:ProductProvider,public viewCtrl : ViewController,public navCtrl: NavController, public navParams: NavParams) {
      this.itemid =this.navParams.get('itemid');
      this.catid =this.navParams.get('catid');
      this.quantity = this.navParams.get('quantity');
@@ -98,7 +99,7 @@ export class TartoptionsPage {
     console.log(this.chosingadds);
     console.log(this.chosingcolors);
     console.log(this.chosingsize);
-
+    if(this.customer.currentuser){
     this.product.addToCart(true,this.customer.currentuser.user_id,this.subcatid,
       this.itemid,
       1,
@@ -115,4 +116,9 @@ export class TartoptionsPage {
       );
   
     }
+    else{
+      this.comm.presentToast('you should login');
+      this._app.getRootNav().setRoot(LoginPage);
+    }
+  }
 }

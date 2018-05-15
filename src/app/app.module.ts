@@ -37,7 +37,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { CustomerProvider } from '../providers/customer';
 import { MainProvider } from '../providers/main';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpClientModule } from '@angular/common/http';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { Camera } from '@ionic-native/camera';
 import { TwitterConnect } from '@ionic-native/twitter-connect';
@@ -115,6 +115,7 @@ export function createTranslateLoader(http: Http) {
     BrowserModule,
     IonicPageModule.forChild(AboutPage),
     HttpModule,
+    HttpClientModule,
     TranslateModule.forChild(),
     TranslateModule.forRoot({
       loader: {

@@ -20,7 +20,7 @@
       <ion-row>
         <ion-col col-6>
           <p>{{offer.item.item_name}}</p>
-          <p>${{offer.item.price}}</p>
+          <p> {{offer.item.price}} {{'SAR'|translate}}</p> 
         </ion-col>
         <ion-col col-6>
             <button ion-button block (click)="addToCart(i,offer.item.item_id, offer.item.sub_category_id ,offer.item.quantity,offer.item.category_id)">{{'Add to Cart'|translate}}</button>
@@ -43,7 +43,7 @@
         <ion-row style="display:flex">
           <ion-col col-4>
             <p>sad</p>
-            <p>$aasd</p>
+            <p>{{'SAR'|translate}} aasd</p>
           </ion-col>
           <ion-col col-8>
               <button ion-button block>{{'Add to Cart'|translate}}</button>

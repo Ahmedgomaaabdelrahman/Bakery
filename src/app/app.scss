@@ -125,7 +125,31 @@ page-rate.ion-page.show-page{
 .header-ios .toolbar-background-ios{
     border:none;
 }
+.radio-ios .radio-icon {
+    position: relative;
+    display: block;
+    width: 25px;
+    height: 25px;
+    border: 1px solid gray;
+    /* padding: 5px; */
+    border-radius: 50%;
 
+   
+}
+ .radio-ios .radio-checked .radio-inner {
+    left: 9px !important;
+    top: 4px;
+    position: absolute;
+    width: 5px;
+    height: 12px;
+    border-width: 2px;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-style: solid;
+    border-color: #3c9ea6;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 ion-modal {
    left: 0;
    top: 0;
@@ -157,5 +181,9 @@ ion-modal {
 
 [dir="rtl"].slides{
     direction: rtl;
+}
+
+.input-wrapper {
+    overflow: unset !important;
 }
 

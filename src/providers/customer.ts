@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { MainProvider } from './main';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
@@ -20,7 +21,9 @@ export class CustomerProvider {
 
   public deviceToken : string ='';
   public currentuser : any;
-  constructor(public http: Http) {
+  public hero = {};
+
+  constructor(public http: Http , public httpc : HttpClient) {
     console.log('Hello CustomerProvider Provider');
   }
 
@@ -41,9 +44,10 @@ export class CustomerProvider {
     let user = {
       phone : phone,
       password : password,
-      token:this.deviceToken
+      token:''
     };
-    return this.http.post(this.loginUrl+MainProvider.lang,user).map((res) => res.json());
+    console.log(user);
+    return this.http.post(this.loginUrl+MainProvider.lang,user).map((res) =>  res.json());
   }
 
   forgetPass(Email : any){

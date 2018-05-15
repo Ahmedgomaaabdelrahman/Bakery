@@ -2,11 +2,12 @@ import { DetailsPage } from './../details/details';
 import { MainProvider } from './../../providers/main';
 import { ProductProvider } from './../../providers/product';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App  } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import {Observable, Subscriber} from "rxjs";
 import { CustomerProvider } from '../../providers/customer';
 import { CommonServiceProvider } from '../../providers/common-service';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-mainadds',
@@ -20,11 +21,11 @@ export class MainaddsPage {
   public count2 : number [] = [];
   public mainProvider = MainProvider;
   icons : any[] = [];
-  constructor(public common:CommonServiceProvider,public customer:CustomerProvider,public product:ProductProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public _app:App,public common:CommonServiceProvider,public customer:CustomerProvider,public product:ProductProvider, public navCtrl: NavController, public navParams: NavParams) {
   
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter(){
     console.log('ionViewDidLoad MainaddsPage');
     this.product.getsliderOffer().subscribe((res)=>{
       this.sliderprods = res;
@@ -45,20 +46,28 @@ export class MainaddsPage {
 
   addToCart(i,itemid,subcat,quanid,catid){
     console.log(i);
-    this.product.addToCart(false,this.customer.currentuser.user_id,subcat,itemid,1,catid,"",[],"","",[]).subscribe((res)=>{
-      console.log(res);
-      // document.getElementById('no').textContent="1";
-      if(res.state == false){
-        this.common.presentToast("Already Added Before");
-      }
-      else{
-        this.common.presentToast("Added Sucessfuly");
-        this.quandiv[i]='quandiv';
-        this.btnsdiv[i]='disbtn';
-        this.count2[i] = 1;
-        MainProvider.cartNo++;
-      }
-    })
+    if(this.customer.currentuser){
+      this.product.addToCart(false,this.customer.currentuser.user_id,subcat,itemid,1,catid,"",[],"","",[]).subscribe((res)=>{
+        console.log(res);
+        // document.getElementById('no').textContent="1";
+        if(res.state == false){
+          this.common.presentToast("Already Added Before");
+        }
+        else{
+          this.common.presentToast("Added Sucessfuly");
+          this.quandiv[i]='quandiv';
+          this.btnsdiv[i]='disbtn';
+          this.count2[i] = 1;
+          MainProvider.cartNo++;
+        }
+      })
+    }
+
+    else{
+      this.common.presentToast('you should login');
+      this._app.getRootNav().setRoot(LoginPage);
+    }
+ 
   }
 
   addToFav(itemid,icon){

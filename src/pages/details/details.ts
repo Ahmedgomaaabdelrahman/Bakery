@@ -1,10 +1,11 @@
 import { TartoptionsPage } from './../tartoptions/tartoptions';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { CommonServiceProvider } from './../../providers/common-service';
 import { MainProvider } from './../../providers/main';
 import { ProductProvider } from '../../providers/product';
 import { CustomerProvider } from '../../providers/customer';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-details',
@@ -22,7 +23,7 @@ export class DetailsPage {
   public MainProvider = MainProvider;
  
 
-  constructor(public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public _app:App,public customer:CustomerProvider,public product:ProductProvider,public common:CommonServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
      this.images = this.navParams.get('images');
      this.name = this.navParams.get('name');
      this.details = this.navParams.get('details');
@@ -50,6 +51,7 @@ export class DetailsPage {
   }
   
   addTocart(){
+    if(this.customer.currentuser){
     this.product.addToCart(false,this.customer.currentuser.user_id,this.subcatid,this.itemid,1,this.catid,"",[],"","",[]).subscribe((res)=>{
       console.log(res);
       if(res.state == false){
@@ -60,5 +62,10 @@ export class DetailsPage {
         this.navCtrl.pop();
       }
     });
+  }
+  else{
+    this.common.presentToast('you should login');
+    this._app.getRootNav().setRoot(LoginPage);
+  }
   }
 }

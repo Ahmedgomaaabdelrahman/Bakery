@@ -28,7 +28,7 @@
   <ion-row  *ngSwitchCase="history.order_state">
     <ion-col col-5>
       <img  [src]="MainProvider.itemsImg+history.order_deatails[0].items.itemimages[0].image_path">
-      <div id="price">${{history.total_price}}</div>
+      <div id="price"> {{history.total_price}} {{'SAR'|translate}}</div>
     </ion-col>
     <ion-col col-7>
         

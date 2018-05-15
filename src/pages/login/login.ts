@@ -34,6 +34,7 @@ export class LoginPage {
    this.navCtrl.push(SignupPage);
  }
  gomain(){
+   console.log("Pressed");
     this.customer.loginUser(this.phone.value,this.password.value).subscribe((res)=>{
       console.log(res);
       if(res.error){

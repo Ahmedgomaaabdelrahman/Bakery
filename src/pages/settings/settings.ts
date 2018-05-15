@@ -21,8 +21,9 @@ import { CartPage } from '../cart/cart';
 })
 export class SettingsPage {
    
-   public flag : boolean = false;
+   public flag : boolean = true;
    public MainProvider = MainProvider;
+   
   constructor(public _app:App,public nativeStorage:NativeStorage,public translate:TranslateService,public customer:CustomerProvider,public platform:Platform,public common:CommonServiceProvider,public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -48,9 +49,10 @@ export class SettingsPage {
 
  logOut(){
    this.customer.currentuser = null;
-  //  this._app.getRootNav().setRoot(LoginPage);
+   this._app.getRootNav().setRoot(LoginPage);
    this.nativeStorage.clear();
-  this.platform.exitApp();
+  // this.platform.exitApp();
+  
    console.log(this.customer.currentuser);
  }
  changeLang(){

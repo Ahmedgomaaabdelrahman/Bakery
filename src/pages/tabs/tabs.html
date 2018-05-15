@@ -2,14 +2,14 @@
 <ion-tabs>
 
   <!-- Indicates with tabsPage should handle each tab here -->
- <ion-tab [root]="tab1Root">
+ <ion-tab [root]="tab1Root"tabIcon="home">
   
  </ion-tab>
- <ion-tab [root]="tab2Root" >
+ <ion-tab [root]="tab2Root" tabIcon="pin">
  
  </ion-tab>
- <ion-tab [root]="tab3Root" >
+ <ion-tab [root]="tab3Root" tabIcon="cart">
   </ion-tab>
- <ion-tab [root]="tab4Root" class="person"></ion-tab>
+ <ion-tab [root]="tab4Root" tabIcon="person" class="person"></ion-tab>
  <ion-tab [root]="tab5Root" tabTitle=" {{'More'|translate}} " ></ion-tab>
 </ion-tabs>

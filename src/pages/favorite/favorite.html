@@ -15,7 +15,7 @@
           <ion-row>
               <ion-col col-6>
                 <p>{{item.items.item_name}}</p>
-                <p>${{item.items.price}}</p>
+                <p>{{item.items.price}} {{'SAR'|translate}}</p>
               </ion-col>
               <ion-col col-6>
                   <button ion-button block #quan (click)="addToCart(i,item.item_id,item.sub_category_id,item.quantity,category_id)">{{'Add to Cart'|translate}}</button>

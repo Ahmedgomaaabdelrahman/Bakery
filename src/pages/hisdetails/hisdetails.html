@@ -20,7 +20,7 @@
     </ion-row>
     <ion-row style="text-align:center">
         <ion-col col-6> <p class="ptop black">{{'Total Price'|translate}}</p></ion-col>
-        <ion-col col-6> <p class="ptop">${{order.total_price}}</p></ion-col>
+        <ion-col col-6> <p class="ptop"> {{order.total_price}} {{'SAR'|translate}}</p></ion-col>
     </ion-row>
     <ion-row style="text-align:center">
         <ion-col col-6> <p class="ptop black">{{'Order Date'|translate}}</p></ion-col>
@@ -50,7 +50,7 @@
           
           <p class="p2"> # {{item.items.item_id}}</p>
           <ion-row class="payrow">
-            <ion-col col-6 style="text-align: start;color:#08a1bd">${{item.items.price}}</ion-col>
+            <ion-col col-6 style="text-align: start;color:#08a1bd"> {{item.items.price}} {{'SAR'|translate}}</ion-col>
             <ion-col col-6 style="text-align: end ;color:lightgray">{{item.quantity}}  {{item.items.messure_unit_ar}}</ion-col>
           </ion-row>
       </ion-col>

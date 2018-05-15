@@ -13,10 +13,12 @@ export class MainProvider {
   public static TartColorsImgs : string = "http://admin.alyahyamb.com/tartColors/"
   
 
-  public static  lang : string = 'en';
+  public static  lang : string = 'ar';
   public static cartNo : number ;
   constructor(public http: Http) {
     console.log('Hello MainProvider Provider');
   }
 
 }
+
+//  <preference name="orientation" value="portrait" />

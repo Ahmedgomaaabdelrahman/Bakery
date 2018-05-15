@@ -32,17 +32,17 @@
    <ion-col col-2> <ion-icon name="arrow-forward"></ion-icon></ion-col>
  </ion-row>
 
-  <!-- <ion-row class="cont" >
+  <ion-row class="cont" >
    <ion-col col-10>{{'Language'|translate}}</ion-col>
-   <ion-col col-2> <ion-toggle (ionChange)="changeLang()"  checked="false"></ion-toggle></ion-col>
- </ion-row> -->
+   <ion-col col-2> <ion-toggle (ionChange)="changeLang()"></ion-toggle></ion-col>
+ </ion-row>
 
   <ion-row class="cont" (click)="goAbout()">
    <ion-col col-10>{{'About'|translate}}</ion-col>
    <ion-col col-2> <ion-icon name="arrow-forward"></ion-icon></ion-col>
  </ion-row>
 
-  <ion-row class="cont" (click)="logOut()">
+  <ion-row *ngIf="customer.currentuser" class="cont" (click)="logOut()">
    <ion-col col-10>{{'Logout'|translate}}</ion-col>
    <ion-col col-2> <ion-icon name="arrow-forward"></ion-icon></ion-col>
  </ion-row>

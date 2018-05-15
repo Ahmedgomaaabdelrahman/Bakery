@@ -64,7 +64,7 @@ ion-segment-button {
     ion-segment-button.segment-button {
         display: inline-block!important;
         width: auto!important;
-        border:1px solid gray;
+        border:1px solid gray !important;
         border-bottom :1px solid gray !important;
         font-size: 15px;
       }
